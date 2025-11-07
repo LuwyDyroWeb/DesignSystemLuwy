@@ -1,0 +1,69 @@
+{
+    "primary": {
+         "blue": [
+      {
+        "name": "blue-50",
+        "bgClass": "bg-primary-blue-50",
+        "hex": "#FFFFFF",
+        "rgb": "255, 255, 255",
+        "cmyk": "0%, 0%, 0%, 0%"
+      },
+      {
+        "name": "blue-100",
+        "bgClass": "bg-primary-blue-100",
+        "hex": "#E6F0FF",
+        "rgb": "230, 240, 255",
+        "cmyk": "10%, 6%, 0%, 0%"
+      }
+      
+    ],
+    "green": [
+      {
+        "name": "green-50",
+        "bgClass": "bg-primary-green-50",
+        "hex": "#E6FFED",
+        "rgb": "230, 255, 237",
+        "cmyk": "10%, 0%, 10%, 0%"
+      },
+      {
+        "name": "green-100",
+        "bgClass": "bg-primary-green-100",
+        "hex": "#CCFFDB",
+        "rgb": "204, 255, 219",
+        "cmyk": "20%, 0%, 20%, 0%"
+      }
+    ]
+    },
+    "alert": [
+        {
+            "name": "red-50",
+            "bgClass": "bg-alert-error-50",
+            "hex": "#FFFFFF",
+            "rgb": "255, 255, 255",
+            "cmyk": "0%, 0%, 0%, 0%"
+        },
+        {
+            "name": "red-100",
+            "bgClass": "bg-alert-error-100",
+            "hex": "#FFFFFF",
+            "rgb": "255, 255, 255",
+            "cmyk": "0%, 0%, 0%, 0%"
+        }
+    ],
+    "neutro": [
+        {
+            "name": "red-100",
+            "bgClass": "bg-alert-error-100",
+            "hex": "#FFFFFF",
+            "rgb": "255, 255, 255",
+            "cmyk": "0%, 0%, 0%, 0%"
+        },
+        {
+            "name": "red-100",
+            "bgClass": "bg-alert-error-100",
+            "hex": "#FFFFFF",
+            "rgb": "255, 255, 255",
+            "cmyk": "0%, 0%, 0%, 0%"
+        }
+    ]
+}
