@@ -63,7 +63,7 @@
 ### Patch Changes
 
 - docs: update READMEs to document preset-first flow and UI styles import order
-  feat(ui): switch default emitted classes to short `btn*` (keep `csf-btn*` as aliases for compatibility)
+  feat(ui): switch default emitted classes to short `btn*`
 - Updated dependencies
 - Updated dependencies
   - @luwy-dyro/tokens@0.10.0

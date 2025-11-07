@@ -7,14 +7,14 @@
     "dist"
   ],
   "description": "",
-  "main": "./dist/csf-ui.umd.js",
-  "module": "./dist/csf-ui.es.js",
+  "main": "./dist/ld-ui.umd.js",
+  "module": "./dist/ld-ui.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/csf-ui.es.js",
-      "require": "./dist/csf-ui.umd.js"
+      "import": "./dist/ld-ui.es.js",
+      "require": "./dist/ld-ui.umd.js"
     },
     "./dist/ui.css": {
       "import": "./dist/ui.css",
@@ -74,7 +74,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luwy-Dyro/csf-designsystem-materialui.git",
+    "url": "git+https://github.com/Luwy-Dyro/ld-designsystem-materialui.git",
     "directory": "packages/ui"
   }
 }

@@ -1,4 +1,4 @@
-// Stub para evitar errores de indexación de CSF en Storybook.
+// Stub para evitar errores de indexación de LD en Storybook.
 // La historia real está en ButtonIcon.stories.tsx.
 export default {
 	title: 'Example/__Internal__/ButtonIconTS',

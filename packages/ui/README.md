@@ -85,6 +85,6 @@ export default function Demo() {
 }
 ```
 
-Clases CSS disponibles: `btn`, `btn--sm|md|lg`, `btn--weight-*`, `btn--primary-*`, `btn--secondary`, `btn--error|info|warning|success`, `btn--neutro-*`, `btn--custom` (+ `btn--custom-darktext`). Las clases antiguas `csf-btn*` siguen siendo válidas como alias.
+Clases CSS disponibles: `btn`, `btn--sm|md|lg`, `btn--weight-*`, `btn--primary-*`, `btn--secondary`, `btn--error|info|warning|success`, `btn--neutro-*`, `btn--custom` (+ `btn--custom-darktext`).
 
 ````

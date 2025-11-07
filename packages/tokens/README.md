@@ -1,6 +1,6 @@
 # @luwy-dyro/tokens
 
-Design tokens del CSF Design System.
+Design tokens del Design System.
 
 ## Instalación
 ```powershell

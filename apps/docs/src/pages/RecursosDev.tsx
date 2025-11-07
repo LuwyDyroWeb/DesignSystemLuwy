@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Check, ClipboardList, ChevronDown, MonitorCog, MonitorDown, Pyramid, Atom  } from "lucide-react";
+import { Calendar, Check, ClipboardList, ChevronDown, MonitorCog, Pyramid, Atom  } from "lucide-react";
 
 export const RecursosDev = () => {
   const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
@@ -74,7 +74,7 @@ export const RecursosDev = () => {
             codeId: "npmrc",
           },
           {
-            description: "Instalar Tokens y Ui Componentes TI-CSF version 1",
+            description: "Instalar Tokens y Ui Componentes TI version 1",
             code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
             codeId: "install2",
           },
@@ -129,7 +129,7 @@ export const RecursosDev = () => {
             codeId: "npmrc",
           },
           {
-            description: "Instalar Tokens y Ui Componentes TI-CSF version 1",
+            description: "Instalar Tokens y Ui Componentes TI version 1",
             code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
             codeId: "install2",
           },
@@ -183,7 +183,7 @@ export const RecursosDev = () => {
             codeId: "npmrc",
           },
           {
-            description: "Instalar Tokens y Ui Componentes TI-CSF version 1",
+            description: "Instalar Tokens y Ui Componentes TI version 1",
             code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
             codeId: "install2",
           },

@@ -1,0 +1,465 @@
+
+
+/* =========================================== */
+/* --- Design System - LuwyDyro - CSS --- */
+/* =========================================== */
+
+/* --- Base Button Styles & States (Focus, Active, Disabled) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem; /* ~rounded-lg */
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, opacity 150ms ease;
+  border: 2px solid transparent; /* Base border for consistent sizing */
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-blue-100); /* Focus ring */
+}
+
+.btn:active {
+  transform: translateY(1px); /* Slight press effect */
+}
+
+.btn[disabled],
+.btn:disabled {
+  background-color: var(--color-neutro-white-700) !important;
+  border-color: var(--color-neutro-white-700) !important;
+  color: var(--color-neutro-black-300) !important; /* Adjust disabled text color if needed */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- Icon + Label helpers --- */
+.btn_label {
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn_icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0; /* evita desplazamientos verticales */
+}
+
+.btn_icon--left { margin-right: 0.5rem; }
+.btn_icon--right { margin-left: 0.5rem; }
+
+/* El SVG escala con la fuente del botón */
+.btn_icon > svg {
+    width: 1em;
+    height: 1em;
+}
+
+/* --- Tamaños (sin cambios) --- */
+.btn--sm  { font-size: 0.75rem; padding: 0.25rem 1rem; }
+.btn--md  { font-size: 1rem; padding: 0.5rem 1.5rem; }
+.btn--lg  { font-size: 1.125rem; padding: 0.625rem 1.75rem; }
+.btn--xl  { font-size: 1.25rem; padding: 0.75rem 2rem; }
+
+/* --- Pesos (sin cambios) --- */
+.btn--weight-regular { font-weight: 400; }
+.btn--weight-medium  { font-weight: 500; }
+.btn--weight-semibold { font-weight: 600; }
+.btn--weight-bold  { font-weight: 700; }
+
+/* =========================================== */
+/* --- VARIANTES DE ESTILO (FILLED) --- */
+/* =========================================== */
+
+/* Filled - Primary Blue */
+.btn--primary-blue { background-color: var(--color-primary-blue-600); border-color: var(--color-primary-blue-600); color: white; }
+.btn--primary-blue:hover { background-color: var(--color-primary-blue-700); border-color: var(--color-primary-blue-700); }
+.btn--primary-blue:active { background-color: var(--color-primary-blue-900); border-color: var(--color-primary-blue-900); }
+
+/* Filled - Primary Green */
+.btn--primary-green { background-color: var(--color-primary-green-600); border-color: var(--color-primary-green-600); color: white; }
+.btn--primary-green:hover { background-color: var(--color-primary-green-700); border-color: var(--color-primary-green-700); }
+.btn--primary-green:active { background-color: var(--color-primary-green-900); border-color: var(--color-primary-green-900); }
+
+/* Filled - Secondary (Using Neutro Black as base, adjust if needed) */
+.btn--secondary { background-color: var(--color-neutro-black-600); border-color: var(--color-neutro-black-600); color: white; }
+.btn--secondary:hover { background-color: var(--color-neutro-black-700); border-color: var(--color-neutro-black-700); }
+.btn--secondary:active { background-color: var(--color-neutro-black-900); border-color: var(--color-neutro-black-900); }
+
+/* Filled - Error */
+.btn--error{ background-color: var(--color-alert-error-600); border-color: var(--color-alert-error-600); color: white; }
+.btn--error:hover { background-color: var(--color-alert-error-700); border-color: var(--color-alert-error-700); }
+.btn--error:active { background-color: var(--color-alert-error-900); border-color: var(--color-alert-error-900); }
+
+/* Filled - Info */
+.btn--info { background-color: var(--color-alert-info-600); border-color: var(--color-alert-info-600); color: white; }
+.btn--info:hover { background-color: var(--color-alert-info-700); border-color: var(--color-alert-info-700); }
+.btn--info:active { background-color: var(--color-alert-info-900); border-color: var(--color-alert-info-900); }
+
+/* Filled - Warning */
+.btn--warning { background-color: var(--color-alert-warning-600); border-color: var(--color-alert-warning-600); color: var(--color-neutro-black-900); } /* Dark text */
+.btn--warning:hover { background-color: var(--color-alert-warning-700); border-color: var(--color-alert-warning-700); }
+.btn--warning:active { background-color: var(--color-alert-warning-900); border-color: var(--color-alert-warning-900); }
+
+/* Filled - Success */
+.btn--success { background-color: var(--color-alert-success-600); border-color: var(--color-alert-success-600); color: white; }
+.btn--success:hover { background-color: var(--color-alert-success-700); border-color: var(--color-alert-success-700); }
+.btn--success:active { background-color: var(--color-alert-success-900); border-color: var(--color-alert-success-900); }
+
+/* Filled - Neutro Black */
+.btn--neutro-black { background-color: var(--color-neutro-black-500); border-color: var(--color-neutro-black-500); color: white; }
+.btn--neutro-black:hover { background-color: var(--color-neutro-black-700); border-color: var(--color-neutro-black-700); } /* Adjusted hover */
+.btn--neutro-black:active { background-color: var(--color-neutro-black-900); border-color: var(--color-neutro-black-900); }
+
+/* Filled - Neutro White */
+.btn--neutro-white { background-color: var(--color-neutro-white-500); border-color: var(--color-neutro-white-700); color: var(--color-neutro-black-900); } /* Dark text, subtle border */
+.btn--neutro-white:hover { background-color: var(--color-neutro-white-600); border-color: var(--color-neutro-white-800); }
+.btn--neutro-white:active { background-color: var(--color-neutro-white-700); border-color: var(--color-neutro-white-900); }
+
+
+/* =========================================== */
+/* --- VARIANTES DE ESTILO (OUTLINE) --- */
+/* =========================================== */
+.btn--outline { background-color: transparent; }
+
+/* Outline - Primary Blue */
+.btn--outline.btn--primary-blue { border-color: var(--color-primary-blue-600); color: var(--color-primary-blue-600); }
+.btn--outline.btn--primary-blue:hover { background-color: var(--color-primary-blue-600); color: white; }
+.btn--outline.btn--primary-blue:active { background-color: var(--color-primary-blue-900); border-color: var(--color-primary-blue-900); color: white; }
+
+/* Outline - Primary Green */
+.btn--outline.btn--primary-green { border-color: var(--color-primary-green-600); color: var(--color-primary-green-600); }
+.btn--outline.btn--primary-green:hover { background-color: var(--color-primary-green-600); color: white; }
+.btn--outline.btn--primary-green:active { background-color: var(--color-primary-green-900); border-color: var(--color-primary-green-900); color: white; }
+
+/* Outline - Secondary (Using Neutro Black) */
+.btn--outline.btn--secondary { border-color: var(--color-neutro-black-600); color: var(--color-neutro-black-600); }
+.btn--outline.btn--secondary:hover { background-color: var(--color-neutro-black-600); color: white; }
+.btn--outline.btn--secondary:active { background-color: var(--color-neutro-black-900); border-color: var(--color-neutro-black-900); color: white; }
+
+/* Outline - Error */
+.btn--outline.btn--error { border-color: var(--color-alert-error-600); color: var(--color-alert-error-600); }
+.btn--outline.btn--error:hover { background-color: var(--color-alert-error-600); color: white; }
+.btn--outline.btn--error:active:active { background-color: var(--color-alert-error-900); border-color: var(--color-alert-error-900); color: white; }
+
+/* Outline - Info */
+.btn--outline.btn--info { border-color: var(--color-alert-info-600); color: var(--color-alert-info-600); }
+.btn--outline.btn--info:hover { background-color: var(--color-alert-info-600); color: white; }
+.btn--outline.btn--info:active:active { background-color: var(--color-alert-info-900); border-color: var(--color-alert-info-900); color: white; }
+
+/* Outline - Warning */
+.btn--outline.btn--warning { border-color: var(--color-alert-warning-600); color: var(--color-alert-warning-600); }
+.btn--outline.btn--warning:hover { background-color: var(--color-alert-warning-600); color: var(--color-neutro-black-900); } /* Dark text on hover */
+.btn--outline.btn--warning:active:active { background-color: var(--color-alert-warning-900); border-color: var(--color-alert-warning-900); color: var(--color-neutro-black-900); }
+
+/* Outline - Success */
+.btn--outline.btn--success { border-color: var(--color-alert-success-600); color: var(--color-alert-success-600); }
+.btn--outline.btn--success:hover { background-color: var(--color-alert-success-600); color: white; }
+.btn--outline.btn--success:active:active { background-color: var(--color-alert-success-900); border-color: var(--color-alert-success-900); color: white; }
+
+/* Outline - Neutro Black */
+.btn--outline.btn--neutro-black-black { border-color: var(--color-neutro-black-500); color: var(--color-neutro-black-500); }
+.btn--outline.btn--neutro-black:hover { background-color: var(--color-neutro-black-500); color: white; }
+.btn--outline.btn--neutro-black:active { background-color: var(--color-neutro-black-700); border-color: var(--color-neutro-black-700); color: white; }
+
+/* Outline - Neutro White */
+.btn--outline.btn--neutro-white-white { border-color: var(--color-neutro-white-700); color: var(--color-neutro-black-900); } /* Dark text */
+.btn--outline.btn--neutro-white:hover { background-color: var(--color-neutro-white-600); border-color: var(--color-neutro-white-800); color: var(--color-neutro-black-900); }
+.btn--outline.btn--neutro-white:active { background-color: var(--color-neutro-white-700); border-color: var(--color-neutro-white-900); color: var(--color-neutro-black-900); }
+
+
+/* =========================================== */
+/* --- VARIANTES DE ESTILO (CLEAR) --- */
+/* =========================================== */
+.btn--clear { background-color: transparent; border-color: transparent; }
+
+/* Clear - Primary Blue */
+.btn--clear.btn--primary-blue { color: var(--color-primary-blue-600); }
+.btn--clear.btn--primary-blue:hover { background-color: var(--color-primary-blue-100); }
+.btn--clear.btn--primary-blue:active { background-color: var(--color-primary-blue-200); }
+
+/* Clear - Primary Green */
+.btn--clear.btn--primary-green { color: var(--color-primary-green-600); }
+.btn--clear.btn--primary-green:hover{ background-color: var(--color-primary-green-100); }
+.btn--clear.btn--primary-green:active { background-color: var(--color-primary-green-200); }
+
+/* Clear - Secondary (Using Neutro Black) */
+.btn--clear.btn--secondary { color: var(--color-neutro-black-600); }
+.btn--clear.btn--secondary:hover:hover { background-color: var(--color-neutro-black-100); }
+.btn--clear.btn--secondary:active:active { background-color: var(--color-neutro-black-200); }
+
+/* Clear - Error */
+.btn--clear.btn--error { color: var(--color-alert-error-600); }
+.btn--clear.btn--error:hover:hover { background-color: var(--color-alert-error-100); }
+.btn--clear.btn--error:active:active { background-color: var(--color-alert-error-200); }
+
+/* Clear - Info */
+.btn--clear.btn--info { color: var(--color-alert-info-600); }
+.btn--clear.btn--info:hover:hover { background-color: var(--color-alert-info-100); }
+.btn--clear.btn--info:active:active { background-color: var(--color-alert-info-200); }
+
+/* Clear - Warning */
+.btn--clear.btn--warning { color: var(--color-alert-warning-600); }
+.btn--clear.btn--warning:hover:hover { background-color: var(--color-alert-warning-100); }
+.btn--clear.btn--warning:active:active { background-color: var(--color-alert-warning-200); }
+
+/* Clear - Success */
+.btn--clear.btn--success { color: var(--color-alert-success-600); }
+.btn--clear.btn--success:hover:hover { background-color: var(--color-alert-success-100); }
+.btn--clear.btn--success:active:active { background-color: var(--color-alert-success-200); }
+
+/* Clear - Neutro Black */
+.btn--clear.btn--neutro-black { color: var(--color-neutro-black-500); }
+.btn--clear.btn--neutro-black:hover { background-color: var(--color-neutro-black-100); }
+.btn--clear.btn--neutro-black:active { background-color: var(--color-neutro-black-200); }
+
+/* Clear - Neutro White */
+.btn--clear.btn--neutro-white { color: var(--color-neutro-black-900); } /* Dark text */
+.btn--clear.btn--neutro-white:hover { background-color: var(--color-neutro-white-600); }
+.btn--clear.btn--neutro-white:active{ background-color: var(--color-neutro-white-700); }
+
+
+/* =========================================== */
+/* --- LOADING STATE --- */
+/* =========================================== */
+.btn--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  border: 2px solid currentColor; /* Default spinner color */
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: btn-spin 0.6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+/* Spinner color adjustments for specific variants */
+.btn--primary-blue.btn--loading::after,
+.btn--primary-green.btn--loading::after,
+.btn--secondary.btn--loading::after, /* Assuming secondary uses dark bg */
+.btn--error.btn--loading::after,
+.btn--info.btn--loading::after,
+.btn--success.btn--loading::after,
+.btn--neutro-black.btn--loading::after,
+.btn--outline.btn--loading:hover::after, /* Spinner white when outline hovers */
+.btn--outline.btn--loading:active::after {
+    border-color: white; border-right-color: transparent;
+}
+
+.btn--warning.btn--loading::after,
+.btn--neutro-white.btn--loading::after,
+.btn--clear.btn--loading:hover::after, /* Spinner dark for clear/light hovers */
+.btn--clear.btn--loading:active::after {
+    border-color: var(--color-neutro-black-900); border-right-color: transparent;
+}
+
+/* Spinner color for outline/clear in default state (uses text color) */
+/* (Handled by 'currentColor' in the base ::after rule) */
+
+
+
+.border-2 {
+    border-style: solid;
+    border-width: 2px;
+}
+
+
+/* Custom color via inline CSS variables */
+.btn--custom {
+  background-color: var(--btn-bg);
+  color: white;
+}
+.btn--custom:hover { background-color: var(--btn-hover-bg); }
+
+/* Text color override for light backgrounds */
+.btn--custom-darktext { color: black; }
+
+
+
+
+
+
+
+/* OUTLINE */
+.btn--outline { /* Clase base para outline */
+    background-color: transparent;
+    /* El color del borde y texto se definirá por variante */
+}
+.btn--outline.btn--primary-blue {
+    border-color: var(--color-primary-blue-600);
+    color: var(--color-primary-blue-600);
+}
+.btn--outline.btn--primary-blue:hover {
+    background-color: var(--color-primary-blue-600); /* Fondo en hover */
+    color: white;
+}
+.btn--outline.btn--primary-blue:active {
+    background-color: var(--color-primary-blue-900); /* Fondo más oscuro en press */
+    border-color: var(--color-primary-blue-900);
+    color: white;
+}
+
+/* Outline - Error */
+.btn--outline.btn--error {
+    border-color: var(--color-alert-error-600);
+    color: var(--color-alert-error-600);
+}
+.btn--outline.btn--error:hover {
+    background-color: var(--color-alert-error-600);
+    color: white;
+}
+.btn--outline.btn--error:active {
+    background-color: var(--color-alert-error-900);
+    border-color: var(--color-alert-error-900);
+    color: white;
+}
+
+/* Outline - Success */
+.btn--outline.btn--success {
+    border-color: var(--color-alert-success-600);
+    color: var(--color-alert-success-600);
+}
+.btn--outline.btn--success:hover {
+    background-color: var(--color-alert-success-600);
+    color: white;
+}
+.btn--outline.btn--success:active {
+    background-color: var(--color-alert-success-900);
+    border-color: var(--color-alert-success-900);
+    color: white;
+}
+
+/* Outline - Neutro Black */
+.btn--outline.btn--neutro-black {
+    border-color: var(--color-neutro-black-500); /* Nivel base */
+    color: var(--color-neutro-black-500);
+}
+.btn--outline.btn--neutro-black:hover {
+    background-color: var(--color-neutro-black-500);
+    color: white; /* O un gris muy claro si prefieres */
+}
+.btn--outline.btn--neutro-black:active {
+    background-color: var(--color-neutro-black-700); /* Más oscuro */
+    border-color: var(--color-neutro-black-700);
+    color: white;
+}
+
+
+
+
+/* CLEAR */
+.btn--clear {
+    background-color: white;
+    border-color: white;
+
+}
+.btn--clear.btn--primary-blue{
+    color: var(--color-primary-blue-600);
+}
+.btn--clear.btn--primary-blue:hover{
+    background-color: var(--color-primary-blue-100); /* Fondo muy claro en hover */
+    /* color: var(--color-primary-blue-700); Podrías oscurecer texto en hover */
+}
+.btn--clear.btn--primary-blue:active{
+    background-color: var(--color-primary-blue-200); /* Fondo un poco más oscuro en press */
+}
+
+
+.btn--clear.btn--error{
+    color: var(--color-alert-error-600);
+}
+.btn--clear.btn--error:hover{
+    background-color: var(--color-alert-error-100); /* Fondo muy claro en hover */
+    /* color: var(--color-alert-error-700); Podrías oscurecer texto */
+}
+.btn--clear.btn--error:active{
+    background-color: var(--color-alert-error-200); /* Fondo un poco más oscuro */
+}
+
+/* Clear - Success */
+.btn--clear.btn--success{
+    color: var(--color-alert-success-600);
+}
+.btn--clear.btn--success:hover{
+    background-color: var(--color-alert-success-100);
+}
+.btn--clear.btn--success:active{
+    background-color: var(--color-alert-success-200);
+}
+
+/* Clear - Neutro Black */
+.btn--clear.btn--neutro-black{
+    color: var(--color-neutro-black-500);
+}
+.btn--clear.btn--neutro-black:hover{
+    background-color: var(--color-neutro-black-100);
+}
+.btn--clear.btn--neutro-black:active{
+    background-color: var(--color-neutro-black-200);
+}
+
+/* Clear - Neutro White (Caso especial, texto oscuro) */
+.btn--clear.btn--neutro-white{
+    color: var(--color-neutro-black-900); /* Texto oscuro por defecto */
+}
+.btn--clear.btn--neutro-white:hover{
+    background-color: var(--color-neutro-white-600); /* Fondo gris claro */
+}
+.btn--clear.btn--neutro-white:active{
+    background-color: var(--color-neutro-white-700); /* Fondo gris más oscuro */
+}
+
+
+
+
+
+
+.btn--loading {
+  position: relative; 
+  color: transparent !important; 
+  pointer-events: none; 
+}
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 1rem; 
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5rem; /* Centrar verticalmente */
+  margin-left: -0.5rem; /* Centrar horizontalmente */
+  border: 2px solid currentColor; /* Usa el color de texto actual del botón antes de ocultarlo */
+  border-right-color: transparent; /* Crea el efecto de giro */
+  border-radius: 50%;
+  display: inline-block;
+  animation: btn-spin 0.6s linear infinite;
+  opacity: 0.8; /* Ajusta según sea necesario */
+}
+
+/* Animación del spinner */
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* Color del spinner para fondos oscuros (ej: primary-blue filled) */
+.btn--primary-blue.btn--loading::after { border-color: white; border-right-color: transparent; }
+.btn--primary-green.btn--loading::after { border-color: white; border-right-color: transparent; }
+/* Añade reglas específicas para otras variantes si el color por defecto no contrasta */
+.btn--warning.btn--loading::after { border-color: black; border-right-color: transparent; }
+.btn--neutro-white.btn--loading::after { border-color: black; border-right-color: transparent; }

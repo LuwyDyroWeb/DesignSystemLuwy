@@ -26,7 +26,7 @@ export const HomePage = () => {
       <div className="pb-5 ">
         <p className="text-xl/6 text-primary-blue-600 font-normal mt-2 text-center">
           Un sistema de diseño integral que garantiza coherencia, accesibilidad
-          y <br></br>eficiencia en todas las experiencias de la clínica.
+          y <br></br>eficiencia en todas las experiencias.
         </p>
       </div>
 
@@ -48,7 +48,7 @@ export const HomePage = () => {
             transition-colors
         "
         >
-          Archivo: UI Kit - CSF
+          Archivo: UI Kit
         </button>
       </div>
 
@@ -63,7 +63,7 @@ export const HomePage = () => {
           Propósito y alcance
         </strong>
         <p className="body text-primary-blue-600 mb-4">
-          El Sistema de Diseño de Clínica San Felipe sirve como la única fuente
+          El Sistema de Diseño  sirve como la única fuente
           de verdad para todas las decisiones de diseño y desarrollo en nuestras
           plataformas. Abarca pautas visuales, patrones de interacción e
           implementaciones de código que garantizan experiencias de usuario

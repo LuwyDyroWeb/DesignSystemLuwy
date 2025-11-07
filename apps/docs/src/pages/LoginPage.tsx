@@ -44,7 +44,7 @@ export const LoginPage = () => {
     setLoading(true);
     try {
       await onLogin(usuario, contrasena);
-      console.log("Bienvenido a Clínica San Felipe")
+      console.log("Bienvenido a Design System - LuwyDyro")
       navigate(from, { replace: true });
     } catch (err) {
       console.error("Login error.", err);
@@ -59,7 +59,7 @@ export const LoginPage = () => {
         <div className="mx-auto flex items-center justify-center -mt-27 mb-6 ">
           <img
             src="/Logo_SF.svg"
-            alt="Clinica San Felipe"
+            alt="Luwy Dyro"
             width={138}
             height={138}
             loading="lazy"
@@ -69,7 +69,7 @@ export const LoginPage = () => {
 
         <h1 className="text-2xl font-medium text-primary-blue-600">Design System</h1>
         <p className=" body-1 text-primary-blue-600 mt-2 mb-7">
-          Sistema de diseño de la Clínica San Felipe
+          Sistema de diseño de la Design System - LuwyDyro
         </p>
 
         <form className="space-y-4 text-left" onSubmit={handleLogin} noValidate>

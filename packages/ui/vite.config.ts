@@ -14,8 +14,8 @@ export default defineConfig({
     
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'), 
-      name: 'csf-ui',
-      fileName: (format) => `csf-ui.${format}.js`,
+      name: 'ld-ui',
+      fileName: (format) => `ld-ui.${format}.js`,
     },
     
     rollupOptions: {

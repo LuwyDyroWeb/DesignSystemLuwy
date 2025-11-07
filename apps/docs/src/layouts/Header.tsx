@@ -7,7 +7,7 @@ export const Header = () => {
   const { usernameStorage } = useAuth();
 
     const routeTitles: { [key: string]: string } = {
-    '/': 'Clínica San Felipe - Design System',
+    '/': 'LuwyDyro - Design System',
     '/componente/botones': 'Botones',
     '/componente/colores': 'Colores',
     '/componente/tipografia': 'Tipografía',

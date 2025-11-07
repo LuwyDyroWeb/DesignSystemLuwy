@@ -55,7 +55,7 @@ export const ColorsPage = () => {
       <div className="pb-5">
         <p className="text-xl/6 text-primary-blue-600 font-normal mt-2 text-left">
           Lista completa de todos los tokens de diseño con valores y pautas de
-          uso del sistema de diseño de Clínica San Felipe
+          uso del sistema de diseño.
         </p>
       </div>
       <section>

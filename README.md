@@ -1,4 +1,4 @@
-# CSF Design System — Monorepo
+# Luwy Dyro Design System — Monorepo
 
 Monorepo con pnpm/turbo para construir y publicar:
 - `@luwy-dyro/tokens`: Design tokens (CSS variables, fuentes, JS) generados con Style Dictionary.
@@ -106,7 +106,7 @@ Con este orden, Tailwind v4 (si está presente) generará utilidades con los tok
   - JS/Types: `dist/js/index.js`, `dist/js/index.d.ts`
   - Fuentes: `dist/fonts/*`
 - `@luwy-dyro/ui`
-  - Módulos: `dist/csf-ui.es.js` (ESM), `dist/csf-ui.umd.js` (UMD)
+  - Módulos: `dist/ld-ui.es.js` (ESM), `dist/ld-ui.umd.js` (UMD)
   - Tipos: `dist/index.d.ts`
 
 ## Troubleshooting
