@@ -41,7 +41,7 @@ module.exports = {
   content: [
 
     path.join(
-      path.dirname(require.resolve('@luwy-dyro/ui/package.json')),
+      path.dirname(require.resolve('@luwydyroweb/ui/package.json')),
       'dist/**/*.{js,ts,jsx,tsx}' 
     ),
   ],
