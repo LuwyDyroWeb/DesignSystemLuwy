@@ -1,0 +1,48 @@
+name: Release (GitHub Packages)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # Usar npmjs para instalar dependencias públicas; el scope @luwy-dyro lo maneja .npmrc
+          registry-url: https://registry.npmjs.org
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure auth for GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish (Changesets)
+        uses: changesets/action@v1
+        with:
+          publish: pnpm changeset publish
+        env:
+          # Publica y auto-conecta paquetes al repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANGESETS_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

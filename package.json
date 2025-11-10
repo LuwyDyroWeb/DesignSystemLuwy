@@ -1,0 +1,22 @@
+{
+  "name": "csf-designsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish:ci": "pnpm build && changeset publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.2",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "@types/node": "^24.7.2",
+    "cross-env": "^10.1.0",
+    "turbo": "^2.5.8"
+  }
+}
