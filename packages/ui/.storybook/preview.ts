@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 
-import '@luwy-dyro/tokens/css/preset.css';
+import '@luwydyroweb/tokens/css/preset.css';
 
 import '../src/csf-button.css';
 

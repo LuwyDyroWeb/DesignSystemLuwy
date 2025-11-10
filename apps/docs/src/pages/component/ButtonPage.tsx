@@ -1,6 +1,6 @@
 import { Calendar, ClipboardList, Check } from "lucide-react";
 import { useState } from "react";
-import { Button, ButtonIcon, type ButtonProps } from "@luwy-dyro/ui";
+import { Button, ButtonIcon, type ButtonProps } from "@luwydyroweb/ui";
 import { SelectState } from "./Select";
 
 type Color = {

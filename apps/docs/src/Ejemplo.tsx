@@ -1,4 +1,4 @@
-// import { Button } from '@luwy-dyro/ui';
+// import { Button } from '@luwydyroweb/ui';
 
 function Ejemplo() {
   return (
