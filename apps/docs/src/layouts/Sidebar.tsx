@@ -11,6 +11,7 @@ import {
   PanelLeftClose,
 } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import useSidebarStatus from "../hooks/useSidebarStatus";
 
 type MenuChild = {
   label: string;
@@ -33,7 +34,8 @@ type MenuSection = {
 const homeItem: MenuItem = { label: "Home", icon: Home, href: "/" };
 
 export const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  // const [isExpanded, setIsExpanded] = useState(true);
+  const { sidebarStatus, setSidebarStatus } = useSidebarStatus();
   const [openItemLabel, setOpenItemLabel] = useState<string | null>("null");
 
   const location = useLocation();
@@ -57,9 +59,9 @@ export const Sidebar = () => {
           label: "Layout",
           icon: LayoutDashboard,
           children: [
-            { label: "Aside" },
-            { label: "Header" },
-            { label: "Footer" },
+            { label: "Aside", href: "/documentation/sidebar" },
+            { label: "Header", href: "/documentation/header" },
+            { label: "Footer", href: "/documentation/footer" },
           ],
         },
         {
@@ -73,7 +75,10 @@ export const Sidebar = () => {
         {
           label: "Componentes",
           icon: Component,
-          children: [{ label: "Button" }, { label: "Dropdown" }],
+          children: [
+            { label: "Button", href: "/componente/botones" },
+            { label: "Dropdown" },
+          ],
         },
       ],
     },
@@ -106,15 +111,25 @@ export const Sidebar = () => {
   return (
     <aside
       className={`h-screen bg-white text-primary-blue-600 border overflow-auto scrollbar-w flex flex-col top-0 transition-all duration-300 ${
-        isExpanded ? "w-65" : "w-19"
-      }  z-1001 sticky`}
+        sidebarStatus
+          ? "md:w-64 max-md:left-0 sticky max-md:fixed"
+          : "md:w-19 max-md:-left-19 max-md:fixed"
+      }  z-1001`}
     >
-      <div className="flex items-center">
-        <div className="p-6 bg-primary-blue-600  shrink-0 min-w-full w-full cursor-pointer flex justify-center items-center text-white">
-          {!isExpanded && <PanelLeftOpen onClick={() => setIsExpanded(true)} />}
 
-          {isExpanded && (
-            <div className="w-full flex justify-between items-center gap ">
+      <div className="flex items-center">
+        <div className="p-6 bg-primary-blue-600  shrink-0 min-w-full w-full flex justify-center items-center">
+          {!sidebarStatus && (
+            <button
+              className="cursor-pointer text-white"
+              onClick={() => setSidebarStatus(!sidebarStatus)}
+            >
+              <PanelLeftOpen />
+            </button>
+          )}
+
+          {sidebarStatus && (
+            <div className="w-full flex justify-between items-center gap-3 ">
               <Link to="/">
                 <img
                   src="/logo_luwydyro_dark.svg"
@@ -122,17 +137,21 @@ export const Sidebar = () => {
                   className="h-8"
                 />
               </Link>
-
-              <PanelLeftClose onClick={() => setIsExpanded(false)} />
+              <button
+                className="cursor-pointer text-white"
+                onClick={() => setSidebarStatus(!sidebarStatus)}
+              >
+                <PanelLeftClose />
+              </button>
             </div>
           )}
         </div>
       </div>
 
-      <nav className="flex-1 py-6 px-4">
+      <nav className="flex-1 pt-6 px-4 pb-20">
         <NavItem
           item={homeItem}
-          isExpanded={isExpanded}
+          isExpanded={sidebarStatus}
           isOpen={false}
           onClick={() => {}}
         ></NavItem>
@@ -141,11 +160,11 @@ export const Sidebar = () => {
           <div key={section.title}>
             <b
               className={`flex justify-center pt-4 pb-2 text-[0.625rem] font-bold uppercase text-primary-blue-600
-                  ${isExpanded ? "px-2 justify-start" : ""}
+                  ${sidebarStatus ? "px-2 justify-start" : ""}
                 
                 `}
             >
-              {isExpanded
+              {sidebarStatus
                 ? section.title
                 : section.title.length > 4
                 ? section.title.substring(0, 3) + "..."
@@ -156,19 +175,17 @@ export const Sidebar = () => {
               <NavItem
                 key={item.label}
                 item={item}
-                isExpanded={isExpanded}
+                isExpanded={sidebarStatus}
                 isOpen={openItemLabel === item.label}
                 onClick={() => {
                   handleItemClick(item.label);
-                  setIsExpanded(true);
+                  setSidebarStatus(sidebarStatus);
                 }}
               ></NavItem>
             ))}
           </div>
         ))}
       </nav>
-
-      
     </aside>
   );
 };
