@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Usar npmjs para instalar dependencias públicas; el scope @luwy-dyro lo maneja .npmrc
+          # Usar npmjs para instalar dependencias públicas; el scope @luwydyroweb lo maneja .npmrc
           registry-url: https://registry.npmjs.org
 
       - name: Setup pnpm

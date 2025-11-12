@@ -1,6 +1,6 @@
 import { Calendar, ClipboardList, Check } from "lucide-react";
 import { useState } from "react";
-import { Button, ButtonIcon, type ButtonProps } from "@luwy-dyro/ui";
+import { Button, ButtonIcon, type ButtonProps } from "@luwydyroweb/ui";
 import { SelectState } from "./Select";
 
 type Color = {
@@ -337,11 +337,11 @@ ${Array.from({ length: groupCount })
                     {(() => {
                       switch (type) {
                         case "Type1":
-                          return `import { Button } from "@luwy-dyro/ui";`;
+                          return `import { Button } from "@luwydyroweb/ui";`;
                         case "Type2":
-                          return `import { ButtonIcon } from "@luwy-dyro/ui";`;
+                          return `import { ButtonIcon } from "@luwydyroweb/ui";`;
                         case "Type3":
-                          return `import { Button } from "@luwy-dyro/ui";`;
+                          return `import { Button } from "@luwydyroweb/ui";`;
                       }
                     })()}
                   </code>

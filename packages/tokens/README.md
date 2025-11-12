@@ -1,10 +1,10 @@
-# @luwy-dyro/tokens
+# @luwydyroweb/tokens
 
 Design tokens del Design System.
 
 ## Instalación
 ```powershell
-pnpm add @luwy-dyro/tokens
+pnpm add @luwydyroweb/tokens
 ```
 Requiere autenticación contra GitHub Packages (ver README de la raíz para opciones con `pnpm login` o `${NPM_TOKEN}`).
 
@@ -12,7 +12,7 @@ Requiere autenticación contra GitHub Packages (ver README de la raíz para opci
 Importa los CSS en el entry de tu app (orden recomendado):
 ```css
 /* 1) Tokens primero: variables, fuentes y @theme */
-@import "@luwy-dyro/tokens/css/preset.css";
+@import "@luwydyroweb/tokens/css/preset.css";
 
 /* 2) Tailwind (opcional, si usas utilidades) */
 @import "tailwindcss";
@@ -35,7 +35,7 @@ Este paquete incluye fuentes (Poppins) y variables:
 Ejemplo de `src/index.css`:
 
 ```css
-@import "@luwy-dyro/tokens/css/preset.css";
+@import "@luwydyroweb/tokens/css/preset.css";
 @import "tailwindcss"; /* opcional */
 ```
 

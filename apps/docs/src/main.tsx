@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "@luwy-dyro/tokens/dist/css/variables.css";
-import "@luwy-dyro/tokens/dist/css/fonts.css";
+import "@luwydyroweb/tokens/dist/css/variables.css";
+import "@luwydyroweb/tokens/dist/css/fonts.css";
 import "./index.css";
 import App from "./App.tsx";
 import { AuthProvider } from "./auth/AuthProvider.tsx";

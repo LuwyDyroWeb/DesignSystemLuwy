@@ -1,5 +1,5 @@
 {
-  "name": "@luwy-dyro/ui",
+  "name": "@luwydyroweb/ui",
   "version": "1.12.0",
   "private": false,
   "type": "module",
@@ -31,7 +31,7 @@
     "./dist/ui.css"
   ],
   "scripts": {
-    "predev": "pnpm --filter @luwy-dyro/tokens build",
+    "predev": "pnpm --filter @luwydyroweb/tokens build",
     "dev": "storybook dev -p 6006 --no-open --ci --loglevel debug",
     "build": "vite build",
     "build-storybook": "storybook build",
@@ -45,11 +45,11 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "@luwy-dyro/tokens": "workspace:*"
+    "@luwydyroweb/tokens": "workspace:*"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "4.1.1",
-    "@luwy-dyro/tsconfig": "workspace:*",
+    "@luwydyroweb/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "9.1.10",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",

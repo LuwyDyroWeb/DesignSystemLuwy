@@ -8,6 +8,8 @@ import { NotFoundPage } from './pages/NoFoundPage';
 import "./App.css";
 import { RecursosDev } from './pages/RecursosDev';
 
+
+
 function App() {
   return (
     <Routes>
@@ -24,7 +26,6 @@ function App() {
         <Route path="recursos" element={<RecursosDev />} />
       </Route>
 
-      {/* <Route path='*' element={<Navigate to="/" replace />} ></Route> */}
       <Route path='*' element={<NotFoundPage/>}></Route>
     </Routes>
   );

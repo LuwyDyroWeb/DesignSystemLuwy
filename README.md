@@ -1,8 +1,8 @@
 # Luwy Dyro Design System — Monorepo
 
 Monorepo con pnpm/turbo para construir y publicar:
-- `@luwy-dyro/tokens`: Design tokens (CSS variables, fuentes, JS) generados con Style Dictionary.
-- `@luwy-dyro/ui`: Librería de componentes React que consume los tokens.
+- `@luwydyroweb/tokens`: Design tokens (CSS variables, fuentes, JS) generados con Style Dictionary.
+- `@luwydyroweb/ui`: Librería de componentes React que consume los tokens.
 - `apps/docs`: Portal de documentación (Vite + Tailwind v4).
 
 Este repo publica en GitHub Packages y usa Changesets para versionado y release.
@@ -29,12 +29,12 @@ pnpm build
 4) Autenticación local (elige una):
 - A) Iniciar sesión una vez por máquina:
   ```powershell
-  pnpm login --registry=https://npm.pkg.github.com --scope=@luwy-dyro
+  pnpm login --registry=https://npm.pkg.github.com --scope=@luwydyroweb
   ```
 - B) Usar variable de entorno (útil en CI):
   - `.npmrc` (ya está en la raíz):
     ```
-    @luwy-dyro:registry=https://npm.pkg.github.com/
+    @luwydyroweb:registry=https://npm.pkg.github.com/
     //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
     ```
   - En PowerShell:
@@ -66,31 +66,31 @@ GitHub Packages para npm requiere autenticación.
 1) Autenticación (elige una):
 - A) Iniciar sesión una vez:
   ```powershell
-  pnpm login --registry=https://npm.pkg.github.com --scope=@luwy-dyro
+  pnpm login --registry=https://npm.pkg.github.com --scope=@luwydyroweb
   ```
 - B) `.npmrc` del proyecto consumidor:
   ```
-  @luwy-dyro:registry=https://npm.pkg.github.com/
+  @luwydyroweb:registry=https://npm.pkg.github.com/
   //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
   ```
   y en PowerShell: `$env:NPM_TOKEN = 'ghp_...'`
 
 2) Instalar:
 ```powershell
-pnpm add @luwy-dyro/tokens @luwy-dyro/ui
+pnpm add @luwydyroweb/tokens @luwydyroweb/ui
 ```
 (Si aparece el aviso de `Ignored build scripts`, ejecuta `pnpm approve-builds` y aprueba `esbuild` y otros de confianza.)
 
 3) CSS global (orden recomendado):
 ```css
-@import "@luwy-dyro/tokens/css/preset.css"; /* tokens */
+@import "@luwydyroweb/tokens/css/preset.css"; /* tokens */
 @import "tailwindcss";                      /* opcional */
-@import "@luwy-dyro/ui/styles";             /* estilos del UI */
+@import "@luwydyroweb/ui/styles";             /* estilos del UI */
 ```
 
 4) Usar en React (Vite):
 ```tsx
-import { Button } from '@luwy-dyro/ui'
+import { Button } from '@luwydyroweb/ui'
 
 function App() {
   return (
@@ -101,11 +101,11 @@ function App() {
 Con este orden, Tailwind v4 (si está presente) generará utilidades con los tokens, y los componentes del UI tendrán estilos propios sin depender del escaneo de clases.
 
 ## Estructura y salidas de build
-- `@luwy-dyro/tokens`
+- `@luwydyroweb/tokens`
   - CSS: `dist/css/variables.css`, `dist/css/fonts.css`
   - JS/Types: `dist/js/index.js`, `dist/js/index.d.ts`
   - Fuentes: `dist/fonts/*`
-- `@luwy-dyro/ui`
+- `@luwydyroweb/ui`
   - Módulos: `dist/ld-ui.es.js` (ESM), `dist/ld-ui.umd.js` (UMD)
   - Tipos: `dist/index.d.ts`
 

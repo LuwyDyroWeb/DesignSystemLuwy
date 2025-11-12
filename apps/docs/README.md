@@ -1,7 +1,7 @@
 ````markdown
 # apps/docs
 
-Portal de documentación (Vite + React + Tailwind v4) para validar e ilustrar el consumo de `@luwy-dyro/tokens` y `@luwy-dyro/ui`.
+Portal de documentación (Vite + React + Tailwind v4) para validar e ilustrar el consumo de `@luwydyroweb/tokens` y `@luwydyroweb/ui`.
 
 ## Scripts
 
@@ -22,9 +22,9 @@ pnpm --filter docs preview
 
 `src/index.css` importa en este orden:
 ```css
-@import "@luwy-dyro/tokens/css/preset.css"; /* tokens */
+@import "@luwydyroweb/tokens/css/preset.css"; /* tokens */
 @import "tailwindcss";                      /* utilidades (opcional) */
-@import "@luwy-dyro/ui/styles";             /* estilos del UI */
+@import "@luwydyroweb/ui/styles";             /* estilos del UI */
 ```
 
 Ejemplos en `src/Ejemplo.tsx` muestran:
@@ -33,7 +33,7 @@ Ejemplos en `src/Ejemplo.tsx` muestran:
 - Uso de `bgToken/bgLevel/hoverLevel`
 
 ## Problemas comunes
-- No se ven estilos del Button: falta `@import "@luwy-dyro/ui/styles";`.
+- No se ven estilos del Button: falta `@import "@luwydyroweb/ui/styles";`.
 - Utilidades Tailwind no aparecen: verifica que el preset de tokens se importe antes que Tailwind.
 ````
       },

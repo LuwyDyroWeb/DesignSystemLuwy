@@ -1,4 +1,4 @@
-# @luwy-dyro/tokens
+# @luwydyroweb/tokens
 
 ## 0.12.0
 
@@ -88,7 +88,7 @@
 ### Patch Changes
 
 - Fix: add CSS subpath exports in package.json so consumers can import
-  `@luwy-dyro/tokens/dist/css/variables.css` and `fonts.css` without resolver errors.
+  `@luwydyroweb/tokens/dist/css/variables.css` and `fonts.css` without resolver errors.
 
 ## 0.1.0
 

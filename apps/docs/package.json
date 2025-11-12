@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@luwy-dyro/tokens": "workspace:*",
-    "@luwy-dyro/ui": "workspace:*",
+    "@luwydyroweb/tokens": "0.12.0",
+    "@luwydyroweb/ui": "1.12.0",
     "@tailwindcss/vite": "^4.1.14",
     "lucide-react": "^0.545.0",
     "react": "^19.1.1",

@@ -1,4 +1,4 @@
-# @luwy-dyro/ui
+# @luwydyroweb/ui
 
 ## 1.12.0
 
@@ -33,7 +33,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.12.0
+  - @luwydyroweb/tokens@0.12.0
 
 ## 1.7.0
 
@@ -44,7 +44,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.12.0
+  - @luwydyroweb/tokens@0.12.0
 
 ## 1.6.1
 
@@ -52,7 +52,7 @@
 
 - Updated dependencies
 - Updated dependencies [f024fdc]
-  - @luwy-dyro/tokens@0.11.0
+  - @luwydyroweb/tokens@0.11.0
 
 ## 1.6.0
 
@@ -66,7 +66,7 @@
   feat(ui): switch default emitted classes to short `btn*`
 - Updated dependencies
 - Updated dependencies
-  - @luwy-dyro/tokens@0.10.0
+  - @luwydyroweb/tokens@0.10.0
 
 ## 1.5.0
 
@@ -91,7 +91,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.9.0
+  - @luwydyroweb/tokens@0.9.0
 
 ## 1.2.0
 
@@ -104,42 +104,42 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.8.0
+  - @luwydyroweb/tokens@0.8.0
 
 ## 1.1.8
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.7.0
+  - @luwydyroweb/tokens@0.7.0
 
 ## 1.1.7
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.6.0
+  - @luwydyroweb/tokens@0.6.0
 
 ## 1.1.6
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.5.0
+  - @luwydyroweb/tokens@0.5.0
 
 ## 1.1.5
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.4.0
+  - @luwydyroweb/tokens@0.4.0
 
 ## 1.1.4
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.3.0
+  - @luwydyroweb/tokens@0.3.0
 
 ## 1.1.3
 
@@ -147,21 +147,21 @@
 
 - 4a8c3e9: feat(tokens): Configure package to work as a TailwindCSS preset for easier consumption
 - Updated dependencies [4a8c3e9]
-  - @luwy-dyro/tokens@0.2.0
+  - @luwydyroweb/tokens@0.2.0
 
 ## 1.1.2
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.1.2
+  - @luwydyroweb/tokens@0.1.2
 
 ## 1.1.1
 
 ### Patch Changes
 
 - Updated dependencies
-  - @luwy-dyro/tokens@0.1.1
+  - @luwydyroweb/tokens@0.1.1
 
 ## 1.1.0
 
@@ -173,4 +173,4 @@
 
 - Updated dependencies [5eb9002]
 - Updated dependencies
-  - @luwy-dyro/tokens@0.1.0
+  - @luwydyroweb/tokens@0.1.0

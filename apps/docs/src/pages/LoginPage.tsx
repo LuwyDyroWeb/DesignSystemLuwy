@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
+import { User, LockKeyhole } from "lucide-react";
 
 type LocationState = {
   from?: {
     pathname: string;
   };
 };
-
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -20,11 +20,10 @@ export const LoginPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-
   const from = state?.from?.pathname || "/";
 
   if (isInitializing) {
-    return null; 
+    return null;
   }
 
   if (tokenStorage && usernameStorage) {
@@ -44,7 +43,7 @@ export const LoginPage = () => {
     setLoading(true);
     try {
       await onLogin(usuario, contrasena);
-      console.log("Bienvenido a Design System - LuwyDyro")
+      console.log("Bienvenido a Design System - LuwyDyro");
       navigate(from, { replace: true });
     } catch (err) {
       console.error("Login error.", err);
@@ -54,23 +53,19 @@ export const LoginPage = () => {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary-green-50 p-4 bg-[url(/Background-Texture.svg)]">
-      <div className="bg-white relative rounded-large border-primary-green-600 border-2 shadow-lg w-[430px]  text-center px-5 sm:px-10 pb-10 pt-10">
-        <div className="mx-auto flex items-center justify-center -mt-27 mb-6 ">
+    <div className="min-h-screen flex items-center justify-center bg-primary-blue-50 p-4 ">
+      <div className="bg-white relative border-primary-blue-600 border-2 shadow-lg w-[430px]  text-center px-5 sm:px-10 pb-10 pt-10">
+        <div className="mx-auto flex items-center justify-center mb-6 ">
           <img
-            src="/Logo_SF.svg"
+            src="/logo_luwydyro_light.svg"
             alt="Luwy Dyro"
-            width={138}
-            height={138}
+            width={260}
             loading="lazy"
             decoding="async"
           />
         </div>
 
-        <h1 className="text-2xl font-medium text-primary-blue-600">Design System</h1>
-        <p className=" body-1 text-primary-blue-600 mt-2 mb-7">
-          Sistema de diseño de la Design System - LuwyDyro
-        </p>
+        <p className="text-primary-blue-600 mt-2 mb-3 text-2xl font-medium">Iniciar Sesión</p>
 
         <form className="space-y-4 text-left" onSubmit={handleLogin} noValidate>
           <div className="mb-3">
@@ -90,23 +85,11 @@ export const LoginPage = () => {
                 onChange={(e) => setUsuario(e.target.value)}
                 className="
              body w-full text-primary-blue-600 placeholder:text-primary-blue-600 
-              bg-white  border-2 border-primary-blue-600 rounded-medium  pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
+              bg-white  border-2 border-primary-blue-600 pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
                 required
               />
-              <span
-                className="
-                pointer-events-none
-                absolute left-4 top-1/2 -translate-y-1/2
-                grid place-items-center
-                h-6 w-6 
-                "
-              >
-                <img
-                  src="./icons/icon-logueo.svg"
-                  alt=""
-                  className="w-full"
-                  aria-hidden="true"
-                />
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-primary-blue-500  grid place-items-center h-6 w-6">
+                <User/>
               </span>
             </div>
           </div>
@@ -127,23 +110,11 @@ export const LoginPage = () => {
                 onChange={(e) => setContrasena(e.target.value)}
                 className="
               body w-full text-primary-blue-600 placeholder:text-primary-blue-600 
-              bg-white  border-2 border-primary-blue-600 rounded-medium  pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
+              bg-white  border-2 border-primary-blue-600 pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
                 required
               />
-              <span
-                className="
-                pointer-events-none
-                absolute left-4 top-1/2 -translate-y-1/2
-                grid place-items-center
-                h-6 w-6 
-                "
-              >
-                <img
-                  src="./icons/icon-logueo.svg"
-                  alt=""
-                  className="w-full"
-                  aria-hidden="true"
-                />
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-primary-blue-500 grid place-items-center h-6 w-6">
+                <LockKeyhole />
               </span>
             </div>
           </div>
@@ -157,7 +128,7 @@ export const LoginPage = () => {
             type="submit"
             disabled={loading}
             className="w-full 
-            bg-primary-blue-600 text-white text-xl font-medium mt-5  p-3 rounded-medium  hover:bg-primary-green-600 transition-colors
+            bg-primary-blue-600 text-white text-xl font-medium mt-5 p-3 hover:bg-primary-green-600 transition-colors
             cursor-pointer
             "
           >
@@ -167,5 +138,4 @@ export const LoginPage = () => {
       </div>
     </div>
   );
-
 };

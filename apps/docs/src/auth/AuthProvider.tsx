@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const loginWithApi = async (username: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch("https://dummyjson.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const restoreSession = () => {
-      const storedToken = localStorage.getItem("access_token");
+      const storedToken = localStorage.getItem("accessToken");
       const storedUsername = localStorage.getItem("username");
       console.log("Restaurando sesión:");
       if (storedUsername) setUsernameStorage(storedUsername);
@@ -56,13 +56,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const onLogin = useCallback(async (username: string, password: string) => {
     try {
-      const { access_token } = await loginWithApi(username, password);
+      const { accessToken } = await loginWithApi(username, password);
       const storage = localStorage;
 
       storage.setItem("username", username);
-      storage.setItem("access_token", access_token);
+      storage.setItem("accessToken", accessToken);
 
-      setTokenStorage(access_token);
+      setTokenStorage(accessToken);
       setUsernameStorage(username);
     } catch (error) {
       console.error("Login error:", error);
@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const onLogout = useCallback(async (isNavigate = true) => {
     localStorage.removeItem("username");
-    localStorage.removeItem("access_token");
+    localStorage.removeItem("accessToken");
     localStorage.removeItem("userData");
     console.log("Logging out...");
     setTokenStorage(null);

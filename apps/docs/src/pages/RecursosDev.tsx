@@ -69,13 +69,13 @@ export const RecursosDev = () => {
           {
             description:
               `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
-            code: `@luwy-dyro:registry=https://npm.pkg.github.com/
+            code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
           },
           {
             description: "Instalar Tokens y Ui Componentes TI version 1",
-            code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
+            code: `npm install @luwydyroweb/tokens @luwydyroweb/ui`,
             codeId: "install2",
           },
         ],
@@ -85,9 +85,9 @@ export const RecursosDev = () => {
         steps: [
           {
             description: `Abrir su archivo CSS principal de la siguiente ruta <strong class="text-primary-blue-500 font-bold">wwwroot/app.css</strong> o la que usa como CSS principal. Copiar y pegar la importación`,
-            code: `@import "@luwy-dyro/tokens/css/preset.css";
+            code: `@import "@luwydyroweb/tokens/css/preset.css";
 @import "tailwindcss";
-@import "@luwy-dyro/ui/styles";`,
+@import "@luwydyroweb/ui/styles";`,
             codeId: "tailwind",
           },
         ],
@@ -124,13 +124,13 @@ export const RecursosDev = () => {
           {
             description:
               `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
-            code: `@luwy-dyro:registry=https://npm.pkg.github.com/
+            code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
           },
           {
             description: "Instalar Tokens y Ui Componentes TI version 1",
-            code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
+            code: `npm install @luwydyroweb/tokens @luwydyroweb/ui`,
             codeId: "install2",
           },
         ],
@@ -140,9 +140,9 @@ export const RecursosDev = () => {
         steps: [
           {
             description: `Abrir su archivo CSS principal <strong class="text-primary-blue-500 font-bold">index.css</strong>. Copiar y pegar la importación`,
-            code: `@import "@luwy-dyro/tokens/css/preset.css";
+            code: `@import "@luwydyroweb/tokens/css/preset.css";
 @import "tailwindcss";
-@import "@luwy-dyro/ui/styles";`,
+@import "@luwydyroweb/ui/styles";`,
             codeId: "tailwind",
           },
         ],
@@ -178,13 +178,13 @@ export const RecursosDev = () => {
           {
             description:
               `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
-            code: `@luwy-dyro:registry=https://npm.pkg.github.com/
+            code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
           },
           {
             description: "Instalar Tokens y Ui Componentes TI version 1",
-            code: `npm install @luwy-dyro/tokens @luwy-dyro/ui`,
+            code: `npm install @luwydyroweb/tokens @luwydyroweb/ui`,
             codeId: "install2",
           },
         ],
@@ -194,9 +194,9 @@ export const RecursosDev = () => {
         steps: [
           {
             description: `Abrir su archivo CSS principal <strong class="text-primary-blue-500 font-bold">app.css</strong> o en el archivo CSS principal de su proyecto. Copiar y pegar la importación`,
-            code: `@import "@luwy-dyro/tokens/css/preset.css";
+            code: `@import "@luwydyroweb/tokens/css/preset.css";
 @import "tailwindcss";
-@import "@luwy-dyro/ui/styles";`,
+@import "@luwydyroweb/ui/styles";`,
             codeId: "tailwind",
           },
         ],

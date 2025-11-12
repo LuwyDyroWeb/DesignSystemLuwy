@@ -10,7 +10,7 @@ export const NotFoundPage = () => {
                 Lo sentimos, la página que estás buscando no existe.
             </p>
             <Link to="/">
-                <button className="mt-6 px-4 py-2 bg-primary-blue-600 text-white rounded-medium hover:bg-primary-blue-700 cursor-pointer">
+                <button className="mt-6 px-4 py-2 bg-primary-blue-600 text-white  hover:bg-primary-blue-700 cursor-pointer">
                     Volver al Home
                 </button>
             </Link>
