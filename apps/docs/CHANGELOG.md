@@ -1,5 +1,17 @@
 # docs
 
+## 0.5.0
+
+### Minor Changes
+
+- d69720d: feat (tokens) New Color
+
+### Patch Changes
+
+- Updated dependencies [d69720d]
+  - @luwydyroweb/tokens@0.13.0
+  - @luwydyroweb/ui@1.12.1
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @luwydyroweb/ui
 
+## 1.12.1
+
+### Patch Changes
+
+- Updated dependencies [d69720d]
+  - @luwydyroweb/tokens@0.13.0
+
 ## 1.12.0
 
 ### Minor Changes

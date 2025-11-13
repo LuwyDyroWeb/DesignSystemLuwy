@@ -1,6 +1,6 @@
 {
   "name": "@luwydyroweb/ui",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "private": false,
   "type": "module",
   "files": [
@@ -74,7 +74,15 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+https://github.com/Luwy-Dyro/ld-designsystem-materialui.git",
+=======
+    "url": "git+https://github.com/LuwyDyroWeb/DesignSystemLuwy.git",
+>>>>>>> origin/main
     "directory": "packages/ui"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/LuwyDyroWeb/DesignSystemLuwy/issues"
+  },
+  "homepage": "https://github.com/LuwyDyroWeb/DesignSystemLuwy#readme"
 }

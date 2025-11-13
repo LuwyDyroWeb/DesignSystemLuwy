@@ -24,11 +24,11 @@ importers:
   apps/docs:
     dependencies:
       '@luwydyroweb/tokens':
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: workspace:*
+        version: link:../../packages/tokens
       '@luwydyroweb/ui':
-        specifier: 1.12.0
-        version: 1.12.0
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.17(vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -107,7 +107,7 @@ importers:
     devDependencies:
       '@chromatic-com/storybook':
         specifier: 4.1.1
-        version: 4.1.1(storybook@9.1.10(@testing-library/dom@10.4.1)(prettier@2.8.8)(vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)))
+        version: 4.1.1(storybook@9.1.10(@testing-library/dom@10.4.1)(prettier@2.8.8)(vite@7.1.10(@types/node@24.7.2)(jiti@2.6.1)(lightningcss@1.30.1)))
       '@luwydyroweb/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
