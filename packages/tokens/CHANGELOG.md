@@ -1,5 +1,11 @@
 # @luwy-dyro/tokens
 
+## 0.13.0
+
+### Minor Changes
+
+- d69720d: feat (tokens) New Color
+
 ## 0.12.0
 
 ### Minor Changes
