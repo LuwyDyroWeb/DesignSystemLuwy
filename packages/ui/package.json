@@ -74,11 +74,7 @@
   },
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "git+https://github.com/Luwy-Dyro/ld-designsystem-materialui.git",
-=======
     "url": "git+https://github.com/LuwyDyroWeb/DesignSystemLuwy.git",
->>>>>>> origin/main
     "directory": "packages/ui"
   },
   "bugs": {
