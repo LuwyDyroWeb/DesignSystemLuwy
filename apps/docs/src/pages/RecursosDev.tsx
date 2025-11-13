@@ -129,11 +129,7 @@ export const RecursosDev = () => {
             codeId: "npmrc",
           },
           {
-<<<<<<< HEAD
             description: "Instalar Tokens y Ui Componentes TI version 1",
-=======
-            description: "Instalar Tokens y Ui Componentes TI-CSF version 1",
->>>>>>> origin/main
             code: `npm install @luwydyroweb/tokens @luwydyroweb/ui`,
             codeId: "install2",
           },
@@ -187,11 +183,7 @@ export const RecursosDev = () => {
             codeId: "npmrc",
           },
           {
-<<<<<<< HEAD
             description: "Instalar Tokens y Ui Componentes TI version 1",
-=======
-            description: "Instalar Tokens y Ui Componentes TI-CSF version 1",
->>>>>>> origin/main
             code: `npm install @luwydyroweb/tokens @luwydyroweb/ui`,
             codeId: "install2",
           },
