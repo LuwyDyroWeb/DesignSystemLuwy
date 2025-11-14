@@ -3,7 +3,7 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full flex bottom-0 justify-center items-center bg-primary-blue-600 mt-8 fixed z-1010">
+    <footer className="w-full flex bottom-0 justify-center items-center border border-primary-blue-900 bg-primary-bluedark-950 mt-8 fixed z-1010">
       <div className="inline-flex flex-row py-4">
         <img className="sm:w-27 w-20"
           alt="logo LuwyDyro"

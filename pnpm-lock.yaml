@@ -24,11 +24,11 @@ importers:
   apps/docs:
     dependencies:
       '@luwydyroweb/tokens':
-        specifier: workspace:*
-        version: link:../../packages/tokens
+        specifier: 0.13.0
+        version: 0.13.0
       '@luwydyroweb/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
+        specifier: 1.12.1
+        version: 1.12.1
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.17(vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -589,6 +589,12 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@luwydyroweb/tokens@0.13.0':
+    resolution: {integrity: sha512-HDj4MllXANDf4c1kGFNw1g8N++IyFnIx180dBD4Yaem8JkaYJGT4dV7y2kqvdjqalm2Iu8NrYYVA3m/l9A72SA==, tarball: https://npm.pkg.github.com/download/@luwydyroweb/tokens/0.13.0/3d15b85dfe93b50898474cf2af504adbb65466da}
+
+  '@luwydyroweb/ui@1.12.1':
+    resolution: {integrity: sha512-RwL3DgLUDwvAj3IJnauUQ2knN9Siwar0siEhv6zvt3OtZgYkp0GghpEzW6aofw9JPdEOzCWj9nc1Uhn2Ks9XSw==, tarball: https://npm.pkg.github.com/download/@luwydyroweb/ui/1.12.1/2672846418c38df23072691d2db4507d824cec0a}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -3227,6 +3233,14 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@luwydyroweb/tokens@0.13.0': {}
+
+  '@luwydyroweb/ui@1.12.1':
+    dependencies:
+      '@luwydyroweb/tokens': 0.13.0
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@manypkg/find-root@1.1.0':
     dependencies:

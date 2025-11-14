@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
-import { User, LockKeyhole } from "lucide-react";
+import { EyeOff, Eye } from "lucide-react";
 
 type LocationState = {
   from?: {
@@ -13,10 +13,10 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as LocationState | null;
-
+  const [visibility, setVisibility] = useState<Record<string, boolean>>({});
   const { onLogin, usernameStorage, tokenStorage, isInitializing } = useAuth();
-  const [usuario, setUsuario] = useState("");
-  const [contrasena, setContrasena] = useState("");
+  const [usuario, setUsuario] = useState("emilys");
+  const [contrasena, setContrasena] = useState("emilyspass");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -30,6 +30,12 @@ export const LoginPage = () => {
     console.log("Usuario ya autenticado, redirigiendo...");
     return <Navigate to={from} replace />;
   }
+  const toggleVisibility = (field: string) => {
+    setVisibility((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
+  };
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -53,24 +59,24 @@ export const LoginPage = () => {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary-blue-50 p-4 ">
-      <div className="bg-white relative border-primary-blue-600 border-2 shadow-lg w-[430px]  text-center px-5 sm:px-10 pb-10 pt-10">
-        <div className="mx-auto flex items-center justify-center mb-6 ">
+    <div className="min-h-screen flex items-center justify-center bg-primary-blue-950 p-4 ">
+      <div className="bg-primary-bluedark-950 rounded-xl relative border-primary-bluedark-800 border shadow-lg w-[380px]  text-center px-5 sm:px-8 py-10">
+        <div className="mx-auto flex items-center justify-center mb-6">
           <img
-            src="/logo_luwydyro_light.svg"
+            src="/logo_luwydyro_dark.svg"
             alt="Luwy Dyro"
             width={260}
             loading="lazy"
             decoding="async"
           />
         </div>
-
-        <p className="text-primary-blue-600 mt-2 mb-3 text-2xl font-medium">Iniciar Sesión</p>
-
+        <p className="text-blue-50 mt-2 mb-3 text-xl font-medium">
+          Iniciar Sesión
+        </p>
         <form className="space-y-4 text-left" onSubmit={handleLogin} noValidate>
-          <div className="mb-3">
+          <div className="mb-4">
             <label
-              className="label-1 text-primary-blue-600 mb-1 block font-medium"
+              className="label-1 text-blue-200 mb-1 block text-sm"
               htmlFor="usuario"
             >
               Usuario
@@ -83,19 +89,14 @@ export const LoginPage = () => {
                 placeholder="Escribe tu usuario"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
-                className="
-             body w-full text-primary-blue-600 placeholder:text-primary-blue-600 
-              bg-white  border-2 border-primary-blue-600 pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
+                className="body w-full text-blue-200 text-sm rounded-md bg-primary-bluedark-950 border border-primary-bluedark-600 px-4 py-2.5 focus:outline-none focus:border-blue-400"
                 required
               />
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-primary-blue-500  grid place-items-center h-6 w-6">
-                <User/>
-              </span>
             </div>
           </div>
           <div className="mb-3">
             <label
-              className="label-1 text-primary-blue-600 mb-1 block font-medium"
+              className="label-1 text-blue-200 mb-1 block text-sm"
               htmlFor="contrasena"
             >
               Contraseña
@@ -104,23 +105,23 @@ export const LoginPage = () => {
               <input
                 id="contrasena"
                 name="contrasena"
-                type="password"
+                type={visibility.password ? 'text' : 'password'}
                 placeholder="Escribe tu contraseña"
                 value={contrasena}
                 onChange={(e) => setContrasena(e.target.value)}
-                className="
-              body w-full text-primary-blue-600 placeholder:text-primary-blue-600 
-              bg-white  border-2 border-primary-blue-600 pl-12 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:border-primary-green-600 "
+                className="body w-full text-blue-200 text-sm rounded-md bg-primary-bluedark-950 border border-primary-bluedark-600 px-4 py-2.5 focus:outline-none focus:border-blue-400"
                 required
               />
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-primary-blue-500 grid place-items-center h-6 w-6">
-                <LockKeyhole />
-              </span>
+              <div className="absolute top-0.5 bottom-0.5 flex justify-center items-center px-1 rounded-sm end-2">
+                <div className="text-primary-blue-600" onClick={() => toggleVisibility('password')} tabIndex={-1}>
+                  {visibility.password ? <Eye /> : <EyeOff />}
+                </div>
+              </div>
             </div>
           </div>
 
           {error && (
-            <p className="text-red-600 text-sm mb-3" role="alert">
+            <p className="text-red-300 text-sm mb-3" role="alert">
               {error}
             </p>
           )}
@@ -128,7 +129,7 @@ export const LoginPage = () => {
             type="submit"
             disabled={loading}
             className="w-full 
-            bg-primary-blue-600 text-white text-xl font-medium mt-5 p-3 hover:bg-primary-green-600 transition-colors
+            bg-primary-blue-400 text-white rounded-md text-md font-medium mt-5 p-3 hover:bg-primary-green-600 transition-colors
             cursor-pointer
             "
           >

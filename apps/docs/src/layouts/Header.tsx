@@ -22,8 +22,8 @@ export const Header = () => {
   const title = routeTitles[location.pathname] || "Luwy Dyro";
 
   return (
-    <header className="bg-white sticky top-0 z-1000 pt-6 rounded-b-lg">
-      <div className="bg-primary-green-600 shadow-sm md:px-6 px-3 py-3.5 rounded-lg mb-10  ">
+    <header className="bg-transparent sticky top-0 z-1000 pt-2">
+      <div className="bg-primary-bluedark-950 border border-primary-blue-800 shadow-sm md:px-6 px-3 py-3.5 rounded-lg mb-10  ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button
@@ -32,7 +32,7 @@ export const Header = () => {
             >
               <PanelLeftOpen />
             </button>
-            <h1 className="text-xl md:text-3xl font-medium text-white">
+            <h1 className="text-xl md:text-3xl font-medium sm:ml-4 text-white">
               {title}
             </h1>
           </div>
@@ -53,7 +53,7 @@ export const Header = () => {
                 </span>
               </div>
             </div>
-            <button className="text-white h-12 w-12 cursor-pointer hover:text-primary-blue-500 duration-200" onClick={() => onLogout(true)}>
+            <button className="text-white h-12 w-12 cursor-pointer  hover:text-primary-blue-500 duration-200" onClick={() => onLogout(true)}>
               <Power strokeWidth={3.5} />
             </button>
           </div>

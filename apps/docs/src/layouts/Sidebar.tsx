@@ -110,7 +110,7 @@ export const Sidebar = () => {
 
   return (
     <aside
-      className={`h-screen bg-white text-primary-blue-600 border overflow-auto scrollbar-w flex flex-col top-0 transition-all duration-300 ${
+      className={`h-screen bg-primary-bluedark-950 text-primary-blue-600 border border-primary-blue-900 overflow-auto scrollbar-w flex flex-col top-0 transition-all duration-300 ${
         sidebarStatus
           ? "md:w-64 max-md:left-0 sticky max-md:fixed"
           : "md:w-19 max-md:-left-19 max-md:fixed"
@@ -118,7 +118,7 @@ export const Sidebar = () => {
     >
 
       <div className="flex items-center">
-        <div className="p-6 bg-primary-blue-600  shrink-0 min-w-full w-full flex justify-center items-center">
+        <div className="p-6 border-b border-primary-blue-800 shrink-0 min-w-full w-full flex justify-center items-center">
           {!sidebarStatus && (
             <button
               className="cursor-pointer text-white"
@@ -218,8 +218,8 @@ const NavItem = ({ item, isExpanded, isOpen, onClick }: NavItemProps) => {
         className={`flex items-center justify-between px-2 py-3 mb-2 cursor-pointer transition-colors duration-150
           ${
             isOpen || isActive
-              ? "bg-primary-blue-50  text-primary-blue-700 font-semibold"
-              : "hover:bg-primary-blue-50"
+              ? " text-primary-blue-100 font-semibold"
+              : "hover:text-primary-blue-100 "
           }
         `}
         onClick={handleClick}
@@ -243,11 +243,11 @@ const NavItem = ({ item, isExpanded, isOpen, onClick }: NavItemProps) => {
             <Link
               key={child.label}
               to={child.href || "#"}
-              className={`flex text-sm text-primary-blue-400 min-h-8 hover:text-primary-blue-600 m-0 justify-start items-center border-l-1 border-primary-blue-100 px-3
+              className={`flex text-sm min-h-8 hover:text-primary-blue-100 m-0 justify-start items-center border-l border-primary-blue-300 px-3
                     ${
                       location.pathname === child.href
-                        ? "text-primary-blue-600 font-semibold"
-                        : "text-primary-blue-50 hover:text-primary-blue-600"
+                        ? "text-primary-blue-50 font-semibold"
+                        : "text-primary-blue-400"
                     }`}
             >
               {child.label}
