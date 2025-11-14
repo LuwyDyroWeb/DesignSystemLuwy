@@ -1,17 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
-import { ButtonPage } from "./pages/component/ButtonPage";
+// import { ButtonPage } from "./pages/component/ButtonPage";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { ThemeContextProvider } from "./context/themeContext";
 import { NotFoundPage } from "./pages/NoFoundPage";
 import "./App.css";
-import { RecursosDev } from "./pages/RecursosDev";
-import { ColorsPage } from "./pages/core/ColorsPage";
-import { SidebarPage } from "./pages/documentation/SidebarPage";
-import { HeaderPage } from "./pages/documentation/HeaderPage";
-import { FooterPage } from "./pages/documentation/FooterPage";
+import { TokensPage } from "./pages/install/TokensPage";
+import { InstallPage } from "./pages/install/InstallPage";
+import { ChangelogPage } from "./pages/install/ChangelogPage";
+import { StructurePage } from "./pages/install/StrucutrePage";
+import { SidebarPage } from "./pages/layout/SidebarPage";
+import { HeaderPage } from "./pages/layout/HeaderPage";
+import { FooterPage } from "./pages/layout/FooterPage";
+import { ColorsPage } from "./pages/content/ColorsPage";
+import { TipografiaPage } from "./pages/content/TipografiaPage";
+import { DropdownPage } from "./pages/component/DropdownPage";
 
 function App() {
   return (
@@ -28,13 +33,17 @@ function App() {
         }
       >
         <Route index element={<HomePage />} />
-        <Route path="recursos" element={<RecursosDev />} />
-        <Route path="documentation/sidebar" element={<SidebarPage />} />
-        <Route path="documentation/header" element={<HeaderPage />} />
-        <Route path="documentation/footer" element={<FooterPage />} />
-        <Route path="core/colores" element={<ColorsPage />} />
-        <Route path="recursos" element={<RecursosDev />} />
-        <Route path="componente/botones" element={<ButtonPage />} />
+        <Route path="install/tokens" element={<TokensPage />} />
+        <Route path="install/instalacion" element={<InstallPage />} />
+        <Route path="install/changelog" element={<ChangelogPage />} />
+        <Route path="install/structure" element={<StructurePage />} />
+        <Route path="layout/sidebar" element={<SidebarPage />} />
+        <Route path="layout/header" element={<HeaderPage />} />
+        <Route path="layout/footer" element={<FooterPage />} />
+        <Route path="content/colores" element={<ColorsPage />} />
+        <Route path="content/tipografia" element={<TipografiaPage />} />
+        {/* <Route path="componente/botones" element={<ButtonPage />} /> */}
+        <Route path="componente/dropdown" element={<DropdownPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />}></Route>

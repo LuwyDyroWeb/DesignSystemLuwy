@@ -11,12 +11,14 @@ export const Header = () => {
 
   const routeTitles: { [key: string]: string } = {
     "/": "LuwyDyro - Design System",
+    "/install/tokens": "Tokens",
+    "/install/instalacion": "Instalación",
+    "/install/changelog": "Changelog",
+    "/install/structure": "Estructura del Proyecto",
+    "/content/colores": "Colores",
+    "/content/tipografia": "Tipografía",
     "/componente/botones": "Botones",
-    "/componente/colores": "Colores",
-    "/componente/tipografia": "Tipografía",
-    "/componente/otros": "Otros Componentes",
-    "/recursos": "Recursos de desarrollador",
-    "/core/colores": "Colores",
+    "/componente/dropdown": "Dropdown"
   };
 
   const title = routeTitles[location.pathname] || "Luwy Dyro";

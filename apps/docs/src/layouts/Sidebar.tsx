@@ -48,28 +48,27 @@ export const Sidebar = () => {
           label: "Instalación",
           icon: Route,
           children: [
-            // { label: "Colores", href: "/core/colores" },
-            { label: "Tokens", href: "/recursos" },
-            { label: "Instalación" },
-            { label: "Changelog" },
-            { label: "Estructura del Proyecto" },
+            { label: "Tokens", href: "/install/tokens" },
+            { label: "Instalación", href: "/install/instalacion" },
+            { label: "Changelog", href: "/install/changelog" },
+            { label: "Estructura del Proyecto", href: "/install/structure" },
           ],
         },
         {
           label: "Layout",
           icon: LayoutDashboard,
           children: [
-            { label: "Aside", href: "/documentation/sidebar" },
-            { label: "Header", href: "/documentation/header" },
-            { label: "Footer", href: "/documentation/footer" },
+            { label: "Sidebar", href: "/layout/sidebar" },
+            { label: "Header", href: "/layout/header" },
+            { label: "Footer", href: "/layout/footer" },
           ],
         },
         {
           label: "Contenido",
           icon: BookType,
           children: [
-            { label: "Colores", href: "/core/colores" },
-            { label: "Tipografía" },
+            { label: "Colores", href: "/content/colores" },
+            { label: "Tipografía", href: "/content/tipografia" },
           ],
         },
         {
@@ -77,7 +76,7 @@ export const Sidebar = () => {
           icon: Component,
           children: [
             { label: "Button", href: "/componente/botones" },
-            { label: "Dropdown" },
+            { label: "Dropdown", href: "/componente/dropdown" },
           ],
         },
       ],

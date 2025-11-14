@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Calendar, Check, ClipboardList, ChevronDown, MonitorCog, Pyramid, Atom  } from "lucide-react";
 
-export const RecursosDev = () => {
+export const InstallPage = () => {
   const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
   const [open, setOpen] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
