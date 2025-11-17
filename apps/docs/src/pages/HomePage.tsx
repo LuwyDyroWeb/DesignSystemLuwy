@@ -10,7 +10,7 @@ const SummaryCard = ({
   label: string;
 }) => {
   return (
-    <div className="bg-primary-green-200 border-2 border-primary-green-600 p-6 rounded-medium text-center flex flex-col items-center justify-center text-primary-blue-600 ">
+    <div className="border-2 p-6 rounded-medium text-center flex flex-col items-center justify-center text-primary-blue-600 ">
       <Icon className="h-7 w-7 mb-2" />
       <span className="text-2xl font-medium mb-3">{value}</span>
       <p className="label text-base">{label}</p>
@@ -58,8 +58,8 @@ export const HomePage = () => {
         <SummaryCard icon={FileCode} value="+25" label="Ejemplo de códigos" />
       </section>
 
-      <section className="p-6 rounded-large border-primary-green-600 border-2  mt-15">
-        <strong className="text-xl font-medium text-primary-green-600 mb-6 block">
+      <section className="p-6 rounded-large border-2 border-blue-500 mt-15">
+        <strong className="text-xl text-white font-medium text-primary-green-600 mb-6 block">
           Propósito y alcance
         </strong>
         <p className="body text-primary-blue-600 mb-4">
@@ -79,7 +79,7 @@ export const HomePage = () => {
       </section>
 
       <section className="mt-15">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-6 block">
+        <strong className="text-2xl text-white font-semibold text-primary-green-600 mb-6 block">
           Principios de diseño
         </strong>
         <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6">
@@ -133,60 +133,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className="mt-15">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-6 block">
-            ¿Como comenzar?
-        </strong>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img src="./home/Back-Start-1.jpg" 
-              alt="Paso 1"
-              className="h-46 min-w-full "
-              />
-            </div>
-             <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">1. Explore estilos</b>
-              <p className="text-primary-blue-600">
-                Comience con colores, tipografía y espaciado para comprender la base visual.
-              </p>
-            </div>
-          </div>
-
-           <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img src="./home/Back-Start-1.jpg"  
-              alt="Paso 1"
-              className="h-46 min-w-full "
-              />
-            </div>
-            <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">2. Explorar componentes</b>
-              <p className="text-primary-blue-600">
-                Descubra componentes reutilizables con código ejemplos y pautas de
- uso.
-              </p>
-            </div>
-          </div>
-
-         <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img src="./home/Back-Start-1.jpg"  
-              alt="Paso 1"
-              className="h-46 min-w-full "
-              />
-            </div>
-             <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">3. Implementar y construir</b>
-              <p className="text-primary-blue-600">
-                Utilice los recursos del desarrollador para implementar el sistema en tus proyectos.
-              </p>
-            </div>
-          </div>
- 
-        </div>
-      </section>
     </div>
   );
 };

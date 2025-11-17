@@ -1,653 +1,628 @@
-import { Calendar, ClipboardList, Check } from "lucide-react";
-import { useState } from "react";
-import { Button, ButtonIcon, type ButtonProps } from "@luwydyroweb/ui";
-import { SelectState } from "./Select";
+// import Header, { HeaderLeft } from '@/components/layout/Header';
+// import Container from '@/components/layout/Container';
+// import Breadcrumb from '@/components/layout/Breadcrumb';
+// import pages from '@/Routes/pages';
+// import Icon from '@/components/icon/Icon';
+// import Button, { TButtonDimensions, TButtonVariants } from '@/components/ui/Button';
+// import variantMD from './_md/variant.md';
+// import sizeMD from './_md/size.md';
+// import colorSolidMd from './_md/colorSolid.md';
+// import colorOutlineMd from './_md/colorOutline.md';
+// import colorDefaultMd from './_md/colorDefault.md';
+// import colorSoftMd from './_md/colorSoft.md';
+// import borderWidthMd from './_md/borderWidth.md';
+// import roundedMd from './_md/rounded.md';
+// import iconMd from './_md/icon.md';
+// import rightIconMd from './_md/rightIcon.md';
+// import onlyIconMd from './_md/onlyIcon.md';
+// import activeMd from './_md/active.md';
+// import disableMd from './_md/disable.md';
+// import loadingMd from './_md/loading.md';
+// import Card, {
+// 	CardBody,
+// 	CardHeader,
+// 	CardHeaderChild,
+// 	CardSubTitle,
+// 	CardTitle,
+// } from '@/components/ui/Card';
+// import PreviewComponent from '@/components/utils/PreviewComponent';
+// import { arrColors } from '@/types/colors.type';
+// import { arrBorderWidth } from '@/types/borderWidth.type';
+// import { arrRounded } from '@/types/rounded.type';
+// import MdViewer from '@/components/utils/MdViewer';
+// import extractSnippetUtil from '@/utils/extractSnippet.util';
+// import buttonSource from '@/components/ui/Button.tsx?raw'; // eslint-disable-line import/extensions
+import { Button, type ButtonProps } from "@luwydyroweb/ui";
+import { SlidersHorizontal } from "lucide-react";
 
-type Color = {
-  name: ButtonProps["variant"];
-  colorClass: string;
-};
-
-type Props = {
-  type: string;
-  config: {
-    style: ButtonProps["buttonStyle"];
-    color: ButtonProps["variant"];
-    size: ButtonProps["size"];
-    state: string;
-  };
-  onChange: (newConfig: Props["config"]) => void;
-};
-
-const ConfiguratorButton = ({ type, config, onChange }: Props) => {
-  const { style, color, size, state } = config;
-  const [activeCodeButton, setActiveCodeButton] = useState("HTML");
-  const [copied, setCopied] = useState(false);
-
-  const sizeClassMap: Record<NonNullable<ButtonProps["size"]>, string> = {
-    tiny: "btn--sm",
-    small: "btn--md",
-    medium: "btn--lg",
-    giant: "btn--xl",
-  };
-  const cssSizeClass = sizeClassMap[size || "small"];
-
-  const styles: ButtonProps["buttonStyle"][] = ["filled", "outline", "clear"];
-  const cssStyleClass =
-    style === "outline"
-      ? " btn--outline"
-      : style === "clear"
-      ? " btn--clear"
-      : "";
-
-  const isLoading = state === "loading";
-  const isDisabled = state === "disabled";
-  const loadingClass = isLoading ? " btn--loading" : "";
-  // ------------------------------------------
-
-  const sizes: ButtonProps["size"][] = ["tiny", "small", "medium", "giant"];
-
-  const colors: Color[] = [
-    { name: "primary-blue", colorClass: "bg-primary-blue-600" },
-    { name: "primary-green", colorClass: "bg-primary-green-500" },
-    { name: "secondary", colorClass: "bg-neutro-black-600" },
-    { name: "error", colorClass: "bg-alert-error-600" },
-    { name: "info", colorClass: "bg-alert-info-600" },
-    { name: "warning", colorClass: "bg-alert-warning-600" },
-    { name: "success", colorClass: "bg-alert-success-600" },
-    { name: "neutro-white", colorClass: "bg-neutro-white-700" },
-    { name: "neutro-black", colorClass: "bg-neutro-black-600" },
+export const ButtonPage = () => {
+  const BTN_STYLE: ButtonProps["buttonStyle"][] = [
+    "filled",
+    "outline",
+    "clear",
   ];
-
-  const estados =
-  type === "Type3"
-    ? ["Grupo de 2", "Grupo de 3", "Grupo de 4", "Grupo de 5"]
-    : ["default", "disabled", "loading"];
-
-  const handleStyleChange = (newStyle: ButtonProps["buttonStyle"]) =>
-    onChange({ ...config, style: newStyle });
-
-  const handleColorChange = (newColor: ButtonProps["variant"]) =>
-    onChange({ ...config, color: newColor });
-
-  const handleSizeChange = (newSize: ButtonProps["size"]) =>
-    onChange({ ...config, size: newSize });
-
-  const handleStateChange = (newState: string) =>
-    onChange({ ...config, state: newState });
-
-  const handleCopy = (text: string) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
-      })
-      .catch((err) => {
-        console.error("Error al copiar:", err);
-      });
-  };
-  const groupCount = parseInt(state.replace("Grupo de ", "")) || 2;
-
-  const reactCodeType: Record<string, string> = {
-    Type1: `<Button variant="${color}" size="${size}" buttonStyle="${style}"${
-      isDisabled ? " disabled" : ""
-    }${isLoading ? " isLoading" : ""}>${isLoading ? "" : "Button"}</Button>`,
-
-    Type2: `<ButtonIcon variant="${color}" size="${size}" buttonStyle="${style}"${
-      isDisabled ? " disabled" : ""
-    }${isLoading ? " isLoading" : ""} iconPosition="left">${
-      isLoading ? "" : "Button"
-    }</ButtonIcon>`,
-
-    Type3: `<section className="flex text-center gap-1 grid-rows-1 grid-cols-${groupCount}">
-${Array.from({ length: groupCount })
-  .map(
-    () =>
-      `  <Button variant="${color}" size="${size}" buttonStyle="${style}">Button</Button>`
-  )
-  .join("\n")}
-</section>`,
-  };
-  
-  const htmlCodeType: Record<string, string> = {
-    Type1: `<button class="btn btn--weight-regular ${cssSizeClass} btn--${color}${cssStyleClass}${loadingClass}" ${
-      isDisabled ? "disabled" : ""
-    }>${isLoading ? "" : "Button"}</button>`,
-
-    Type2: `  <button class="btn btn--weight-regular ${cssSizeClass} btn--${color}${cssStyleClass}${loadingClass}" ${
-      isDisabled ? "disabled" : ""
-    }>
-    ${
-      isLoading
-        ? ""
-        : `<span class="btn_icon btn_icon--left">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="currentColor" />
-        </svg>
-    </span>
-    <span class="btn_label">Button</span>`
-    }
-  </button>`,
-      Type3: `<section className="flex text-center gap-1 grid-rows-1 grid-cols-${groupCount}">
-${Array.from({ length: groupCount })
-  .map(
-    () =>
-      `  <button class="btn btn--weight-regular ${cssSizeClass} btn--${color}${cssStyleClass}">Button</button>`
-  )
-  .join("\n")}
-</section>`,
-  };
-  const reactCode = reactCodeType[type] || reactCodeType["Type1"];
-  const htmlCode = htmlCodeType[type] || htmlCodeType["Type1"];
-
-  const getStyleButtonClasses = (
-    name: ButtonProps["buttonStyle"],
-    index: number,
-    total: number
-  ) => {
-    const base = "px-6 py-4 border-primary-green-600 cursor-pointer";
-    const active = style === name ? "bg-primary-green-200" : "bg-white";
-
-    let radius = "";
-    if (total === 1) {
-      // radius = "border-2 rounded-medium";
-      radius = "border-y-2";
-    } else if (index === 0) {
-      radius = "border-2 rounded-l-medium";
-    } else if (index === total - 1) {
-      radius = "border-2 rounded-r-medium";
-    } else {
-      radius = "border-y-2";
-    }
-
-    return `${base} ${active} ${radius}`;
-  };
-
-  const getButtonCode = (nombre: string) => {
-    const isActive = activeCodeButton === nombre;
-    const baseClasses =
-      "flex flex-col items-center rounded-small py-2 px-7 border-2 font-semibold text-xl cursor-pointer duration-200";
-    let activeClasses = "";
-
-    if (isActive) {
-      if (nombre === "HTML") {
-        activeClasses = "bg-[#F54927] text-white border-[#F54927]";
-      } else if (nombre === "React") {
-        activeClasses = "bg-[#00D8FF] text-white border-[#00D8FF]";
-      }
-    } else {
-      activeClasses = "bg-white text-primary-blue-600";
-    }
-    return `${baseClasses} ${activeClasses}`;
-  };
+  const BTN_COLOR: ButtonProps["variant"][] = [
+    "primary",
+    "secondary",
+    "error",
+    "info",
+    "warning",
+    "success",
+    "neutro-black",
+    "neutro-white",
+  ];
+  const BTN_SIZE: ButtonProps["size"][] = ["tiny", "small", "medium", "giant"];
 
   return (
     <>
-        <section className={`grid grid-cols-3 text-center`}>
-          {styles.map((name, index) => (
-            <button
-              key={name}
-              className={getStyleButtonClasses(name, index, styles.length)}
-              onClick={() => handleStyleChange(name)}
-            >
-              <strong className="text-base font-medium text-primary-green-600 capitalize">
-                {name}
-              </strong>
-            </button>
-          ))}
-        </section>
-      <section className="grid grid-cols-1 xl:grid-cols-[2.1fr_1fr] xl:grid-rows-1 grid-row-2 mt-6 gap-6 ">
-        <div className="flex flex-col">
-          <div className="border-2 rounded-t-medium p-6 bg-primary-blue-600 border-primary-blue-600">
-            <strong className="text-xl font-medium text-white">
-              Propiedades personalizadas de CSS
-            </strong>
+      <div className="flex flex-col gap-8">
+        <div className="text-3xl text-white font-bold">Uso</div>
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-row items-center gap-3 pb-4">
+            <SlidersHorizontal className="h-7 w-7" />
+            <span className="text-2xl ">Styles</span>
+            <code className="text-primary-bluedark-200">ButtonStyle</code>
           </div>
-          <div className="border-2 border-t-0  rounded-b-medium p-6 border-primary-green-600">
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] lg:grid-rows-1 grid-row-2 gap-4">
-              <div>
-                <div className="border-2 text-center rounded-t-medium p-2 bg-primary-blue-600 border-primary-blue-600">
-                  <strong className="text-base font-semibold text-white">
-                    Title
-                  </strong>
-                </div>
-                <div className="border-2 border-t-0 rounded-b-medium border-primary-blue-600">
-                  <div className="flex bg-primary-blue-50 items-center justify-center p-6">
-                    {(() => {
-                      switch (type) {
-                        case "Type1":
-                          return (
-                            <Button
-                              variant={color}
-                              size={size}
-                              buttonStyle={style}
-                              disabled={state === "disabled"}
-                              isLoading={state === "loading"}
-                            >
-                              Button
-                            </Button>
-                          );
-
-                        case "Type2":
-                          return (
-                            <ButtonIcon
-                              variant={color}
-                              size={size}
-                              buttonStyle={style}
-                              disabled={state === "disabled"}
-                              icon
-                              isLoading={state === "loading"}
-                              iconPosition="left"
-                            >
-                              Button
-                            </ButtonIcon>
-                          );
-
-                        case "Type3":
-                          return (
-                            <Button
-                              variant={color}
-                              size={size}
-                              buttonStyle={style}
-                            >
-                              Button
-                            </Button>
-                          );
-                      }
-                    })()}
-                  </div>
-                  <div className="flex flex-col gap-6 p-6 items-center">
-                    <SelectState
-                      value={state}
-                      onChange={handleStateChange}
-                      options={estados}
-                    />
-                    <div className="grid grid-cols-1 2xl:grid-cols-2 grid-rows-2 2xl:grid-rows-1 w-full gap-y-2 divide-x-0 2xl:divide-x divide-primary-blue-600">
-                      <div className="px-0 md:px-4 pb-0">
-                        <strong className="text-xs text-primary-blue-600 font-semibold">
-                          Size
-                        </strong>
-                        <div className="flex gap-3">
-                          {sizes.map((s) => (
-                            <button
-                              key={s}
-                              onClick={() => handleSizeChange(s)}
-                              className={` flex items-center justify-center min-w-6 min-h-6 border border-primary-blue-600 rounded cursor-pointer hover:bg-primary-blue-200
-                                          ${
-                                            size === s
-                                              ? "bg-primary-blue-100"
-                                              : "bg-white"
-                                          }
-                                        `}
-                              aria-label={`Tamaño ${s}`}
-                              title={`${s}`.toUpperCase()}
-                            >
-                              <Calendar className="shrink-0 w-3 text-primary-blue-600" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="px-0 md:px-4 md:pb-0">
-                        <strong className="text-xs text-primary-blue-600 font-semibold">
-                          Color
-                        </strong>
-                        <div className="flex flex-wrap gap-3">
-                          {colors.map(({ name, colorClass }) => (
-                            <button
-                              key={name}
-                              onClick={() => handleColorChange(name)}
-                              className={`flex items-center justify-center w-6 h-6 rounded-large border transition-colors duration-200
-                                 ${
-                                   color === name
-                                     ? "border-primary-blue-600"
-                                     : "border-neutral-200"
-                                 } `}
-                              aria-label={`Color ${name}`}
-                            >
-                              <div
-                                className={`rounded-large h-3 w-3 ${colorClass}`}
-                              ></div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 gap-2 w-full">
-                      <button
-                        className={getButtonCode("HTML")}
-                        onClick={() => setActiveCodeButton("HTML")}
-                      >
-                        HTML
-                      </button>
-                      <button
-                        className={getButtonCode("React")}
-                        onClick={() => setActiveCodeButton("React")}
-                      >
-                        React
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="border-2 rounded-medium p-6 pt-10  border-primary-green-200">
-                {activeCodeButton === "React" && (
-                  <code className="block text-primary-blue-600 text-base whitespace-normal mb-7">
-                    {(() => {
-                      switch (type) {
-                        case "Type1":
-                          return `import { Button } from "@luwydyroweb/ui";`;
-                        case "Type2":
-                          return `import { ButtonIcon } from "@luwydyroweb/ui";`;
-                        case "Type3":
-                          return `import { Button } from "@luwydyroweb/ui";`;
-                      }
-                    })()}
-                  </code>
-                )}
-                <div className="relative border-2 rounded-medium p-6 pt-13 bg-primary-green-50 border-primary-green-200">
-                  <div className="right-3 top-3 absolute">
-                    <button
-                      className="p-1"
-                      onClick={() =>
-                        handleCopy(
-                          activeCodeButton === "React" ? reactCode : htmlCode
-                        )
-                      }
-                    >
-                      {copied ? (
-                        <Check className="text-primary-green-700 duration-100" />
-                      ) : (
-                        <ClipboardList className="hover:text-primary-green-700 text-primary-green-500 duration-100" />
-                      )}
-                      {copied && (
-                        <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-green-600 text-white px-2 py-1 rounded-medium shadow-md animate-fade-in">
-                          Copiado
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                  {activeCodeButton === "React" ? (
-                    <code className="text-primary-blue-600 text-base whitespace-normal text-wrap">
-                      {reactCode}
-                    </code>
-                  ) : (
-                    <>
-                      <code className="text-primary-blue-600 text-base whitespace-normal">
-                        {htmlCode}
-                      </code>
-                    </>
-                  )}
-                </div>
-              </div>
+          <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {BTN_STYLE.map((item) => (
+                <Button key={item} buttonStyle={item} aria-label={item}>
+                  {item}
+                </Button>
+              ))}
+              <Button key="disabled" disabled aria-label="disabled">
+                Disabled
+              </Button>
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-between">
-          <div className="flex flex-row items-center justify-between gap-6 border-2 rounded-t-medium p-6 bg-primary-blue-600 border-primary-blue-600">
-            <strong className="text-xl font-medium text-white">
-              Propiedades de animación
-            </strong>
-            <span className="flex items-center justify-center w-10 h-10 bg-white rounded-small">
-              <Calendar className="shrink-0 w-4 text-primary-blue-600"></Calendar>
-            </span>
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-row items-center gap-3 pb-4">
+            <SlidersHorizontal className="h-7 w-7" />
+            <span className="text-2xl ">Color</span>
+            <code className="text-primary-bluedark-200">variant</code>
           </div>
-          <div className="flex border-2 border-t-0 rounded-b-medium p-6 border-primary-green-600 h-full">
-            <div className="flex items-center justify-center border-2 rounded-medium p-6 bg-primary-blue-50 border-primary-blue-600 w-full">
-              {(() => {
-                switch (type) {
-                  case "Type1":
-                    return (
-                      <Button
-                        variant={color}
-                        size={size}
-                        buttonStyle={style}
-                        disabled={state === "disabled"}
-                        isLoading={state === "loading"}
-                      >
-                        Button
-                      </Button>
-                    );
-
-                  case "Type2":
-                    return (
-                      <ButtonIcon
-                        variant={color}
-                        size={size}
-                        buttonStyle={style}
-                        disabled={state === "disabled"}
-                        icon
-                        isLoading={state === "loading"}
-                        iconPosition="left"
-                      >
-                        Button
-                      </ButtonIcon>
-                    );
-
-                  case "Type3": {
-
-                    const buttons = Array.from({ length: groupCount });
-                    
-                    return (
-                      <section
-                        className={`flex text-center gap-1 grid-rows-1 grid-cols-${groupCount}`}
-                      >
-                        {buttons.map((_, index) => (
-                          <Button
-                            key={index}
-                            variant={color}
-                            size={size}
-                            buttonStyle={style}
-                          >
-                            Button
-                          </Button>
-                         
-                        ))}
-                      </section>
-                    );
-                  }
-                }
-              })()}
+          <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {BTN_COLOR.map((item) => (
+                <Button key={item} variant={item} aria-label={item}>
+                  {item}
+                </Button>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-row items-center gap-3 pb-4">
+            <SlidersHorizontal className="h-7 w-7" />
+            <span className="text-2xl ">Sizes</span>
+            <code className="text-primary-bluedark-200">ButtonStyle</code>
+          </div>
+          <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {BTN_SIZE.map((item) => (
+                <Button key={item} size={item} aria-label={item}>
+                  {item}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* <Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'Settings05',
+										color: 'blue',
+										size: 'text-3xl',
+									}}>
+									variant
+								</CardTitle>
+								<CardSubTitle>
+									<code>TButtonVariants</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-zinc-500'>
+								Explore the most commonly used button styles such as solid, outline,
+								ghost, soft, link, and more.
+							</div>
+							<PreviewComponent inIFrame={false} mdFile={variantMD}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{BTN_VARIANT.map((item) => (
+										<Button key={item} variant={item} aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'ColorPicker',
+										color: 'emerald',
+										size: 'text-3xl',
+									}}>
+									color
+								</CardTitle>
+								<CardSubTitle>
+									<code>TColors</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody className='flex flex-col gap-4'>
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>Solid color variants</CardTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										Predefined solid color button styles.
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={colorSolidMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											{arrColors.map((item) => (
+												<Button
+													key={item}
+													variant='solid'
+													color={item}
+													aria-label={item}>
+													{item}
+												</Button>
+											))}
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>Outline color variants</CardTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										Predefined outline color button styles
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={colorOutlineMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											{arrColors.map((item) => (
+												<Button
+													key={item}
+													variant='outline'
+													color={item}
+													aria-label={item}>
+													{item}
+												</Button>
+											))}
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>Default color variants</CardTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										Predefined default color button styles
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={colorDefaultMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											{arrColors.map((item) => (
+												<Button
+													key={item}
+													variant='default'
+													color={item}
+													aria-label={item}>
+													{item}
+												</Button>
+											))}
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>Soft color variants</CardTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										Predefined soft color button styles
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={colorSoftMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											{arrColors.map((item) => (
+												<Button
+													key={item}
+													variant='soft'
+													color={item}
+													aria-label={item}>
+													{item}
+												</Button>
+											))}
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'Ruler',
+										color: 'amber',
+										size: 'text-3xl',
+									}}>
+									dimension
+								</CardTitle>
+								<CardSubTitle>
+									<code>TButtonDimensions</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-zinc-500'>
+								Buttons stacked small to large sizes.
+							</div>
+							<PreviewComponent inIFrame={false} mdFile={sizeMD}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{BTN_SIZE.map((item) => (
+										<Button
+											key={item}
+											variant='solid'
+											dimension={item}
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'PenTool01',
+										color: 'violet',
+										size: 'text-3xl',
+									}}>
+									borderWidth
+								</CardTitle>
+								<CardSubTitle>
+									<code>TBorderWidth</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-xl font-bold'>Outline border width variants</div>
+							<div className='text-zinc-500'>
+								Predefined solid color intensity button styles.
+							</div>
+							<PreviewComponent inIFrame={false} mdFile={borderWidthMd}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{arrBorderWidth.map((item) => (
+										<Button
+											key={item}
+											variant='outline'
+											borderWidth={item}
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'JoinRound',
+										color: 'blue',
+										size: 'text-3xl',
+									}}>
+									rounded
+								</CardTitle>
+								<CardSubTitle>
+									<code>TRounded</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-xl font-bold'>Soft rounded variants</div>
+							<div className='text-zinc-500'>
+								Predefined solid color intensity button styles.
+							</div>
+							<PreviewComponent inIFrame={false} mdFile={roundedMd}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{arrRounded.map((item) => (
+										<Button
+											key={item}
+											variant='soft'
+											rounded={item}
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'Award02',
+										color: 'secondary',
+										size: 'text-3xl',
+									}}>
+									Icons
+								</CardTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody className='flex flex-col gap-4'>
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>icon</CardTitle>{' '}
+										<CardSubTitle>
+											<code>TIcons</code>
+										</CardSubTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										A contained button with an icon.
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={iconMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											<Button
+												icon='Cancel02'
+												variant='default'
+												color='red'
+												aria-label='Cancel'>
+												Cancel
+											</Button>
+											<Button
+												icon='FloppyDisk'
+												variant='soft'
+												aria-label='Save'>
+												Save
+											</Button>
+											<Button
+												icon='Megaphone02'
+												variant='solid'
+												color='emerald'
+												aria-label='Publish'>
+												Publish
+											</Button>
+											<Button
+												icon='ShoppingBasketAdd03'
+												variant='outline'
+												color='amber'
+												aria-label='Add to Cart'>
+												Add to Cart
+											</Button>
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>rightIcon</CardTitle>
+										<CardSubTitle>
+											<code>TIcons</code>
+										</CardSubTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										A contained button with an icon.
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={rightIconMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											<Button
+												rightIcon='ArrowRight01'
+												variant='default'
+												color='zinc'
+												aria-label='Read more'>
+												Read more
+											</Button>
+											<Button
+												rightIcon='Login03'
+												variant='soft'
+												aria-label='Sign up'>
+												Sign up
+											</Button>
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+							<Card>
+								<CardHeader>
+									<CardHeaderChild>
+										<CardTitle>Only icon</CardTitle>
+									</CardHeaderChild>
+								</CardHeader>
+								<CardBody>
+									<div className='text-zinc-500'>
+										A contained button with an icon.
+									</div>
+									<PreviewComponent inIFrame={false} mdFile={onlyIconMd}>
+										<div className='flex flex-wrap items-center gap-4'>
+											<Button
+												icon='Home09'
+												variant='soft'
+												color='emerald'
+												aria-label='Home'
+											/>
+											<Button
+												icon='Login03'
+												variant='outline'
+												aria-label='Login'
+											/>
+											<Button
+												icon='AccountSetting01'
+												variant='solid'
+												color='secondary'
+												aria-label='Settings'
+											/>
+											<Button
+												icon='BorderNone01'
+												variant='default'
+												color='amber'
+												aria-label='Settings'
+											/>
+										</div>
+									</PreviewComponent>
+								</CardBody>
+							</Card>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'ToggleOn',
+										color: 'emerald',
+										size: 'text-3xl',
+									}}>
+									isActive
+								</CardTitle>
+								<CardSubTitle>
+									<code>boolean</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-zinc-500'>A contained button with an icon.</div>
+							<PreviewComponent inIFrame={false} mdFile={activeMd}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{BTN_VARIANT.map((item) => (
+										<Button
+											key={item}
+											variant={item}
+											isActive
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'ToggleOff',
+										color: 'red',
+										size: 'text-3xl',
+									}}>
+									isDisable
+								</CardTitle>
+								<CardSubTitle>
+									<code>boolean</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-zinc-500'>A contained button with an icon.</div>
+							<PreviewComponent inIFrame={false} mdFile={disableMd}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{BTN_VARIANT.map((item) => (
+										<Button
+											key={item}
+											variant={item}
+											isDisable
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle
+									iconProps={{
+										icon: 'Loading03',
+										color: 'amber',
+										size: 'text-3xl',
+									}}>
+									isLoading
+								</CardTitle>
+								<CardSubTitle>
+									<code>boolean</code>
+								</CardSubTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<div className='text-zinc-500'>A contained button with an icon.</div>
+							<PreviewComponent inIFrame={false} mdFile={loadingMd}>
+								<div className='flex flex-wrap items-center gap-4'>
+									{BTN_VARIANT.map((item) => (
+										<Button
+											key={item}
+											icon='FloppyDisk'
+											variant={item}
+											isLoading
+											aria-label={item}>
+											{item}
+										</Button>
+									))}
+								</div>
+							</PreviewComponent>
+						</CardBody>
+					</Card>
+
+					<Card>
+						<CardHeader>
+							<CardHeaderChild>
+								<CardTitle>API</CardTitle>
+							</CardHeaderChild>
+						</CardHeader>
+						<CardBody>
+							<MdViewer code={extractSnippetUtil(buttonSource, 'interface')} />
+						</CardBody>
+					</Card> */}
+      </div>
     </>
-  );
-};
-
-export const ButtonPage = () => {
-  const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
-  const [configByType, setConfigByType] = useState<
-    Record<string, Props["config"]>
-  >({
-    Type1: {
-      style: "filled",
-      color: "primary-blue",
-      size: "medium",
-      state: "Selecciona estado",
-    },
-    Type2: {
-      style: "filled",
-      color: "primary-blue",
-      size: "medium",
-      state: "Selecciona estado",
-    },
-    Type3: {
-      style: "filled",
-      color: "primary-blue",
-      size: "medium",
-      state: "Selecciona estado",
-    },
-  });
-
-  const typeLabels: Record<string, string> = {
-    Type1: "Button 1",
-    Type2: "Button 2",
-    Type3: "Group Button",
-  };
-
-  const getButtonType = (nombre: string) => {
-    const isActive = activeTypeButton === nombre;
-    return `
-      flex flex-col items-center rounded-medium py-3 px-7 border-2 font-semibold cursor-pointer duration-300 gap-1 text-white p-3 border-2 font-medium text-sm cursor-pointer
-      ${
-        isActive
-          ? "border-primary-blue-700 bg-primary-blue-700"
-          : "hover:bg-primary-blue-700 hover:border-primary-blue-700 border-primary-blue-600 bg-primary-blue-600"
-      }
-    `;
-  };
-
-  return (
-    <div>
-      <div className="pb-5 ">
-        <p className="text-xl/6 text-primary-blue-600 font-normal mt-2 text-center">
-          Todo lo que los desarrolladores necesitan para implementar el sistema
-          de diseño en sus proyectos.
-        </p>
-      </div>
-      <section className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 grid-rows-3 pb-15 pt-8 gap-6">
-        <button
-          className={getButtonType("Type1")}
-          onClick={() => setActiveTypeButton("Type1")}
-        >
-          <span className="block h-6 w-6">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"
-                fill="#ffffff"
-              />
-            </svg>
-          </span>
-          {typeLabels["Type1"]}
-        </button>
-        <button
-          className={getButtonType("Type2")}
-          onClick={() => setActiveTypeButton("Type2")}
-        >
-          <span className="block h-6 w-6">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"
-                fill="#ffffff"
-              />
-            </svg>
-          </span>
-          {typeLabels["Type2"]}
-        </button>
-        <button
-          className={getButtonType("Type3")}
-          onClick={() => setActiveTypeButton("Type3")}
-        >
-          <span className="block h-6 w-6">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"
-                fill="#ffffff"
-              />
-            </svg>
-          </span>
-          {typeLabels["Type3"]}
-        </button>
-      </section>
-      <div className="bg-primary-blue-600 px-6 py-4 rounded-large mb-10  ">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-semibold text-white">
-            {activeTypeButton ? typeLabels[activeTypeButton] : "Component"}
-          </h3>
-        </div>
-      </div>
-      {activeTypeButton === "Type1" && (
-        <ConfiguratorButton
-          type="Type1"
-          config={configByType.Type1}
-          onChange={(newConfig) =>
-            setConfigByType((prev) => ({ ...prev, Type1: newConfig }))
-          }
-        />
-      )}
-      {activeTypeButton === "Type2" && (
-        <ConfiguratorButton
-          type="Type2"
-          config={configByType.Type2}
-          onChange={(newConfig) =>
-            setConfigByType((prev) => ({ ...prev, Type2: newConfig }))
-          }
-        />
-      )}
-
-      {activeTypeButton === "Type3" && (
-        <ConfiguratorButton
-          type="Type3"
-          config={configByType.Type3}
-          onChange={(newConfig) =>
-            setConfigByType((prev) => ({ ...prev, Type3: newConfig }))
-          }
-        />
-      )}
-      <section className="mt-15">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-6 block">
-          Guia de uso
-        </strong>
-        <p className="text-xl font-normal text-primary-blue-500">
-          Este sistema de diseño se sincroniza automáticamente con el archivo
-          Figma mediante webhooks y la API de Figma. Así es como funciona la
-          integración:
-        </p>
-        <div className="grid grid-rows-2 md:grid-rows-1 gap-6 md:grid-cols-[2fr_1.4fr] mt-7">
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
-            <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
-              Actualizaciones automáticas
-            </strong>
-            <ul className="body text-primary-blue-600 mb-4 list-disc list-inside pl-2 gap-2">
-              <li className="mb-3">
-                Sincronización en tiempo real cuando cambian los tokens de
-                diseño
-              </li>
-              <li className="mb-3">
-                Las actualizaciones de componentes se reflejan inmediatamente
-              </li>
-              <li className="mb-3">
-                Los cambios de estilo se propagaron a la documentación.
-              </li>
-              <li>Control de versiones para cambios de diseño.</li>
-            </ul>
-          </div>
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
-            <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
-              Beneficios para desarrolladores
-            </strong>
-            <ul className="body  text-primary-blue-600 mb-4 list-disc list-inside pl-2">
-              <li className="mb-3">Tokens de diseño siempre actualizados</li>
-              <li className="mb-3">Sincronización manual reducida</li>
-              <li className="mb-3">
-                Alineación del flujo de trabajo de diseño y desarrollo
-              </li>
-              <li>Generación automática de códigos</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </div>
   );
 };

@@ -291,7 +291,7 @@ export const InstallPage = () => {
                 </span>
               </div>
 
-              <div className="flex flex-col border-t-0 border-2 rounded-b-medium p-6 border-primary-green-600">
+              <div className="flex flex-col border-t-0 border-2 rounded-b-medium p-6 border-primary-blue-600">
                 {section.steps?.map((step, stepIndex) => (
                   <div key={stepIndex} className="mb-8 last:mb-0">
                     {step.description && (
@@ -336,7 +336,7 @@ export const InstallPage = () => {
         </section>
       )}
       <section className="mt-5">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-6 block">
+        <strong className="text-2xl text-white font-semibold text-primary-green-600 mb-6 block">
           Integración API de Figma
         </strong>
         <p className="text-xl font-normal text-primary-blue-500">
@@ -345,7 +345,7 @@ export const InstallPage = () => {
           integración:
         </p>
         <div className="grid grid-rows-2 md:grid-rows-1 gap-6 md:grid-cols-[2fr_1.4fr] mt-7">
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
+          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
             <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
               Actualizaciones automáticas
             </strong>
@@ -363,7 +363,7 @@ export const InstallPage = () => {
               <li>Control de versiones para cambios de diseño.</li>
             </ul>
           </div>
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
+          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
             <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
               Beneficios para desarrolladores
             </strong>

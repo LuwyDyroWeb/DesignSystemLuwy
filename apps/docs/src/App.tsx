@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
-// import { ButtonPage } from "./pages/component/ButtonPage";
+import { ButtonPage } from "./pages/component/ButtonPage";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { ThemeContextProvider } from "./context/themeContext";
@@ -42,7 +42,7 @@ function App() {
         <Route path="layout/footer" element={<FooterPage />} />
         <Route path="content/colores" element={<ColorsPage />} />
         <Route path="content/tipografia" element={<TipografiaPage />} />
-        {/* <Route path="componente/botones" element={<ButtonPage />} /> */}
+        <Route path="componente/botones" element={<ButtonPage />} />
         <Route path="componente/dropdown" element={<DropdownPage />} />
       </Route>
 

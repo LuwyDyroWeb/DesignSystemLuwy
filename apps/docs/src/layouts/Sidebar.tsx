@@ -109,7 +109,7 @@ export const Sidebar = () => {
 
   return (
     <aside
-      className={`h-screen bg-primary-bluedark-950 text-primary-blue-600 border border-primary-blue-900 overflow-auto scrollbar-w flex flex-col top-0 transition-all duration-300 ${
+      className={`h-screen bg-primary-bluedark-950 text-primary-blue-600 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
         sidebarStatus
           ? "md:w-64 max-md:left-0 sticky max-md:fixed"
           : "md:w-19 max-md:-left-19 max-md:fixed"
@@ -147,7 +147,7 @@ export const Sidebar = () => {
         </div>
       </div>
 
-      <nav className="flex-1 pt-6 px-4 pb-20">
+      <nav className="flex-1 pt-6 px-4 pb-20 overflow-auto no-scrollbar">
         <NavItem
           item={homeItem}
           isExpanded={sidebarStatus}

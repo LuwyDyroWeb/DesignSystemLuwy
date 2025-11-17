@@ -145,11 +145,11 @@ export const ColorsPage = () => {
         )}
       </section>
       <section className="mt-5">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-9 block">
+        <strong className="text-2xl text-white font-semibold text-primary-green-600 mb-9 block">
           Guía de uso de colores
         </strong>
         <div className="grid grid-rows-3 md:grid-rows-1 gap-6 md:grid-cols-3 mt-7">
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
+          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
             <strong className="text-xl font-medium text-primary-blue-500 mb-5 block">
               Primary Brand Colors
             </strong>
@@ -168,7 +168,7 @@ export const ColorsPage = () => {
               </li>
             </ul>
           </div>
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
+          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
             <strong className="text-xl font-medium text-primary-blue-500 mb-5 block">
               Alert Color System
             </strong>
@@ -187,7 +187,7 @@ export const ColorsPage = () => {
               </li>
             </ul>
           </div>
-          <div className="p-6 rounded-medium border-primary-green-600 border-2">
+          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
             <strong className="text-xl font-medium text-primary-blue-500 mb-5 block">
               Neutro Color
             </strong>
@@ -209,70 +209,6 @@ export const ColorsPage = () => {
         </div>
       </section>
 
-      <section className="mt-15">
-        <strong className="text-2xl font-semibold text-primary-green-600 mb-6 block">
-          ¿Como comenzar?
-        </strong>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img
-                src="../home/Back-Start-1.jpg"
-                alt="Paso 1"
-                className="h-46 min-w-full "
-              />
-            </div>
-            <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">
-                WCAG AA Compliance
-              </b>
-              <p className="text-primary-blue-600">
-                All color combinations meet WCAG 2.1 AA standards with a minimum
-                contrast ratio of 4.5:1 for normal text and 3:1 for large text.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img
-                src="../home/Back-Start-1.jpg"
-                alt="Paso 1"
-                className="h-46 min-w-full "
-              />
-            </div>
-            <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">
-                Color Blindness
-              </b>
-              <p className="text-primary-blue-600">
-                Colors are tested for accessibility across different types of
-                color vision deficiencies and never rely solely on color to
-                convey information.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col rounded-large overflow-auto shadow-lg">
-            <div className="min-w-full flex justify-center items-center ">
-              <img
-                src="../home/Back-Start-1.jpg"
-                alt="Paso 1"
-                className="h-46 min-w-full "
-              />
-            </div>
-            <div className="p-6 ">
-              <b className="text-primary-blue-600 text-lg font-medium">
-                High Contrast
-              </b>
-              <p className="text-primary-blue-600">
-                Dark mode variants provide enhanced contrast for users who
-                prefer or require high-contrast interfaces.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
