@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import type React from "react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ChevronDown,
   Home,
-  Route,
   LayoutDashboard,
   BookType,
   Component,
   PanelLeftOpen,
   PanelLeftClose,
+  Braces,
+  ArrowBigDownDashIcon,
+  ClipboardPen,
+  BrickWall,
+  Power,
 } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthProvider";
 import useSidebarStatus from "../hooks/useSidebarStatus";
 
 type MenuChild = {
@@ -37,7 +43,8 @@ export const Sidebar = () => {
   // const [isExpanded, setIsExpanded] = useState(true);
   const { sidebarStatus, setSidebarStatus } = useSidebarStatus();
   const [openItemLabel, setOpenItemLabel] = useState<string | null>("null");
-
+  const [opened, setOpened] = useState<boolean>(false);
+  const { onLogout } = useAuth();
   const location = useLocation();
 
   const menuSections: MenuSection[] = [
@@ -45,15 +52,30 @@ export const Sidebar = () => {
       title: "Documentación",
       items: [
         {
-          label: "Instalación",
-          icon: Route,
-          children: [
-            { label: "Tokens", href: "/install/tokens" },
-            { label: "Instalación", href: "/install/instalacion" },
-            { label: "Changelog", href: "/install/changelog" },
-            { label: "Estructura del Proyecto", href: "/install/structure" },
-          ],
+          label: "Tokens",
+          href: "/documentacion/tokens",
+          icon: Braces,
         },
+        {
+          label: "Instalación",
+          href: "/documentacion/instalacion",
+          icon: ArrowBigDownDashIcon,
+        },
+        {
+          label: "Changelog",
+          href: "/documentacion/changelog",
+          icon: ClipboardPen,
+        },
+        {
+          label: "Estructura del Proyecto",
+          href: "/documentacion/estructura",
+          icon: BrickWall,
+        },
+      ],
+    },
+    {
+      title: "UI Kit",
+      items: [
         {
           label: "Layout",
           icon: LayoutDashboard,
@@ -101,6 +123,7 @@ export const Sidebar = () => {
       if (parentLabelToOpen) break;
     }
     setOpenItemLabel(parentLabelToOpen);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   const handleItemClick = (label: string) => {
@@ -109,13 +132,12 @@ export const Sidebar = () => {
 
   return (
     <aside
-      className={`h-screen bg-primary-bluedark-950 text-primary-blue-600 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
+      className={`h-screen bg-primary-bluedark-950 max-md:z-2000 text-primary-blue-600 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
         sidebarStatus
           ? "md:w-64 max-md:left-0 sticky max-md:fixed"
           : "md:w-19 max-md:-left-19 max-md:fixed"
       }  z-1001`}
     >
-
       <div className="flex items-center">
         <div className="p-6 border-b border-primary-blue-800 shrink-0 min-w-full w-full flex justify-center items-center">
           {!sidebarStatus && (
@@ -185,6 +207,71 @@ export const Sidebar = () => {
           </div>
         ))}
       </nav>
+
+      <div className="px-3 pb-4">
+        <div className="relative">
+          <div
+            className={`mb-1 min-w-16 border rounded-lg border-primary-blue-800 overflow-hidden bg-primary-blue-950 ${
+              !sidebarStatus && "-translate-x-1.75"
+            } transition-all duration-300 ease-in-out`}
+          >
+            <div
+              className="flex cursor-pointer gap-3 py-2 px-3 text-primary-blue-3000 hover:text-primary-blue-100 transition-all duration-300 ease-in-out"
+              onClick={() => setOpened((prevState) => !prevState)}
+            >
+              <img
+                src="/perfil.png"
+                alt="Avatar"
+                className="bg-secondary-500/25 h-12 w-12 object-cover rounded-xl"
+              />
+              <div className="flex basis-full flex-wrap items-center truncate">
+                <div className="flex basis-full items-center gap-2 truncate">
+                  <span className="truncate font-semibold">Luwy Dyro</span>
+                </div>
+                <div className="basis-full truncate text-xs first-letter:uppercase">
+                  Admin
+                </div>
+              </div>
+            </div>
+            <AnimatePresence>
+              {opened && (
+                <motion.div
+                  key="user-menu"
+                  initial="collapsed"
+                  animate="open"
+                  exit="collapsed"
+                  variants={{
+                    open: { height: "auto" },
+                    collapsed: { height: 0 },
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="px-3"
+                >
+                  <div className="mb-2 list-none rounded-full border-b border-primary-blue-700/50"></div>
+
+                  <button
+                    className={`flex cursor-pointer gap-2 w-full mb-1 items-center pt-2 pb-3 px-1 hover:text-primary-blue-100 ${!sidebarStatus && "justify-center"}`}
+                    onClick={() => onLogout(true)}
+                  >
+                    <Power height={17}></Power>
+                    <div className={`truncate overflow-hidden whitespace-nowrap text-sm ${!sidebarStatus && "hidden"}`}>
+                      Logout
+                    </div>
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <span
+            className={`absolute end-0 top-0 -me-1 -mt-1 flex h-3 w-3 ${
+              !sidebarStatus && "translate-x-1.5"
+            }`}
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-blue-200 opacity-75" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-primary-blue-500" />
+          </span>
+        </div>
+      </div>
     </aside>
   );
 };

@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { Calendar, Check, ClipboardList, ChevronDown, MonitorCog, Pyramid, Atom  } from "lucide-react";
+import { Calendar, Check, ClipboardList, MonitorCog, Pyramid, Atom  } from "lucide-react";
 
 export const InstallPage = () => {
   const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
-  const [open, setOpen] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
 
-  const toggleSection = (sectionName: string) => {
-    setOpen((prev) =>
-      prev.includes(sectionName)
-        ? prev.filter((name) => name !== sectionName)
-        : [...prev, sectionName]
-    );
-  };
 
   const typeLabels: Record<string, string> = {
     Type1: "Blazor / .NET",
@@ -259,21 +251,16 @@ export const InstallPage = () => {
       </section>
       <div className="relative w-full">
         <button
-          onClick={() => toggleSection("guia")}
           className="flex items-center justify-between bg-primary-blue-600 px-6 py-4 rounded-small mb-10 w-full"
         >
           <h3 className="text-2xl font-semibold text-white">
             Guía de instalación -{" "}
             {activeTypeButton ? typeLabels[activeTypeButton] : "Component"}
           </h3>
-          <ChevronDown
-            className={`h-6 w-6 text-white transition-transform duration-200 ${
-              open.includes("guia") ? "rotate-180" : ""
-            }`}
-          />
+
         </button>
       </div>
-      {open.includes("guia") && (
+      
         <section className="animate-slideDown">
           {guias[activeTypeButton]?.map((section, sectionIndex) => (
             <div
@@ -334,7 +321,7 @@ export const InstallPage = () => {
             </div>
           ))}
         </section>
-      )}
+      
       <section className="mt-5">
         <strong className="text-2xl text-white font-semibold text-primary-green-600 mb-6 block">
           Integración API de Figma

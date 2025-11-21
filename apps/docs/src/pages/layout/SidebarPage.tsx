@@ -21,11 +21,10 @@ export const SidebarPage = () => {
     <div className="flex flex-col gap-4">
       <div className="text-2xl text-white">Layout General</div>
       <div className="overflow-auto">
-		{/* inicio modelo */}
+        {/* inicio modelo */}
         <div className="flex flex-col gap-4 w-full min-w-135 text-white">
-
           <div className="flex gap-4">
-            <div className="flex h-200 w-60 min-w-50 animate-pulse flex-col gap-2 rounded-2xl border-dashed border-2 border-zinc-500/50 p-2">
+            <div className="flex h-150 w-60 min-w-50 animate-pulse flex-col gap-2 rounded-2xl border-dashed border-2 border-zinc-500/50 p-2">
               Sidebar
               <div className="flex items-center justify-between rounded-xl border-2 border-dashed border-amber-500/50 p-2">
                 Sidebar Head
@@ -45,8 +44,11 @@ export const SidebarPage = () => {
                   </div>
                 </div>
               </div>
+              <div className="rounded-xl border-2 border-dashed border-amber-500/50 p-2">
+                AsideFooter
+              </div>
             </div>
-            <div className="flex h-200 w-full flex-col gap-2 rounded-2xl border-2 border-dashed border-zinc-500/50 p-2">
+            <div className="flex h-150 w-full flex-col gap-2 rounded-2xl border-2 border-dashed border-zinc-500/50 p-2">
               Main
               <div className="flex flex-col rounded-xl border-2 border-dashed border-amber-500/50 p-2">
                 <div>Header</div>
@@ -62,13 +64,16 @@ export const SidebarPage = () => {
               <div className="flex h-full flex-col rounded-xl border-2 border-dashed border-amber-500/50 p-2">
                 <div>Outlet</div>
               </div>
+              <div className="rounded-xl border-2 border-dashed border-amber-500/50 p-2">
+                Footer - Desktop
+              </div>
             </div>
           </div>
           <div className="flex w-full rounded-2xl py-3 border-2 border-dashed border-zinc-500/50 p-2">
-            Footer
+            Footer - Mobile
           </div>
         </div>
-		{/* fin modelo */}
+        {/* fin modelo */}
       </div>
       {/* <Card>
 						<CardHeader>

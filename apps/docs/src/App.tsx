@@ -33,10 +33,10 @@ function App() {
         }
       >
         <Route index element={<HomePage />} />
-        <Route path="install/tokens" element={<TokensPage />} />
-        <Route path="install/instalacion" element={<InstallPage />} />
-        <Route path="install/changelog" element={<ChangelogPage />} />
-        <Route path="install/structure" element={<StructurePage />} />
+        <Route path="documentacion/tokens" element={<TokensPage />} />
+        <Route path="documentacion/instalacion" element={<InstallPage />} />
+        <Route path="documentacion/changelog" element={<ChangelogPage />} />
+        <Route path="documentacion/estructura" element={<StructurePage />} />
         <Route path="layout/sidebar" element={<SidebarPage />} />
         <Route path="layout/header" element={<HeaderPage />} />
         <Route path="layout/footer" element={<FooterPage />} />
