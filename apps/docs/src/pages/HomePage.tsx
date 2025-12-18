@@ -25,7 +25,6 @@ export const HomePage = () => {
           </a>
         </p>
       </div>
-
       <hr  className="text-blue-900 my-3" />
 
       <div className="relative pt-5 mb-8">
