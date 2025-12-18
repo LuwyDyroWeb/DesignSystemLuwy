@@ -12,9 +12,9 @@ export const DashboardLayout = () => {
       <div className="min-h-screen flex flex-col h-dvh">
         <div className="flex h-full ">
           <Sidebar />
-          <main className="flex-1 pl-3 pr-5 overflow-x-auto bg-primary-blue-950">
+          <main className="flex-1 pl-3 pr-5 overflow-x-auto bg-primary-bluedark-950">
             <Header />
-            <div className="pl-5 pr-4 bg-primary-blue-950">
+            <div className="pl-5 pr-4">
               <Outlet />
             </div>
             {/* {!isMobile ? <Footer className="sticky -ml-3 -mr-5" /> : null} */}

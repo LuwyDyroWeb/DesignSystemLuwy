@@ -8,12 +8,12 @@ import {
   BookType,
   Component,
   PanelLeftOpen,
-  PanelLeftClose,
   Braces,
   ArrowBigDownDashIcon,
   ClipboardPen,
   BrickWall,
   Power,
+  Menu,
 } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
@@ -132,14 +132,14 @@ export const Sidebar = () => {
 
   return (
     <aside
-      className={`h-screen bg-primary-bluedark-950 max-md:z-2000 text-primary-blue-600 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
+      className={`h-screen bg-primary-blue-950 max-md:z-2000 text-primary-blue-50 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
         sidebarStatus
           ? "md:w-64 max-md:left-0 sticky max-md:fixed"
           : "md:w-19 max-md:-left-19 max-md:fixed"
       }  z-1001`}
     >
       <div className="flex items-center">
-        <div className="p-6 border-b border-primary-blue-800 shrink-0 min-w-full w-full flex justify-center items-center">
+        <div className="px-5 py-6 border-b border-primary-blue-800 shrink-0 min-w-full w-full flex justify-center items-center">
           {!sidebarStatus && (
             <button
               className="cursor-pointer text-white"
@@ -155,14 +155,15 @@ export const Sidebar = () => {
                 <img
                   src="/logo_luwydyro_dark.svg"
                   alt="LogoTipo"
-                  className="h-8"
+                  className="h-7"
                 />
               </Link>
               <button
                 className="cursor-pointer text-white"
                 onClick={() => setSidebarStatus(!sidebarStatus)}
               >
-                <PanelLeftClose />
+             
+               <Menu className="h-5 w-5" />
               </button>
             </div>
           )}
@@ -180,7 +181,7 @@ export const Sidebar = () => {
         {menuSections.map((section) => (
           <div key={section.title}>
             <b
-              className={`flex justify-center pt-4 pb-2 text-[0.625rem] font-bold uppercase text-primary-blue-600
+              className={`flex justify-center pt-4 pb-2 text-[0.625rem] font-bold uppercase text-primary-blue-100
                   ${sidebarStatus ? "px-2 justify-start" : ""}
                 
                 `}
@@ -225,10 +226,10 @@ export const Sidebar = () => {
                 className="bg-secondary-500/25 h-12 w-12 object-cover rounded-xl"
               />
               <div className="flex basis-full flex-wrap items-center truncate">
-                <div className="flex basis-full items-center gap-2 truncate">
-                  <span className="truncate font-semibold">Luwy Dyro</span>
+                <div className="flex basis-full items-center gap-2 truncate text-sm ">
+                  <span className="truncate ">Luwy Dyro</span>
                 </div>
-                <div className="basis-full truncate text-xs first-letter:uppercase">
+                <div className="basis-full truncate text-[0.688rem] first-letter:uppercase">
                   Admin
                 </div>
               </div>
@@ -301,10 +302,10 @@ const NavItem = ({ item, isExpanded, isOpen, onClick }: NavItemProps) => {
   return (
     <>
       <div
-        className={`flex items-center justify-between px-2 py-3 mb-2 cursor-pointer transition-colors duration-150
+        className={`flex text-sm items-center justify-between px-2 py-3 mb-2 cursor-pointer transition-colors duration-150
           ${
             isOpen || isActive
-              ? " text-primary-blue-100 font-semibold"
+              ? "text-primary-blue-100 font-semibold"
               : "hover:text-primary-blue-100 "
           }
         `}
