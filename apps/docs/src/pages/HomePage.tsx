@@ -12,7 +12,6 @@ export const HomePage = () => {
           patrones de diseño y lineamientos que permiten a los equipos construir
           interfaces escalables de forma ágil y eficiente.
         </p>
-
         <p className="flex gap-5 py-5 mt-4">
           <a
             href="/documentacion/instalacion"
