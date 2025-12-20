@@ -30,3 +30,63 @@
 .no-scrollbar {
   scrollbar-width: none;
 }
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-bluedark-800) var(--color-neutro-black-500);
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-bluedark-800);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--color-neutro-black-100);
+}
+
+/* componente accordion */
+.accordion-btn {
+  position: relative;
+  width: 100%;
+}
+
+/* Icon base */
+.accordion-btn::after {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, content 0.3s ease;
+}
+
+/* Active → minus */
+.accordion-btn[data-active]::after {
+  content: '−';
+}
+
+/* Position right (default) */
+.accordion-btn::after {
+  margin-left: auto;
+}
+
+/* Position left */
+.accordion-btn[data-sign-position='left'] {
+  flex-direction: row-reverse;
+}
+
+.accordion-btn[data-sign-position='left']::after {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.accordion-btn[data-sign='arrow']::after {
+  content: '▾';
+  transition: transform 0.3s ease;
+}
+
+.accordion-btn[data-sign='arrow'][data-active]::after {
+  transform: rotate(180deg);
+}
+

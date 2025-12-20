@@ -23,9 +23,9 @@ export const DashboardLayout = () => {
             </div>
           </main>
           {/* {isMobile ? <Footer className="w-full fixed" /> : null} */}
-          <div className="fixed md:hidden bottom-0">
+          {/* <div className="fixed md:hidden bottom-0">
             <Footer className="w-full" />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Calendar, Check, ClipboardList, MonitorCog, Pyramid, Atom  } from "lucide-react";
+import { Check, ClipboardList, MonitorCog, Pyramid, Atom  } from "lucide-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import dracula from "react-syntax-highlighter/dist/esm/styles/prism/dracula";
 
 export const InstallPage = () => {
   const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
@@ -54,7 +56,7 @@ export const InstallPage = () => {
         steps: [
           {
             description:
-              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-blue-700" href="https://tailwindcss.com/docs/installation/tailwind-cli" target="_blank">Web Oficial</a>)',
+              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-primary-blue-300 underline" href="https://tailwindcss.com/docs/installation/tailwind-cli" target="_blank">Web Oficial</a>)',
             code: `npm install tailwindcss @tailwindcss/cli`,
             codeId: "install",
           },
@@ -109,7 +111,7 @@ export const InstallPage = () => {
         steps: [
           {
             description:
-              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-blue-700" href="https://tailwindcss.com/docs/installation/tailwind-cli" target="_blank">Web Oficial</a>)',
+              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-primary-blue-300 underline" href="https://tailwindcss.com/docs/installation/tailwind-cli" target="_blank">Web Oficial</a>)',
             code: `npm install tailwindcss @tailwindcss/vite`,
             codeId: "install",
           },
@@ -163,7 +165,7 @@ export const InstallPage = () => {
         steps: [
           {
             description:
-              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-blue-700" href="https://tailwindcss.com/docs/installation/framework-guides/angular" target="_blank">Web Oficial</a>)',
+              'Instalar TailwindCSS versión 4.1. (Link de referencia: <a class="text-primary-blue-300 underline" href="https://tailwindcss.com/docs/installation/framework-guides/angular" target="_blank">Web Oficial</a>)',
             code: `npm install tailwindcss @tailwindcss/postcss postcss --force`,
             codeId: "install",
           },
@@ -215,9 +217,8 @@ export const InstallPage = () => {
   return (
     <div>
       <div className="pb-5 ">
-        <p className="text-xl/6 text-primary-blue-600 font-normal mt-2 text-left">
-          Todo lo que los desarrolladores necesitan para implementar el sistema
-          de diseño en sus proyectos.
+        <p className="text-xl/6 text-white font-normal mt-2 text-left">
+          Todo lo que los desarrolladores necesitan para implementar el sistema de diseño en sus proyectos.
         </p>
       </div>
       <section className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 grid-rows-3 pb-15 pt-8 gap-6">
@@ -273,9 +274,7 @@ export const InstallPage = () => {
                 <strong className="text-xl font-medium text-white">
                   {section.title}
                 </strong>
-                <span className="flex items-center justify-center w-10 h-10 bg-white rounded-small">
-                  <Calendar className="shrink-0 w-4 text-primary-blue-600" />
-                </span>
+
               </div>
 
               <div className="flex flex-col border-t-0 border-2 rounded-b-medium p-6 border-primary-blue-600">
@@ -283,12 +282,12 @@ export const InstallPage = () => {
                   <div key={stepIndex} className="mb-8 last:mb-0">
                     {step.description && (
                       <p
-                        className="mb-5"
+                        className="mb-5 text-white"
                         dangerouslySetInnerHTML={{ __html: step.description }}
                       />
                     )}
                     {step.code && (
-                      <div className="relative border-2 rounded-medium p-6 pr-12 bg-primary-green-50 border-primary-green-200 w-full">
+                      <div className="relative border-2 border-primary-blue-100 rounded-medium p-6 pr-12 bg-primary-green-50 border-primary-green-200 w-full">
                         {step.codeId && (
                           <div className="right-3 top-3 absolute">
                             <button
@@ -298,21 +297,27 @@ export const InstallPage = () => {
                               }
                             >
                               {copied === step.codeId ? (
-                                <Check className="text-primary-green-700 duration-100" />
+                                <Check className="text-primary-blue-700 duration-100" />
                               ) : (
-                                <ClipboardList className="hover:text-primary-green-700 text-primary-green-500 duration-100" />
+                                <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
                               )}
                               {copied === step.codeId && (
-                                <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-green-600 text-white px-2 py-1 rounded-medium shadow-md animate-fade-in">
+                                <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
                                   Copiado
                                 </span>
                               )}
                             </button>
                           </div>
                         )}
-                        <code className="text-primary-blue-600 text-base whitespace-pre-wrap text-wrap">
-                          {step.code}
-                        </code>
+                        <SyntaxHighlighter
+                        className="overflow-hidden custom-scrollbar w-full"
+                                language="bash"
+                                style={dracula}
+                                wrapLongLines
+                              >
+                                {step.code}
+                              </SyntaxHighlighter>
+
                       </div>
                     )}
                   </div>
@@ -321,50 +326,7 @@ export const InstallPage = () => {
             </div>
           ))}
         </section>
-      
-      <section className="mt-5">
-        <strong className="text-2xl text-white font-semibold text-primary-green-600 mb-6 block">
-          Integración API de Figma
-        </strong>
-        <p className="text-xl font-normal text-primary-blue-500">
-          Este sistema de diseño se sincroniza automáticamente con el archivo
-          Figma mediante webhooks y la API de Figma. Así es como funciona la
-          integración:
-        </p>
-        <div className="grid grid-rows-2 md:grid-rows-1 gap-6 md:grid-cols-[2fr_1.4fr] mt-7">
-          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
-            <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
-              Actualizaciones automáticas
-            </strong>
-            <ul className="body text-primary-blue-600 mb-4 list-disc list-inside pl-2 gap-2">
-              <li className="mb-3">
-                Sincronización en tiempo real cuando cambian los tokens de
-                diseño
-              </li>
-              <li className="mb-3">
-                Las actualizaciones de componentes se reflejan inmediatamente
-              </li>
-              <li className="mb-3">
-                Los cambios de estilo se propagaron a la documentación.
-              </li>
-              <li>Control de versiones para cambios de diseño.</li>
-            </ul>
-          </div>
-          <div className="p-6 rounded-medium border-primary-blue-600 border-2">
-            <strong className="text-xl font-medium text-primary-blue-500 mb-7 block">
-              Beneficios para desarrolladores
-            </strong>
-            <ul className="body  text-primary-blue-600 mb-4 list-disc list-inside pl-2">
-              <li className="mb-3">Tokens de diseño siempre actualizados</li>
-              <li className="mb-3">Sincronización manual reducida</li>
-              <li className="mb-3">
-                Alineación del flujo de trabajo de diseño y desarrollo
-              </li>
-              <li>Generación automática de códigos</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 };

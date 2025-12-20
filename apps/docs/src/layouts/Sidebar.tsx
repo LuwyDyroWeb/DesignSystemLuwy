@@ -98,7 +98,7 @@ export const Sidebar = () => {
           icon: Component,
           children: [
             { label: "Button", href: "/componente/botones" },
-            { label: "Dropdown", href: "/componente/dropdown" },
+            // { label: "Dropdown", href: "/componente/dropdown" },
           ],
         },
       ],
@@ -135,7 +135,7 @@ export const Sidebar = () => {
       className={`h-screen bg-primary-blue-950 max-md:z-2000 text-primary-blue-50 border border-primary-blue-900 flex flex-col top-0 transition-all duration-300 ${
         sidebarStatus
           ? "md:w-64 max-md:left-0 sticky max-md:fixed"
-          : "md:w-19 max-md:-left-19 max-md:fixed"
+          : "md:w-19 max-md:-left-55 max-md:fixed"
       }  z-1001`}
     >
       <div className="flex items-center">

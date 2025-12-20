@@ -1,5 +1,5 @@
 
-
+import {BackHome} from '../assets/images';
 export const HomePage = () => {
   return (
     <div className="text-white">
@@ -28,7 +28,7 @@ export const HomePage = () => {
 
       <div className="relative pt-5 mb-8">
         <img
-          src="./src/assets/Back-Home.jpg"
+          src={BackHome}
           alt="Componentes"
           className="w-full rounded-xl object-cover"
         />

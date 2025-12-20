@@ -79,14 +79,9 @@
 .btn--primary-blue:active { background-color: var(--color-primary-blue-900); border-color: var(--color-primary-blue-900); }
 
 /* Filled - Primary Green */
-.btn--primary-green { background-color: var(--color-primary-green-600); border-color: var(--color-primary-green-600); color: white; }
-.btn--primary-green:hover { background-color: var(--color-primary-green-700); border-color: var(--color-primary-green-700); }
-.btn--primary-green:active { background-color: var(--color-primary-green-900); border-color: var(--color-primary-green-900); }
-
-/* Filled - Secondary (Using Neutro Black as base, adjust if needed) */
-.btn--secondary { background-color: var(--color-neutro-black-600); border-color: var(--color-neutro-black-600); color: white; }
-.btn--secondary:hover { background-color: var(--color-neutro-black-700); border-color: var(--color-neutro-black-700); }
-.btn--secondary:active { background-color: var(--color-neutro-black-900); border-color: var(--color-neutro-black-900); }
+.btn--primary-bluedark { background-color: var(--color-primary-bluedark-600); border-color: var(--color-primary-bluedark-600); color: white; }
+.btn--primary-bluedark:hover { background-color: var(--color-primary-bluedark-700); border-color: var(--color-primary-bluedark-700); }
+.btn--primary-bluedark:active { background-color: var(--color-primary-bluedark-900); border-color: var(--color-primary-bluedark-900); }
 
 /* Filled - Error */
 .btn--error{ background-color: var(--color-alert-error-600); border-color: var(--color-alert-error-600); color: white; }

@@ -1,8 +1,8 @@
 import React from 'react';
 
 export type TokenFamily =
-  | 'primary-blue'
-  | 'primary-green'
+  | 'primary'
+  | 'secondary'
   | 'alert-error'
   | 'alert-info'
   | 'alert-warning'
@@ -16,8 +16,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   
   variant?:
     | 'primary'
-    | 'primary-blue'
-    | 'primary-green'
     | 'secondary'
     | 'error'
     | 'info'
@@ -73,13 +71,11 @@ export const Button = ({
 
   const variantClassMap: Record<string, string> = {
     'primary': 'btn--primary-blue',
-    'primary-blue': 'btn--primary-blue',
-    'primary-green': 'btn--primary-green',
-    'secondary': 'btn--secondary', 
-    'error': 'btn--error',
-    'info': 'btn--info',
-    'warning': 'btn--warning',
-    'success': 'btn--success',
+    'secondary': 'btn--primary-bluedark',
+    'error': 'btn--alert-error',
+    'info': 'btn--alert-info',
+    'warning': 'btn--alert-warning',
+    'success': 'btn--alert-success',
     'neutro-black': 'btn--neutro-black',
     'neutro-white': 'btn--neutro-white',
   };
