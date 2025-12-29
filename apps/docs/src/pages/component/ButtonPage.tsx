@@ -53,7 +53,6 @@ export const ButtonPage = () => {
 <button type="button" class="btn btn--weight-regular btn--md btn--neutro-white">neutro-white</button>
 `;
 
-
   const BUTTON_SIZE_EXAMPLE_REACT = `<Button size="tiny">tiny</Button>
 <Button size="small">small</Button>
 <Button size="medium">medium</Button>
@@ -66,9 +65,9 @@ export const ButtonPage = () => {
 `;
 
   const [copied, setCopied] = useState<string | null>(null);
-    const [styleExample, setStyleExample] = useState<"react" | "html">("react");
-    const [colorExample, setColorExample] = useState<"react" | "html">("react");
-    const [sizeExample, setSizeExample] = useState<"react" | "html">("react");
+  const [styleExample, setStyleExample] = useState<"react" | "html">("react");
+  const [colorExample, setColorExample] = useState<"react" | "html">("react");
+  const [sizeExample, setSizeExample] = useState<"react" | "html">("react");
 
   const handleCopy = (paso: string, text: string) => {
     navigator.clipboard
@@ -81,33 +80,46 @@ export const ButtonPage = () => {
         console.error("Error al copiar:", err);
       });
   };
-  const BUTTON_STYLE_EXAMPLE = styleExample === "react" ? BUTTON_STYLE_EXAMPLE_REACT : BUTTON_STYLE_EXAMPLE_HTML;
-  const BUTTON_COLOR_EXAMPLE = colorExample === "react" ? BUTTON_COLOR_EXAMPLE_REACT : BUTTON_COLOR_EXAMPLE_HTML;
-  const BUTTON_SIZE_EXAMPLE = sizeExample === "react" ? BUTTON_SIZE_EXAMPLE_REACT : BUTTON_SIZE_EXAMPLE_HTML;
+  const BUTTON_STYLE_EXAMPLE =
+    styleExample === "react"
+      ? BUTTON_STYLE_EXAMPLE_REACT
+      : BUTTON_STYLE_EXAMPLE_HTML;
+  const BUTTON_COLOR_EXAMPLE =
+    colorExample === "react"
+      ? BUTTON_COLOR_EXAMPLE_REACT
+      : BUTTON_COLOR_EXAMPLE_HTML;
+  const BUTTON_SIZE_EXAMPLE =
+    sizeExample === "react"
+      ? BUTTON_SIZE_EXAMPLE_REACT
+      : BUTTON_SIZE_EXAMPLE_HTML;
   return (
     <>
       <div className="flex flex-col gap-8">
         <div className="text-3xl text-white font-bold">Uso</div>
         <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
-          <div className="flex flex-row justify-between gap-3 pb-4 w-full">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
               <span className="text-2xl ">Styles</span>
               <code className="text-primary-bluedark-200">ButtonStyle</code>
             </div>
-            <div className="bg-primary-blue-900 px-4 py-1 flex flex-row gap-1 items-center rounded-medium text-sm">
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
               <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${styleExample === "react" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setStyleExample("react")}
-            >
-              React
-            </button>
-            <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${styleExample === "html" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setStyleExample("html")}
-            >
-              HTML
-            </button>
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  styleExample === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setStyleExample("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  styleExample === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setStyleExample("html")}
+              >
+                HTML
+              </button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
@@ -137,7 +149,7 @@ export const ButtonPage = () => {
                     ) : (
                       <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
                     )}
-                    {copied === "style-example"  && (
+                    {copied === "style-example" && (
                       <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
                         Copiado
                       </span>
@@ -160,25 +172,29 @@ export const ButtonPage = () => {
           </div>
         </div>
         <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
-         <div className="flex flex-row justify-between gap-3 pb-4 w-full">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
               <span className="text-2xl ">Color</span>
               <code className="text-primary-bluedark-200">variant</code>
             </div>
-            <div className="bg-primary-blue-900 px-4 py-1 flex flex-row gap-1 items-center rounded-medium text-sm">
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
               <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${colorExample === "react" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setColorExample("react")}
-            >
-              React
-            </button>
-            <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${colorExample === "html" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setColorExample("html")}
-            >
-              HTML
-            </button>
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  colorExample === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setColorExample("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  colorExample === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setColorExample("html")}
+              >
+                HTML
+              </button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
@@ -228,25 +244,29 @@ export const ButtonPage = () => {
           </div>
         </div>
         <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
-                   <div className="flex flex-row justify-between gap-3 pb-4 w-full">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
               <span className="text-2xl ">Size</span>
               <code className="text-primary-bluedark-200">ButtonStyle</code>
             </div>
-            <div className="bg-primary-blue-900 px-4 py-1 flex flex-row gap-1 items-center rounded-medium text-sm">
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
               <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${sizeExample === "react" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setSizeExample("react")}
-            >
-              React
-            </button>
-            <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${sizeExample === "html" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setSizeExample("html")}
-            >
-              HTML
-            </button>
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  sizeExample === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setSizeExample("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  sizeExample === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setSizeExample("html")}
+              >
+                HTML
+              </button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
@@ -295,6 +315,7 @@ export const ButtonPage = () => {
             </div>
           </div>
         </div>
+        
       </div>
     </>
   );

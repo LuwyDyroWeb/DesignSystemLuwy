@@ -97,8 +97,8 @@ export const Sidebar = () => {
           label: "Componentes",
           icon: Component,
           children: [
+            { label: "Accordion", href: "/componente/accordion" },
             { label: "Button", href: "/componente/botones" },
-            // { label: "Dropdown", href: "/componente/dropdown" },
           ],
         },
       ],

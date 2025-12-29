@@ -16,7 +16,7 @@ import { HeaderPage } from "./pages/layout/HeaderPage";
 import { FooterPage } from "./pages/layout/FooterPage";
 import { ColorsPage } from "./pages/content/ColorsPage";
 import { TipografiaPage } from "./pages/content/TipografiaPage";
-// import { DropdownPage } from "./pages/component/DropdownPage";
+import { AccordionPage } from "./pages/component/AccordionPage";
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
         <Route path="content/colores" element={<ColorsPage />} />
         <Route path="content/tipografia" element={<TipografiaPage />} />
         <Route path="componente/botones" element={<ButtonPage />} />
-        {/* <Route path="componente/dropdown" element={<DropdownPage />} /> */}
+        <Route path="componente/accordion" element={<AccordionPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />}></Route>

@@ -18,7 +18,7 @@ export const Header = () => {
     "/content/colores": "Colores",
     "/content/tipografia": "Tipografía",
     "/componente/botones": "Botones",
-    "/componente/dropdown": "Dropdown",
+    "/componente/accordion": "Accordion",
   };
 
   const title = routeTitles[location.pathname] || "";
