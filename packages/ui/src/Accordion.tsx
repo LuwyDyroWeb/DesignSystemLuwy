@@ -129,8 +129,8 @@ export const AccordionItem = ({
   };
 
   const accordionColor: Record<string, string> = {
-    primary: "text-primary-bluedark-500",
-    secondary: "text-primary-blue-500",
+    primary: "text-primary-blue-500",
+    secondary: "text-primary-bluedark-500",
     error: "text-alert-error-500",
     info: "text-alert-info-500",
     warning: "text-alert-warning-500",
@@ -142,7 +142,7 @@ export const AccordionItem = ({
   return (
     <div
       key={id}
-      id={id}
+      data-id={id}
       data-component-name="AccordionItem"
       className={`border-b border-inherit last:border-none ${className || ''}`}
       {...rest}

@@ -1,5 +1,6 @@
 
 import {BackHome} from '../assets/images';
+import { Link } from "react-router-dom";
 export const HomePage = () => {
   return (
     <div className="text-white">
@@ -13,15 +14,15 @@ export const HomePage = () => {
           interfaces escalables de forma ágil y eficiente.
         </p>
         <p className="flex gap-5 py-5 mt-4">
-          <a
-            href="/documentacion/instalacion"
+           <Link
+            to="/documentacion/instalacion"
             className="bg-white text-blue-950 border py-3 px-5 rounded-3xl cursor-pointer inline-block transition-all duration-400 hover:bg-transparent hover:border hover:text-white hover:pr-7"
           >
             Empezar
-          </a>
-          <a href="/componente/botones" className="border-2 border-white  py-3 px-5 rounded-3xl cursor-pointer transition-all duration-400 hover:bg-white hover:border-blue-950 hover:text-blue-950 hover:pr-7">
+          </Link>
+           <Link to="/componente/botones" className="border-2 border-white  py-3 px-5 rounded-3xl cursor-pointer transition-all duration-400 hover:bg-white hover:border-blue-950 hover:text-blue-950 hover:pr-7">
             Ver componentes
-          </a>
+          </Link>
         </p>
       </div>
       <hr  className="text-blue-900 my-3" />

@@ -52,10 +52,52 @@ export const AccordionPage = () => {
     {...}
   </AccordionItem>
 </Accordion>`;
+  const ACCORDION_EXAMPLE_POSITION_REACT = `import { Accordion, AccordionItem } from '@luwydyroweb/ui';
+  
+<Accordion>
+  <AccordionItem id="item1" title="Izquierda" signPosition="left">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item2" title="Derecha" signPosition="right">
+    {...}
+  </AccordionItem>
+</Accordion>`;
+  const ACCORDION_EXAMPLE_COLORS_REACT = `import { Accordion, AccordionItem } from '@luwydyroweb/ui';
+  
+<Accordion>
+  <AccordionItem id="item1" title="primary" color="primary">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item2" title="secondary" color="secondary">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item3" title="error" color="error">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item4" title="info" color="info">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item5" title="warning" color="warning">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item6" title="success" color="success">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item7" title="white" color="white">
+    {...}
+  </AccordionItem>
+  <AccordionItem id="item8" title="black" color="black">
+    {...}
+  </AccordionItem>
+</Accordion>`;
 
   const [exampleBasic, setExampleBasic] = useState<"react" | "html">("react");
   const [exampleNested, setExampleNested] = useState<"react" | "html">("react");
   const [exampleIcons, setExampleIcons] = useState<"react" | "html">("react");
+  const [examplePosition, setExamplePosition] = useState<"react" | "html">(
+    "react"
+  );
+  const [exampleColors, setExampleColors] = useState<"react" | "html">("react");
 
   const ACCORDION_EXAMPLE_BASIC =
     exampleBasic === "react" ? ACCORDION_EXAMPLE_BASIC_REACT : "";
@@ -63,6 +105,10 @@ export const AccordionPage = () => {
     exampleNested === "react" ? ACCORDION_EXAMPLE_NESTED_REACT : "";
   const ACCORDION_EXAMPLE_ICONS =
     exampleIcons === "react" ? ACCORDION_EXAMPLE_ICONS_REACT : "";
+  const ACCORDION_EXAMPLE_POSITION =
+    examplePosition === "react" ? ACCORDION_EXAMPLE_POSITION_REACT : "";
+  const ACCORDION_EXAMPLE_COLORS =
+    exampleColors === "react" ? ACCORDION_EXAMPLE_COLORS_REACT : "";
 
   return (
     <>
@@ -233,15 +279,15 @@ export const AccordionPage = () => {
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
                 className={`py-1 px-2 rounded-md text-white duration-300 ${
-                  exampleIcons === "react" ? "bg-primary-blue-600" : ""
+                  examplePosition === "react" ? "bg-primary-blue-600" : ""
                 }`}
-                onClick={() => setExampleIcons("react")}
+                onClick={() => setExamplePosition("react")}
               >
                 React
               </button>
               {/* <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${exampleIcons === "html" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setExampleIcons("html")}
+              className={`py-1 px-2 rounded-md text-white duration-300 ${examplePosition === "html" ? "bg-primary-blue-600" : ""}`}
+              onClick={() => setExamplePosition("html")}
             >
               HTML
             </button> */}
@@ -251,19 +297,17 @@ export const AccordionPage = () => {
             <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
               <div className="flex flex-col items-center gap-4 py-2">
                 <Accordion>
-                  <AccordionItem id="item1" title="Default" sign="plus">
-                    {loremIpsum}
-                  </AccordionItem>
-                  <AccordionItem id="item2" title="Flecha" sign="arrow">
-                    {loremIpsum}
-                  </AccordionItem>
-                  <AccordionItem id="item3" title="Sin icono" sign="no">
+                  <AccordionItem
+                    id="item1"
+                    title="Izquierda"
+                    signPosition="left"
+                  >
                     {loremIpsum}
                   </AccordionItem>
                   <AccordionItem
-                    id="item4"
-                    title="SVG Perzonalizado"
-                    sign={<SlidersHorizontal />}
+                    id="item2"
+                    title="Derecha"
+                    signPosition="right"
                   >
                     {loremIpsum}
                   </AccordionItem>
@@ -272,8 +316,8 @@ export const AccordionPage = () => {
             </div>
             <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
               <CodeBlock
-                code={ACCORDION_EXAMPLE_ICONS}
-                language={exampleIcons === "react" ? "tsx" : "html"}
+                code={ACCORDION_EXAMPLE_POSITION}
+                language={examplePosition === "react" ? "tsx" : "html"}
                 copyId="accordion-Nested"
               />
             </div>
@@ -289,15 +333,15 @@ export const AccordionPage = () => {
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
                 className={`py-1 px-2 rounded-md text-white duration-300 ${
-                  exampleIcons === "react" ? "bg-primary-blue-600" : ""
+                  exampleColors === "react" ? "bg-primary-blue-600" : ""
                 }`}
-                onClick={() => setExampleIcons("react")}
+                onClick={() => setExampleColors("react")}
               >
                 React
               </button>
               {/* <button
-              className={`py-1 px-2 rounded-md text-white duration-300 ${exampleIcons === "html" ? "bg-primary-blue-600" : ""}`}
-              onClick={() => setExampleIcons("html")}
+              className={`py-1 px-2 rounded-md text-white duration-300 ${exampleColors === "html" ? "bg-primary-blue-600" : ""}`}
+              onClick={() => setExampleColors("html")}
             >
               HTML
             </button> */}
@@ -336,8 +380,8 @@ export const AccordionPage = () => {
             </div>
             <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
               <CodeBlock
-                code={ACCORDION_EXAMPLE_ICONS}
-                language={exampleIcons === "react" ? "tsx" : "html"}
+                code={ACCORDION_EXAMPLE_COLORS}
+                language={exampleColors === "react" ? "tsx" : "html"}
                 copyId="accordion-Nested"
               />
             </div>

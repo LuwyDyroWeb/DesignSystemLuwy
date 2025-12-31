@@ -19,6 +19,7 @@ export const Header = () => {
     "/content/tipografia": "Tipografía",
     "/componente/botones": "Botones",
     "/componente/accordion": "Accordion",
+    "/componente/dropdown": "Dropdown",
   };
 
   const title = routeTitles[location.pathname] || "";

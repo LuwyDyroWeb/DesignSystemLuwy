@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button, type ButtonProps } from "@luwydyroweb/ui";
-import { SlidersHorizontal, ClipboardList, Check } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import coldarkDark from "react-syntax-highlighter/dist/esm/styles/prism/coldark-dark";
+import { Button, type ButtonProps, ButtonIcon } from "@luwydyroweb/ui";
+import { SlidersHorizontal } from "lucide-react";
+import { CodeBlock } from "./CodeBlock";
 
 export const ButtonPage = () => {
   const BTN_STYLE: ButtonProps["buttonStyle"][] = [
@@ -22,7 +21,9 @@ export const ButtonPage = () => {
   ];
   const BTN_SIZE: ButtonProps["size"][] = ["tiny", "small", "medium", "giant"];
 
-  const BUTTON_STYLE_EXAMPLE_REACT = `<Button buttonStyle="filled">filled</Button>
+  const BUTTON_STYLE_EXAMPLE_REACT = `import { Button } from "@luwydyroweb/ui";
+
+<Button buttonStyle="filled">filled</Button>
 <Button buttonStyle="outline">outline</Button>
 <Button buttonStyle="clear">clear</Button>
 <Button disabled>disabled</Button>
@@ -33,7 +34,9 @@ export const ButtonPage = () => {
 <button type="button" class="btn btn--weight-regular btn--md btn--primary-blue" disabled>Disabled</button>
 `;
 
-  const BUTTON_COLOR_EXAMPLE_REACT = `<Button variant="primary">primary</Button>
+  const BUTTON_COLOR_EXAMPLE_REACT = `import { Button } from "@luwydyroweb/ui";
+
+<Button variant="primary">primary</Button>
 <Button variant="secondary">secondary</Button>
 <Button variant="error">error</Button>
 <Button variant="info">info</Button>
@@ -53,7 +56,9 @@ export const ButtonPage = () => {
 <button type="button" class="btn btn--weight-regular btn--md btn--neutro-white">neutro-white</button>
 `;
 
-  const BUTTON_SIZE_EXAMPLE_REACT = `<Button size="tiny">tiny</Button>
+  const BUTTON_SIZE_EXAMPLE_REACT = `import { Button } from "@luwydyroweb/ui";
+
+<Button size="tiny">tiny</Button>
 <Button size="small">small</Button>
 <Button size="medium">medium</Button>
 <Button size="giant">giant</Button>
@@ -63,23 +68,46 @@ export const ButtonPage = () => {
 <button type="button" class="btn btn--weight-regular btn--lg btn--primary-blue">medium</button>
 <button type="button" class="btn btn--weight-regular btn--xl btn--primary-blue">giant</button>
 `;
+  const BUTTON_LOADING_EXAMPLE_REACT = `import { Button } from "@luwydyroweb/ui";
 
-  const [copied, setCopied] = useState<string | null>(null);
+<Button isLoading>Cargando</Button>
+<Button isLoading buttonStyle="outline">Cargando</Button>
+<Button isLoading buttonStyle="clear">Cargando</Button>`;
+
+  const BUTTON_LOADING_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue btn--loading">Cargando</button>
+<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue btn--outline btn--loading">Cargando</button>
+<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue btn--clear btn--loading">Cargando</button>
+`;
+
+const BUTTONICON_EXAMPLE_REACT = `import { ButtonIcon } from "@luwydyroweb/ui";
+
+<ButtonIcon>Filled</ButtonIcon>
+<ButtonIcon buttonStyle="outline">Outline</ButtonIcon>
+<ButtonIcon buttonStyle="clear">Clear</ButtonIcon>`;
+
+const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue"><span class="btn_icon btn_icon--left" aria-hidden="true"><svg>...</svg></span><span class="btn_label">Filled</span></button>
+<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue btn--outline"><span class="btn_icon btn_icon--left" aria-hidden="true"><svg>...</svg></span><span class="btn_label">Outline</span></button>
+<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue btn--clear"><span class="btn_icon btn_icon--left" aria-hidden="true"><svg>...</svg></span><span class="btn_label">Clear</span></button>
+`;
+  const BUTTONICON_POSITION_EXAMPLE_REACT = `import { ButtonIcon } from "@luwydyroweb/ui";
+
+<ButtonIcon iconPosition="left">left</ButtonIcon>
+<ButtonIcon iconPosition="right">right</ButtonIcon>`;
+
+  const BUTTONICON_POSITION_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue"><span class="btn_icon btn_icon--left" aria-hidden="true"><svg>...</svg></span><span class="btn_label">left</span></button>
+<button type="button" class="btn btn--weight-regular btn--md btn--primary-blue"><span class="btn_label">right</span><span class="btn_icon btn_icon--right" aria-hidden="true"><svg>...</svg></span></button>
+`;
+
+
   const [styleExample, setStyleExample] = useState<"react" | "html">("react");
   const [colorExample, setColorExample] = useState<"react" | "html">("react");
   const [sizeExample, setSizeExample] = useState<"react" | "html">("react");
+  const [loadingExample, setLoadingExample] = useState<"react" | "html">(
+    "react"
+  );
+  const [iconExample, setIconExample] = useState<"react" | "html">("react");
+  const [iconPosition, setIconPosition] = useState<"react" | "html">("react");
 
-  const handleCopy = (paso: string, text: string) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        setCopied(paso);
-        setTimeout(() => setCopied(null), 1500);
-      })
-      .catch((err) => {
-        console.error("Error al copiar:", err);
-      });
-  };
   const BUTTON_STYLE_EXAMPLE =
     styleExample === "react"
       ? BUTTON_STYLE_EXAMPLE_REACT
@@ -92,6 +120,18 @@ export const ButtonPage = () => {
     sizeExample === "react"
       ? BUTTON_SIZE_EXAMPLE_REACT
       : BUTTON_SIZE_EXAMPLE_HTML;
+  const BUTTON_LOADING_EXAMPLE =
+    loadingExample === "react"
+      ? BUTTON_LOADING_EXAMPLE_REACT
+      : BUTTON_LOADING_EXAMPLE_HTML;
+  const BUTTONICON_EXAMPLE =
+    iconExample === "react"
+      ? BUTTONICON_EXAMPLE_REACT
+      : BUTTONICON_EXAMPLE_HTML;
+  const BUTTONICON_POSITION_EXAMPLE =
+    iconPosition === "react"
+      ? BUTTONICON_POSITION_EXAMPLE_REACT
+      : BUTTONICON_POSITION_EXAMPLE_HTML;
   return (
     <>
       <div className="flex flex-col gap-8">
@@ -101,7 +141,7 @@ export const ButtonPage = () => {
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
               <span className="text-2xl ">Styles</span>
-              <code className="text-primary-bluedark-200">ButtonStyle</code>
+              <code className="text-primary-bluedark-200">buttonStyle</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
               <button
@@ -136,38 +176,11 @@ export const ButtonPage = () => {
               </div>
             </div>
             <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
-              <div className="flex flex-wrap items-center gap-4 relative not-xl:pt-4">
-                <div className="right-0 top-0 absolute">
-                  <button
-                    className="p-1"
-                    onClick={() =>
-                      handleCopy("style-example", BUTTON_STYLE_EXAMPLE)
-                    }
-                  >
-                    {copied === "style-example" ? (
-                      <Check className="text-primary-blue-700 duration-100" />
-                    ) : (
-                      <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
-                    )}
-                    {copied === "style-example" && (
-                      <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
-                        Copiado
-                      </span>
-                    )}
-                  </button>
-                </div>
-                <SyntaxHighlighter
-                  className="overflow-hidden custom-scrollbar w-full"
-                  language={styleExample === "react" ? "tsx" : "html"}
-                  style={coldarkDark}
-                  customStyle={{
-                    background: "transparent",
-                    margin: 0,
-                  }}
-                >
-                  {BUTTON_STYLE_EXAMPLE}
-                </SyntaxHighlighter>
-              </div>
+              <CodeBlock
+                code={BUTTON_STYLE_EXAMPLE}
+                language={styleExample === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
             </div>
           </div>
         </div>
@@ -208,38 +221,11 @@ export const ButtonPage = () => {
               </div>
             </div>
             <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
-              <div className="flex flex-wrap items-center gap-4 relative not-xl:pt-4">
-                <div className="right-0 top-0 absolute">
-                  <button
-                    className="p-1"
-                    onClick={() =>
-                      handleCopy("color-example", BUTTON_COLOR_EXAMPLE)
-                    }
-                  >
-                    {copied === "color-example" ? (
-                      <Check className="text-primary-blue-700 duration-100" />
-                    ) : (
-                      <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
-                    )}
-                    {copied === "color-example" && (
-                      <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
-                        Copiado
-                      </span>
-                    )}
-                  </button>
-                </div>
-                <SyntaxHighlighter
-                  className="overflow-hidden custom-scrollbar w-full"
-                  language={colorExample === "react" ? "tsx" : "html"}
-                  style={coldarkDark}
-                  customStyle={{
-                    background: "transparent",
-                    margin: 0,
-                  }}
-                >
-                  {BUTTON_COLOR_EXAMPLE}
-                </SyntaxHighlighter>
-              </div>
+              <CodeBlock
+                code={BUTTON_COLOR_EXAMPLE}
+                language={colorExample === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
             </div>
           </div>
         </div>
@@ -248,7 +234,7 @@ export const ButtonPage = () => {
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
               <span className="text-2xl ">Size</span>
-              <code className="text-primary-bluedark-200">ButtonStyle</code>
+              <code className="text-primary-bluedark-200">size</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
               <button
@@ -280,42 +266,146 @@ export const ButtonPage = () => {
               </div>
             </div>
             <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
-              <div className="flex flex-wrap items-center gap-4 relative not-xl:pt-4">
-                <div className="right-0 top-0 absolute">
-                  <button
-                    className="p-1"
-                    onClick={() =>
-                      handleCopy("size-example", BUTTON_SIZE_EXAMPLE)
-                    }
-                  >
-                    {copied === "size-example" ? (
-                      <Check className="text-primary-blue-700 duration-100" />
-                    ) : (
-                      <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
-                    )}
-                    {copied === "size-example" && (
-                      <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
-                        Copiado
-                      </span>
-                    )}
-                  </button>
-                </div>
-                <SyntaxHighlighter
-                  className="overflow-hidden custom-scrollbar w-full"
-                  language={sizeExample === "react" ? "tsx" : "html"}
-                  style={coldarkDark}
-                  customStyle={{
-                    background: "transparent",
-                    margin: 0,
-                  }}
-                >
-                  {BUTTON_SIZE_EXAMPLE}
-                </SyntaxHighlighter>
-              </div>
+              <CodeBlock
+                code={BUTTON_SIZE_EXAMPLE}
+                language={sizeExample === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
             </div>
           </div>
         </div>
-        
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
+            <div className="flex flex-row items-center gap-3 pb-4">
+              <SlidersHorizontal className="h-7 w-7" />
+              <span className="text-2xl ">Loading</span>
+              <code className="text-primary-bluedark-200">IsLoading</code>
+            </div>
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  loadingExample === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setLoadingExample("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  loadingExample === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setLoadingExample("html")}
+              >
+                HTML
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+            <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+              <div className="flex flex-wrap items-center gap-4 py-2">
+                <Button isLoading>Cargando</Button>
+                <Button isLoading buttonStyle="outline">
+                  Cargando
+                </Button>
+                <Button isLoading buttonStyle="clear">
+                  Cargando
+                </Button>
+              </div>
+            </div>
+            <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
+              <CodeBlock
+                code={BUTTON_LOADING_EXAMPLE}
+                language={sizeExample === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
+            <div className="flex flex-row items-center gap-3 pb-4">
+              <SlidersHorizontal className="h-7 w-7" />
+              <span className="text-2xl ">Ícono</span>
+              <code className="text-primary-bluedark-200">ButtonIcon</code>
+            </div>
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  iconExample === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setIconExample("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  iconExample === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setIconExample("html")}
+              >
+                HTML
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+            <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+              <div className="flex flex-wrap items-center gap-4 py-2">
+                <ButtonIcon>Filled</ButtonIcon>
+                <ButtonIcon buttonStyle="outline">Outline</ButtonIcon>
+                <ButtonIcon buttonStyle="clear">Clear</ButtonIcon>
+              </div>
+            </div>
+            <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
+              <CodeBlock
+                code={BUTTONICON_EXAMPLE}
+                language={iconExample === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
+          <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
+            <div className="flex flex-row items-center gap-3 pb-4">
+              <SlidersHorizontal className="h-7 w-7" />
+              <span className="text-2xl ">Posición del Ícono</span>
+              <code className="text-primary-bluedark-200">iconPosition</code>
+            </div>
+            <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  iconPosition === "react" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setIconPosition("react")}
+              >
+                React
+              </button>
+              <button
+                className={`py-1 px-2 rounded-md text-white duration-300 ${
+                  iconPosition === "html" ? "bg-primary-blue-600" : ""
+                }`}
+                onClick={() => setIconPosition("html")}
+              >
+                HTML
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+            <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+              <div className="flex flex-wrap items-center gap-4 py-2">
+                <ButtonIcon iconPosition="left">left</ButtonIcon>
+                <ButtonIcon iconPosition="right">right</ButtonIcon>
+              </div>
+            </div>
+            <div className="w-full rounded-medium border border-dashed border-zinc-500 p-4 pr-5">
+              <CodeBlock
+                code={BUTTONICON_POSITION_EXAMPLE}
+                language={iconPosition === "react" ? "tsx" : "html"}
+                copyId="accordion-basic"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

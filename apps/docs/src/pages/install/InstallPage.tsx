@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Check, ClipboardList, MonitorCog, Pyramid, Atom  } from "lucide-react";
+import { Check, ClipboardList, MonitorCog, Pyramid, Atom } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import dracula from "react-syntax-highlighter/dist/esm/styles/prism/dracula";
 
 export const InstallPage = () => {
-  const [activeTypeButton, setActiveTypeButton] = useState<string>("Type1");
+  const [activeTypeButton, setActiveTypeButton] = useState<string>("Type2");
   const [copied, setCopied] = useState<string | null>(null);
-
 
   const typeLabels: Record<string, string> = {
     Type1: "Blazor / .NET",
@@ -16,14 +15,24 @@ export const InstallPage = () => {
 
   const getButtonType = (nombre: string) => {
     const isActive = activeTypeButton === nombre;
-    return `
-      flex flex-col items-center rounded-medium py-3 px-7 border-2 font-semibold cursor-pointer duration-300 gap-1 text-white p-3 border-2 font-medium text-sm cursor-pointer
-      ${
-        isActive
-          ? "border-primary-blue-700 bg-primary-blue-700"
-          : "hover:bg-primary-blue-700 hover:border-primary-blue-700 border-primary-blue-600 bg-primary-blue-600"
-      }
-    `;
+    const baseClasses = `flex flex-col items-center rounded-medium py-3 px-7 font-semibold cursor-pointer duration-300 gap-1 text-white p-3 font-medium text-sm cursor-pointer`;
+    const activeClass = isActive ? "opacity-85" : "hover:opacity-90";
+
+    if (nombre === "Type1") {
+      return `${baseClasses} ${activeClass} bg-[#5C2D91]`;
+    }
+
+    if (nombre === "Type2") {
+      return `${baseClasses} ${activeClass} bg-[#61DAFB]`;
+    }
+
+    if (nombre === "Type3") {
+      return `${baseClasses} ${activeClass} bg-[#DD0031]`;
+    }
+
+    return `${baseClasses} ${activeClass}`;
+
+
   };
 
   const handleCopy = (paso: string, text: string) => {
@@ -61,8 +70,7 @@ export const InstallPage = () => {
             codeId: "install",
           },
           {
-            description:
-              `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
+            description: `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
             code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
@@ -90,14 +98,12 @@ export const InstallPage = () => {
         title: "Tailwind CLI build process",
         steps: [
           {
-            description:
-          `Correr en el terminal del proyecto el CLI para escanear los recursos de clases y desplegar en CSS`,
+            description: `Correr en el terminal del proyecto el CLI para escanear los recursos de clases y desplegar en CSS`,
             code: `npx @tailwindcss/cli -i ./wwwroot/app.css -o ./wwwroot/output.css --watch`,
             codeId: "build",
           },
           {
-            description:
-          `Agregar el llamado al output.css en el App.razor o _Layout.cshtml o en el file donde se hace los llamados "&lthead>... &lthead/>"`,
+            description: `Agregar el llamado al output.css en el App.razor o _Layout.cshtml o en el file donde se hace los llamados "&lthead>... &lthead/>"`,
             code: `<link href="./output.css" rel="stylesheet"></link>`,
             codeId: "build2",
           },
@@ -116,8 +122,7 @@ export const InstallPage = () => {
             codeId: "install",
           },
           {
-            description:
-              `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
+            description: `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
             code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
@@ -145,14 +150,12 @@ export const InstallPage = () => {
         title: "Vite Configuration",
         steps: [
           {
-            description:
-          `En la configuración de vite, por lo general este archivo: vite.config.ts Importar el plugin`,
+            description: `En la configuración de vite, por lo general este archivo: vite.config.ts Importar el plugin`,
             code: `import tailwindcss from '@tailwindcss/vite'`,
             codeId: "build",
           },
           {
-            description:
-          `Agregar el llamado al TailwindCSS en plugins: [tailwindcss(), ]"`,
+            description: `Agregar el llamado al TailwindCSS en plugins: [tailwindcss(), ]"`,
             code: `tailwindcss(),`,
             codeId: "build2",
           },
@@ -170,8 +173,7 @@ export const InstallPage = () => {
             codeId: "install",
           },
           {
-            description:
-              `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
+            description: `Token de seguridad: Crear un archivo <strong class="text-primary-blue-500 font-bold">.npmrc</strong> en la raiz de su proyecto, al nivel de su package.json y pegar el contenido`,
             code: `@luwydyroweb:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=NPM_TOKEN`,
             codeId: "npmrc",
@@ -199,8 +201,7 @@ export const InstallPage = () => {
         title: "Configure PostCSS Plugins",
         steps: [
           {
-            description:
-          `Crear un archivo .postcssrc.json en la raiz principal del proyecto, importar el plugin. Copiar y pegar `,
+            description: `Crear un archivo .postcssrc.json en la raiz principal del proyecto, importar el plugin. Copiar y pegar `,
             code: `{
   "plugins": {
     "@tailwindcss/postcss": {}
@@ -208,7 +209,6 @@ export const InstallPage = () => {
 }`,
             codeId: "build",
           },
-          
         ],
       },
     ],
@@ -218,19 +218,11 @@ export const InstallPage = () => {
     <div>
       <div className="pb-5 ">
         <p className="text-xl/6 text-white font-normal mt-2 text-left">
-          Todo lo que los desarrolladores necesitan para implementar el sistema de diseño en sus proyectos.
+          Todo lo que los desarrolladores necesitan para implementar el sistema
+          de diseño en sus proyectos.
         </p>
       </div>
       <section className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 grid-rows-3 pb-15 pt-8 gap-6">
-        <button
-          className={getButtonType("Type1")}
-          onClick={() => setActiveTypeButton("Type1")}
-        >
-          <span className="block h-6 w-6">
-            <MonitorCog />
-          </span>
-          {typeLabels["Type1"]}
-        </button>
         <button
           className={getButtonType("Type2")}
           onClick={() => setActiveTypeButton("Type2")}
@@ -245,88 +237,89 @@ export const InstallPage = () => {
           onClick={() => setActiveTypeButton("Type3")}
         >
           <span className="block h-6 w-6">
-           <Pyramid />
+            <Pyramid />
           </span>
           {typeLabels["Type3"]}
         </button>
+        <button
+          className={getButtonType("Type1")}
+          onClick={() => setActiveTypeButton("Type1")}
+        >
+          <span className="block h-6 w-6">
+            <MonitorCog />
+          </span>
+          {typeLabels["Type1"]}
+        </button>
       </section>
       <div className="relative w-full">
-        <button
-          className="flex items-center justify-between bg-primary-blue-600 px-6 py-4 rounded-small mb-10 w-full"
-        >
+        <button className="flex items-center justify-between bg-primary-blue-600 px-6 py-4 rounded-small mb-10 w-full">
           <h3 className="text-2xl font-semibold text-white">
             Guía de instalación -{" "}
             {activeTypeButton ? typeLabels[activeTypeButton] : "Component"}
           </h3>
-
         </button>
       </div>
-      
-        <section className="animate-slideDown">
-          {guias[activeTypeButton]?.map((section, sectionIndex) => (
-            <div
-              key={sectionIndex}
-              className={`flex flex-col justify-between mb-${
-                sectionIndex === guias[activeTypeButton].length - 1 ? "20" : "7"
-              }`}
-            >
-              <div className="flex flex-row items-center justify-between gap-6 border-2 rounded-t-medium p-6 bg-primary-blue-600 border-primary-blue-600">
-                <strong className="text-xl font-medium text-white">
-                  {section.title}
-                </strong>
 
-              </div>
-
-              <div className="flex flex-col border-t-0 border-2 rounded-b-medium p-6 border-primary-blue-600">
-                {section.steps?.map((step, stepIndex) => (
-                  <div key={stepIndex} className="mb-8 last:mb-0">
-                    {step.description && (
-                      <p
-                        className="mb-5 text-white"
-                        dangerouslySetInnerHTML={{ __html: step.description }}
-                      />
-                    )}
-                    {step.code && (
-                      <div className="relative border-2 border-primary-blue-100 rounded-medium p-6 pr-12 bg-primary-green-50 border-primary-green-200 w-full">
-                        {step.codeId && (
-                          <div className="right-3 top-3 absolute">
-                            <button
-                              className="p-1"
-                              onClick={() =>
-                                handleCopy(step.codeId!, step.code!)
-                              }
-                            >
-                              {copied === step.codeId ? (
-                                <Check className="text-primary-blue-700 duration-100" />
-                              ) : (
-                                <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
-                              )}
-                              {copied === step.codeId && (
-                                <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
-                                  Copiado
-                                </span>
-                              )}
-                            </button>
-                          </div>
-                        )}
-                        <SyntaxHighlighter
-                        className="overflow-hidden custom-scrollbar w-full"
-                                language="bash"
-                                style={dracula}
-                                wrapLongLines
-                              >
-                                {step.code}
-                              </SyntaxHighlighter>
-
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+      <section className="animate-slideDown">
+        {guias[activeTypeButton]?.map((section, sectionIndex) => (
+          <div
+            key={sectionIndex}
+            className={`flex flex-col justify-between mb-${
+              sectionIndex === guias[activeTypeButton].length - 1 ? "20" : "7"
+            }`}
+          >
+            <div className="flex flex-row items-center justify-between gap-6 border-2 rounded-t-medium p-6 bg-primary-blue-600 border-primary-blue-600">
+              <strong className="text-xl font-medium text-white">
+                {section.title}
+              </strong>
             </div>
-          ))}
-        </section>
 
+            <div className="flex flex-col border-t-0 border-2 rounded-b-medium p-6 border-primary-blue-600">
+              {section.steps?.map((step, stepIndex) => (
+                <div key={stepIndex} className="mb-8 last:mb-0">
+                  {step.description && (
+                    <p
+                      className="mb-5 text-white"
+                      dangerouslySetInnerHTML={{ __html: step.description }}
+                    />
+                  )}
+                  {step.code && (
+                    <div className="relative border-2 border-primary-blue-100 rounded-medium p-6 pr-12 bg-primary-green-50 border-primary-green-200 w-full">
+                      {step.codeId && (
+                        <div className="right-3 top-3 absolute">
+                          <button
+                            className="p-1"
+                            onClick={() => handleCopy(step.codeId!, step.code!)}
+                          >
+                            {copied === step.codeId ? (
+                              <Check className="text-primary-blue-700 duration-100" />
+                            ) : (
+                              <ClipboardList className="hover:text-primary-blue-700 text-primary-blue-500 duration-100" />
+                            )}
+                            {copied === step.codeId && (
+                              <span className="absolute -top-5 -left-4 text-xs font-semibold bg-primary-blue-600 text-white px-3 py-1 rounded-medium shadow-md animate-fade-in">
+                                Copiado
+                              </span>
+                            )}
+                          </button>
+                        </div>
+                      )}
+                      <SyntaxHighlighter
+                        className="overflow-hidden custom-scrollbar w-full"
+                        language="bash"
+                        style={dracula}
+                        wrapLongLines
+                      >
+                        {step.code}
+                      </SyntaxHighlighter>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
     </div>
   );
 };
