@@ -118,7 +118,7 @@ export const AccordionPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Uso Básico</span>
+              <span className="text-2xl text-white">Uso Básico</span>
               <code className="text-primary-bluedark-200">Children</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
@@ -165,7 +165,7 @@ export const AccordionPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Accordion Anidado</span>
+              <span className="text-2xl text-white">Accordion Anidado</span>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
@@ -218,7 +218,7 @@ export const AccordionPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Íconos</span>
+              <span className="text-2xl text-white">Íconos</span>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
@@ -274,7 +274,7 @@ export const AccordionPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Posición del Ícono</span>
+              <span className="text-2xl text-white">Posición del Ícono</span>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
@@ -328,7 +328,7 @@ export const AccordionPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Colores</span>
+              <span className="text-2xl text-white">Colores</span>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button

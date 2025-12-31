@@ -8,10 +8,10 @@ import {
   BookType,
   Component,
   PanelLeftOpen,
-  Braces,
+  // Braces,
   ArrowBigDownDashIcon,
-  ClipboardPen,
-  BrickWall,
+  // ClipboardPen,
+  // BrickWall,
   Power,
   Menu,
 } from "lucide-react";
@@ -56,21 +56,21 @@ export const Sidebar = () => {
           href: "/documentacion/instalacion",
           icon: ArrowBigDownDashIcon,
         },
-        {
-          label: "Tokens",
-          href: "/documentacion/tokens",
-          icon: Braces,
-        },
-        {
-          label: "Changelog",
-          href: "/documentacion/changelog",
-          icon: ClipboardPen,
-        },
-        {
-          label: "Estructura del Proyecto",
-          href: "/documentacion/estructura",
-          icon: BrickWall,
-        },
+        // {
+        //   label: "Tokens",
+        //   href: "/documentacion/tokens",
+        //   icon: Braces,
+        // },
+        // {
+        //   label: "Changelog",
+        //   href: "/documentacion/changelog",
+        //   icon: ClipboardPen,
+        // },
+        // {
+        //   label: "Estructura del Proyecto",
+        //   href: "/documentacion/estructura",
+        //   icon: BrickWall,
+        // },
       ],
     },
     {

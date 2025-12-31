@@ -2,17 +2,31 @@ import { useState } from "react";
 import { SlidersHorizontal } from "lucide-react";
 import { CodeBlock } from "./CodeBlock";
 
-import  Dropdown, { DropdownContent, DropdownMenu, DropdownToggle }  from "./DropdownComp";
+import Dropdown, {
+  DropdownContent,
+  DropdownDivider,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "./DropdownComp";
 
 export const DropdownPage = () => {
- 
-  const DROPDOWN_EXAMPLE_BASIC_REACT = ``;
+  const DROPDOWN_EXAMPLE_BASIC_REACT = `import Dropdown, { DropdownContent, DropdownDivider, DropdownItem, DropdownMenu, DropdownToggle } from "@luwydyroweb/ui";
+  
+<Dropdown>
+  <DropdownToggle label="Seleccionar Opción" />
+  <DropdownMenu>
+    <DropdownContent>Dropdown</DropdownContent>
+    <DropdownDivider />
+    <DropdownItem>Item 1</DropdownItem>
+    <DropdownItem>Item 2</DropdownItem>
+  </DropdownMenu>
+</Dropdown>`;
 
   const [exampleBasic, setExampleBasic] = useState<"react" | "html">("react");
 
   const DROPDOWN_EXAMPLE_BASIC =
     exampleBasic === "react" ? DROPDOWN_EXAMPLE_BASIC_REACT : "";
-
 
   return (
     <>
@@ -22,7 +36,7 @@ export const DropdownPage = () => {
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4 text-primary-blue-600">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Uso Básico</span>
+              <span className="text-2xl text-white">Uso Básico</span>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-smext-sm">
               <button
@@ -42,15 +56,16 @@ export const DropdownPage = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
-            <div className="overflow-x-auto w-full rounded-medium border border-dashed border-zinc-500 p-4">
+            <div className=" w-full rounded-medium border border-dashed border-zinc-500 p-4">
               <div className="flex flex-col items-center gap-4 py-2">
                 <Dropdown>
-                    <DropdownToggle label="Seleccionar Opción"/>
-                    <DropdownMenu>
-                        <DropdownContent>
-
-                        </DropdownContent>
-                    </DropdownMenu>
+                  <DropdownToggle label="Seleccionar Opción" />
+                  <DropdownMenu>
+                    <DropdownContent>Dropdown</DropdownContent>
+                    <DropdownDivider />
+                    <DropdownItem>Item 1</DropdownItem>
+                    <DropdownItem>Item 2</DropdownItem>
+                  </DropdownMenu>
                 </Dropdown>
               </div>
             </div>
@@ -63,8 +78,6 @@ export const DropdownPage = () => {
             </div>
           </div>
         </div>
-
-       
       </div>
     </>
   );

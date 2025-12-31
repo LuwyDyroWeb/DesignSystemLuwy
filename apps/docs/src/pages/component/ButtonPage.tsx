@@ -135,12 +135,12 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
   return (
     <>
       <div className="flex flex-col gap-8">
-        <div className="text-3xl text-white font-bold">Uso</div>
+        <div className="text-3xl text-white font-bold">Button</div>
         <div className="border-2 border-primary-blue-600 p-6 rounded-medium flex flex-col items-start justify-center text-primary-blue-600">
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Styles</span>
+              <span className="text-2xl text-white">Styles</span>
               <code className="text-primary-bluedark-200">buttonStyle</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
@@ -188,7 +188,7 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Color</span>
+              <span className="text-2xl text-white">Color</span>
               <code className="text-primary-bluedark-200">variant</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
@@ -233,7 +233,7 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Size</span>
+              <span className="text-2xl text-white">Size</span>
               <code className="text-primary-bluedark-200">size</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
@@ -278,7 +278,7 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Loading</span>
+              <span className="text-2xl text-white">Loading</span>
               <code className="text-primary-bluedark-200">IsLoading</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
@@ -325,7 +325,7 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Ícono</span>
+              <span className="text-2xl text-white">Ícono</span>
               <code className="text-primary-bluedark-200">ButtonIcon</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
@@ -368,7 +368,7 @@ const BUTTONICON_EXAMPLE_HTML = `<button type="button" class="btn btn--weight-re
           <div className="flex flex-wrap flex-row justify-between gap-x-3 pb-4 w-full">
             <div className="flex flex-row items-center gap-3 pb-4">
               <SlidersHorizontal className="h-7 w-7" />
-              <span className="text-2xl ">Posición del Ícono</span>
+              <span className="text-2xl text-white">Posición del Ícono</span>
               <code className="text-primary-bluedark-200">iconPosition</code>
             </div>
             <div className="bg-primary-blue-900 px-3 py-2 flex flex-row gap-1 h-fit items-center rounded-medium text-sm">
