@@ -52,14 +52,14 @@ export const Sidebar = () => {
       title: "Documentación",
       items: [
         {
-          label: "Tokens",
-          href: "/documentacion/tokens",
-          icon: Braces,
-        },
-        {
           label: "Instalación",
           href: "/documentacion/instalacion",
           icon: ArrowBigDownDashIcon,
+        },
+        {
+          label: "Tokens",
+          href: "/documentacion/tokens",
+          icon: Braces,
         },
         {
           label: "Changelog",
