@@ -264,7 +264,7 @@ export const AccordionPage = () => {
               <CodeBlock
                 code={ACCORDION_EXAMPLE_ICONS}
                 language={exampleIcons === "react" ? "tsx" : "html"}
-                copyId="accordion-Nested"
+                copyId="accordion-Icons"
               />
             </div>
           </div>
@@ -318,7 +318,7 @@ export const AccordionPage = () => {
               <CodeBlock
                 code={ACCORDION_EXAMPLE_POSITION}
                 language={examplePosition === "react" ? "tsx" : "html"}
-                copyId="accordion-Nested"
+                copyId="accordion-PositionIcon"
               />
             </div>
           </div>
@@ -382,7 +382,7 @@ export const AccordionPage = () => {
               <CodeBlock
                 code={ACCORDION_EXAMPLE_COLORS}
                 language={exampleColors === "react" ? "tsx" : "html"}
-                copyId="accordion-Nested"
+                copyId="accordion-Colors"
               />
             </div>
           </div>

@@ -9,11 +9,12 @@ import {
 	useCallback,
 	useRef,
 	useState,
-    useEffect
+	useEffect
 } from 'react';
 
-const ArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
+const ArrowIcon = ({ isOpen, className }: { isOpen: boolean, className?: string }) => (
 	<svg
+		className={className}
 		fill="currentColor"
 		width="1em"
 		height="1em"
@@ -167,10 +168,6 @@ export interface DropdownItemProps extends HTMLAttributes<HTMLLIElement> {
 	children: ReactNode;
 	className?: string;
 	color?: string;
-	isActive?: boolean;
-	isDisabled?: boolean;
-	icon?: string;
-	rightIcon?: string;
 	isOpen?: boolean;
 }
 export const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
@@ -178,26 +175,22 @@ export const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props,
 		children,
 		className,
 		color,
-		isActive = false,
-		isDisabled,
-		icon,
-		rightIcon,
 		isOpen,
 		...rest
 	} = props;
 
 	const colorClass: Record<string, string> = {
-    primary: "text-primary-blue-500",
-    secondary: "text-primary-bluedark-500",
-    error: "text-alert-error-500",
-    info: "text-alert-info-500",
-    warning: "text-alert-warning-500",
-    success: "text-alert-success-500",
-    white: "text-neutro-white-500",
-    black: "text-neutro-black-500",
+	primary: "text-primary-blue-500",
+	secondary: "text-primary-bluedark-500",
+	error: "text-alert-error-500",
+	info: "text-alert-info-500",
+	warning: "text-alert-warning-500",
+	success: "text-alert-success-500",
+	white: "text-neutro-white-500",
+	black: "text-neutro-black-500",
 	};
 
-    const baseClasses = `p-2 flex items-center w-full whitespace-nowrap cursor-pointer rounded-sm border-zinc-300/25 dark:border-zinc-800/50 ${!isDisabled ? 'hover:bg-zinc-500/10' : ''} ${color ? colorClass[color] : ''} ${(isActive || isOpen) ? 'bg-zinc-500/5' : ''} ${isDisabled ? '!opacity-50 cursor-not-allowed' : ''} transition-100`.trim().replace(/\s+/g, ' ');
+	const baseClasses = `p-2 flex items-center w-full whitespace-nowrap cursor-pointer rounded-sm border-zinc-300/25 dark:border-zinc-800/50 hover:bg-zinc-500/10 ${color ? colorClass[color] : ''} ${( isOpen) ? 'bg-zinc-500/5' : ''} transition-100`.trim().replace(/\s+/g, ' ');
 
 	return (
 		<li
@@ -205,11 +198,7 @@ export const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props,
 			ref={ref}
 			className={`${baseClasses} ${className ? className : ""}`}
 			{...rest}>
-			{icon && <svg className='inline-flex text-xl ltr:mr-1.5 rtl:ml-1.5' fill="currentColor" width="1em" height="1em" viewBox="0 -6 524 524" ><path d="M64 191L98 157 262 320 426 157 460 191 262 387 64 191Z" /></svg>}
 			{children}
-			{rightIcon && (
-                <svg className='inline-flex text-xl ltr:ml-1.5 rtl:mr-1.5' fill="currentColor" width="1em" height="1em" viewBox="0 -6 524 524" ><path d="M64 191L98 157 262 320 426 157 460 191 262 387 64 191Z" /></svg>
-			)}
 		</li>
 	);
 });
@@ -233,4 +222,49 @@ export const DropdownContent= (props: DropdownContentProps) => {
 };
 DropdownContent.displayName = 'DropdownContent';
 
+
+export interface DropdownSubmenuProps extends HTMLAttributes<HTMLLIElement> {
+  label: string;
+  children: ReactNode;
+  className?: string;
+}
+
+export const DropdownSubmenu = ( props: DropdownSubmenuProps) => {
+	const { label, children, className } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLLIElement | null>(null);
+
+  const handleClick = (e: React.MouseEvent) => {
+	e.stopPropagation();
+	setIsOpen((prev) => !prev);
+  };
+
+  return (
+	<li
+	data-component-name='Dropdown/DropdownSubMenu'
+	  ref={containerRef}
+	  className={`relative p-2 flex items-center justify-between cursor-pointer rounded-sm hover:bg-zinc-500/10 ${className ?? ''}`}
+	  onClick={handleClick}
+	>
+	  <span>{label}</span>
+	  <span className="ml-2">{<ArrowIcon isOpen={true} className='rotate-90' />}</span>
+
+	  {isOpen && (
+		<ul
+		  role="menu"
+		   onClick={(e) => e.stopPropagation()}
+		  className=" absolute top-0 left-full ml-1 min-w-48 z-50  flex flex-col gap-2  px-2 py-2 border border-neutral-500 shadow-lg bg-primary-blue-900"
+		>
+		  {children}
+		</ul>
+	  )}
+	</li>
+  );
+};
+
+DropdownSubmenu.displayName = 'DropdownSubmenu';
+
+
 export default Dropdown;
+
