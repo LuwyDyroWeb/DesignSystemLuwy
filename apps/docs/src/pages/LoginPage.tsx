@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useLocation, useNavigate, Navigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthProvider";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { EyeOff, Eye } from "lucide-react";
+import { useAuthStore } from "../auth/auth.store";
 
 type LocationState = {
   from?: {
@@ -12,45 +12,60 @@ type LocationState = {
 export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const state = location.state as LocationState | null;
+
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+  const _hasHydrated = useAuthStore((state) => state._hasHydrated);
+  const login = useAuthStore((state) => state.login);
+  const loginWithGoogle = useAuthStore((state) => state.loginWithGoogle);
+
   const [visibility, setVisibility] = useState<Record<string, boolean>>({});
-  const { onLogin, onLoginWithGoogle , usernameStorage, tokenStorage, isInitializing } = useAuth();
   const [usuario, setUsuario] = useState("emilys");
   const [contrasena, setContrasena] = useState("emilyspass");
-  const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  
+
   const from = state?.from?.pathname || "/";
-  
-  if (isInitializing) {
+
+  console.log("LoginPage render"); // Ver cada render
+
+  console.log("Hydration status:", _hasHydrated);
+  console.log("User:", user, "Token:", token);
+  console.log("From path:", from);
+
+  useEffect(() => {
+    if (_hasHydrated && token && user) {
+      console.log("Usuario ya autenticado, redirigiendo...");
+      navigate(from, { replace: true });
+    }
+  }, [_hasHydrated, token, user, from, navigate]);
+
+  if (!_hasHydrated) {
+    console.log("Esperando hidratación...");
     return null;
   }
-  
-  if (tokenStorage && usernameStorage) {
-    console.log("Usuario ya autenticado, redirigiendo...");
-    return <Navigate to={from} replace />;
-  }
-  
+
   const toggleVisibility = (field: string) => {
     setVisibility((prev) => ({
       ...prev,
       [field]: !prev[field],
     }));
   };
-  
+
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
-    
+
     if (!usuario || !contrasena) {
       setError("Por favor, completa todos los campos");
       return;
     }
-    
+
     setLoading(true);
     try {
-      await onLogin(usuario, contrasena, rememberMe);
+      await login(usuario, contrasena);
       console.log("Bienvenido a Design System - LuwyDyro");
       navigate(from, { replace: true });
     } catch (err) {
@@ -60,15 +75,15 @@ export const LoginPage = () => {
       setLoading(false);
     }
   };
-  
+
   const handleGoogleLogin = async () => {
     try {
-      await onLoginWithGoogle();
+      await loginWithGoogle();
       navigate(from, { replace: true });
     } catch (error) {
       console.error("Error login Google", error);
-  }
-};
+    }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-primary-blue-950 p-4 ">
       <div className="bg-primary-bluedark-950 rounded-xl relative border-primary-bluedark-800 border shadow-lg w-[380px]  text-center px-5 sm:px-8 py-10">
@@ -166,23 +181,6 @@ export const LoginPage = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex items-center">
-            <input
-              id="rememberMe"
-              type="checkbox"
-              name="rememberMe"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className="cursor-pointer appearance-none disabled:opacity-25! border-2 transition-all duration-300 ease-in-out  dark:border-primary-bluedark-600 hover:border-primary-blue-500 dark:hover:border-primary-blue-500 disabled:border-zinc-500! bg-center bg-no-repeat bg-transparent checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE3LjczOCA2LjM1MmExIDEgMCAxIDEgMS41MjQgMS4yOTZsLTguNSAxMGExIDEgMCAwIDEtMS40MjYuMWwtNC41LTRhMSAxIDAgMSAxIDEuMzI4LTEuNDk1bDMuNzM2IDMuMzIgNy44MzgtOS4yMnoiLz48L2c+PC9zdmc+')] indeterminate:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZmZmZiIgY2xhc3M9InctNiBoLTYiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTE5LjUgMTJoLTE1IiAvPgo8L3N2Zz4K')] checked:bg-primary-blue-400 rounded-lg w-5 h-5 me-1
-              "
-            />
-            <label
-              htmlFor="rememberMe"
-              className="cursor-pointer text-xs text-primary-blue-100"
-            >
-              Remember Me
-            </label>
           </div>
           {error && (
             <p className="text-red-300 text-left text-sm mb-3" role="alert">

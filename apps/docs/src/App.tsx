@@ -21,33 +21,35 @@ import { DropdownPage } from "./pages/component/DropdownPage";
 function App() {
   return (
     <Routes>
+      {/* RUTAS PÚBLICAS */}
       <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/"
-        element={
-          <ThemeContextProvider>
-            <ProtectedRoute>
-              <DashboardLayout />
-            </ProtectedRoute>
-          </ThemeContextProvider>
-        }
-      >
-        <Route index element={<HomePage />} />
-        <Route path="documentacion/tokens" element={<TokensPage />} />
-        <Route path="documentacion/instalacion" element={<InstallPage />} />
-        <Route path="documentacion/changelog" element={<ChangelogPage />} />
-        <Route path="documentacion/estructura" element={<StructurePage />} />
-        <Route path="layout/sidebar" element={<SidebarPage />} />
-        <Route path="layout/header" element={<HeaderPage />} />
-        <Route path="layout/footer" element={<FooterPage />} />
-        <Route path="content/colores" element={<ColorsPage />} />
-        <Route path="content/tipografia" element={<TipografiaPage />} />
-        <Route path="componente/botones" element={<ButtonPage />} />
-        <Route path="componente/accordion" element={<AccordionPage />} />
-        <Route path="componente/dropdown" element={<DropdownPage />} />
-      </Route>
+      <Route path="*" element={<NotFoundPage />}/>
 
-      <Route path="*" element={<NotFoundPage />}></Route>
+      {/* RUTAS PRIVADAS */}
+      <Route path="/*" element={<ProtectedRoute />}>
+        <Route
+          // path="/"
+          element={
+            <ThemeContextProvider>
+              <DashboardLayout />
+            </ThemeContextProvider>
+          }
+        >
+          <Route index element={<HomePage />} />
+          <Route path="documentacion/tokens" element={<TokensPage />} />
+          <Route path="documentacion/instalacion" element={<InstallPage />} />
+          <Route path="documentacion/changelog" element={<ChangelogPage />} />
+          <Route path="documentacion/estructura" element={<StructurePage />} />
+          <Route path="layout/sidebar" element={<SidebarPage />} />
+          <Route path="layout/header" element={<HeaderPage />} />
+          <Route path="layout/footer" element={<FooterPage />} />
+          <Route path="content/colores" element={<ColorsPage />} />
+          <Route path="content/tipografia" element={<TipografiaPage />} />
+          <Route path="componente/botones" element={<ButtonPage />} />
+          <Route path="componente/accordion" element={<AccordionPage />} />
+          <Route path="componente/dropdown" element={<DropdownPage />} />
+        </Route>
+      </Route>
     </Routes>
   );
 }

@@ -16,7 +16,7 @@ import {
   Menu,
 } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuthStore } from "../auth/auth.store";
 import useSidebarStatus from "../hooks/useSidebarStatus";
 
 type MenuChild = {
@@ -44,7 +44,14 @@ export const Sidebar = () => {
   const { sidebarStatus, setSidebarStatus } = useSidebarStatus();
   const [openItemLabel, setOpenItemLabel] = useState<string | null>("null");
   const [opened, setOpened] = useState<boolean>(false);
-  const { onLogout } = useAuth();
+
+  const logout = useAuthStore((state) => state.logout);
+  const navigate = useNavigate();
+  const onLogout = () => {
+    logout();
+    navigate("/", { replace: true });
+  };
+
   const location = useLocation();
 
   const menuSections: MenuSection[] = [
@@ -163,8 +170,7 @@ export const Sidebar = () => {
                 className="cursor-pointer text-white"
                 onClick={() => setSidebarStatus(!sidebarStatus)}
               >
-             
-               <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5" />
               </button>
             </div>
           )}
@@ -252,11 +258,17 @@ export const Sidebar = () => {
                   <div className="mb-2 list-none rounded-full border-b border-primary-blue-700/50"></div>
 
                   <button
-                    className={`flex cursor-pointer gap-2 w-full mb-1 items-center pt-2 pb-3 px-1 hover:text-primary-blue-100 ${!sidebarStatus && "justify-center"}`}
-                    onClick={() => onLogout(true)}
+                    className={`flex cursor-pointer gap-2 w-full mb-1 items-center pt-2 pb-3 px-1 hover:text-primary-blue-100 ${
+                      !sidebarStatus && "justify-center"
+                    }`}
+                    onClick={() => onLogout()}
                   >
                     <Power height={17}></Power>
-                    <div className={`truncate overflow-hidden whitespace-nowrap text-sm ${!sidebarStatus && "hidden"}`}>
+                    <div
+                      className={`truncate overflow-hidden whitespace-nowrap text-sm ${
+                        !sidebarStatus && "hidden"
+                      }`}
+                    >
                       Logout
                     </div>
                   </button>

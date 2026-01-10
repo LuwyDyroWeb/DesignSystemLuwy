@@ -1,12 +1,17 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { FolderInput } from "lucide-react";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuthStore } from "../auth/auth.store";
 import { PanelLeftOpen, House } from "lucide-react";
 import useSidebarStatus from "../hooks/useSidebarStatus";
 
 export const Header = () => {
   const location = useLocation();
-  const { onLogout } = useAuth();
+  const logout = useAuthStore(state => state.logout);
+  const navigate = useNavigate();
+  const onLogout = () => {
+  logout();
+  navigate("/", { replace: true });
+};
   const { sidebarStatus, setSidebarStatus } = useSidebarStatus();
 
   const routeTitles: { [key: string]: string } = {
@@ -57,7 +62,7 @@ export const Header = () => {
             </div>
             <button
               className="text-blue-50 h-6 w-5 mr-6 cursor-pointer  hover:text-red-400 duration-200"
-              onClick={() => onLogout(true)}
+              onClick={() => onLogout()}
             >
               
               <FolderInput  strokeWidth={1.5} />

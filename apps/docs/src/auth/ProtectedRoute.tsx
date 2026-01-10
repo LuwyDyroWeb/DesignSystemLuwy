@@ -1,18 +1,24 @@
-import type { ReactElement } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "./AuthProvider";
+import { useAuthStore } from "./auth.store";
+import { Outlet } from "react-router-dom";
 
-export const ProtectedRoute = ({ children }: { children: ReactElement }) => {
-  const { isInitializing, usernameStorage, tokenStorage } = useAuth();
+export const ProtectedRoute = () => {
   const location = useLocation();
-  if (isInitializing) {
+
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+
+  const hasHydrated = useAuthStore.persist.hasHydrated();
+
+  if (!hasHydrated) {
     console.log("Cargando sesión de usuario...");
     return null;
   }
-  if (!tokenStorage || !usernameStorage) {
-    console.warn("Protected: Sesión no encontrada después de carga.");
-    return <Navigate to="/login" replace state={{ from: location }}/>
+
+  if (!token || !user) {
+    console.warn("Protected: Sesión no encontrada.");
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
-  return <>{children}</>;
+  return <Outlet />;
 };
