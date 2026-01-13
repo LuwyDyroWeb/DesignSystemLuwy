@@ -18,7 +18,10 @@ import { ColorsPage } from "./pages/content/ColorsPage";
 import { TipografiaPage } from "./pages/content/TipografiaPage";
 import { AccordionPage } from "./pages/component/AccordionPage";
 import { DropdownPage } from "./pages/component/DropdownPage";
+import { useIdleListeners} from "./hooks/useIdleListeners";
+
 function App() {
+  useIdleListeners();
   return (
     <Routes>
       {/* RUTAS PÚBLICAS */}

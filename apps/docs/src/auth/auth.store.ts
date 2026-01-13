@@ -5,11 +5,9 @@ import { loginWithGoogle } from "./firebase";
 interface AuthState {
   user: string | null;
   token: string | null;
+  expiresAt: number | null;
   _hasHydrated: boolean;
-  login: (
-    username: string,
-    password: string,
-  ) => Promise<void>;
+  login: (username: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
   logout: () => void;
 }
@@ -35,6 +33,7 @@ const loginWithApi = async (username: string, password: string) => {
     throw err;
   }
 };
+const SESSION_DURATION = 15 * 60 * 1000;
 
 export const useAuthStore = create<AuthState>()(
   persist(
@@ -42,11 +41,17 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       _hasHydrated: false,
+      expiresAt: null,
 
       login: async (username, password) => {
         console.log("login called", username);
         const { accessToken } = await loginWithApi(username, password);
-        set({ user: username, token: accessToken });
+        set({
+          user: username,
+          token: accessToken,
+          expiresAt: Date.now() + SESSION_DURATION,
+        });
+        console.log("Duracion Sesión", SESSION_DURATION)
       },
 
       loginWithGoogle: async () => {
@@ -56,11 +61,13 @@ export const useAuthStore = create<AuthState>()(
         set({
           user: user.displayName || user.email || "Usuario Google",
           token: user.uid,
+          expiresAt: Date.now() + SESSION_DURATION,
         });
+        console.log("Duracion Sesión", SESSION_DURATION)
       },
 
       logout: () => {
-        set({ user: null, token: null });
+        set({ user: null, token: null, expiresAt: null });
         useAuthStore.persist.clearStorage();
       },
     }),
