@@ -18,6 +18,7 @@ import {
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuthStore } from "../auth/auth.store";
 import useSidebarStatus from "../hooks/useSidebarStatus";
+import { perfil, logo_luwydyro_dark } from "../assets/images";
 
 type MenuChild = {
   label: string;
@@ -161,7 +162,7 @@ export const Sidebar = () => {
             <div className="w-full flex justify-between items-center gap-3 ">
               <Link to="/">
                 <img
-                  src="/logo_luwydyro_dark.svg"
+                  src={logo_luwydyro_dark}
                   alt="LogoTipo"
                   className="h-7"
                 />
@@ -228,7 +229,7 @@ export const Sidebar = () => {
               onClick={() => setOpened((prevState) => !prevState)}
             >
               <img
-                src="/perfil.png"
+                src={perfil}
                 alt="Avatar"
                 className="bg-secondary-500/25 h-12 w-12 object-cover rounded-xl"
               />

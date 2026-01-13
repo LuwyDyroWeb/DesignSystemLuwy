@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { EyeOff, Eye } from "lucide-react";
 import { useAuthStore } from "../auth/auth.store";
+import { logo_luwydyro_dark } from "../assets/images";
 
 type LocationState = {
   from?: {
@@ -28,12 +29,6 @@ export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   const from = state?.from?.pathname || "/";
-
-  console.log("LoginPage render"); // Ver cada render
-
-  console.log("Hydration status:", _hasHydrated);
-  console.log("User:", user, "Token:", token);
-  console.log("From path:", from);
 
   useEffect(() => {
     if (_hasHydrated && token && user) {
@@ -90,7 +85,7 @@ export const LoginPage = () => {
         <form className="space-y-4" onSubmit={handleLogin} noValidate>
           <div className="mx-auto flex items-center justify-center mb-5">
             <img
-              src="/logo_luwydyro_dark.svg"
+              src={logo_luwydyro_dark}
               alt="Luwy Dyro"
               width={260}
               loading="lazy"

@@ -3,6 +3,7 @@ import { FolderInput } from "lucide-react";
 import { useAuthStore } from "../auth/auth.store";
 import { PanelLeftOpen, House } from "lucide-react";
 import useSidebarStatus from "../hooks/useSidebarStatus";
+import { perfil } from "../assets/images";
 
 export const Header = () => {
   const location = useLocation();
@@ -55,7 +56,7 @@ export const Header = () => {
           <div className="flex items-center sm:gap-7 gap-4">
             <div className="flex items-center">
               <img
-                src="/perfil.png"
+                src={perfil}
                 alt={`LuwyDyro`}
                 className="h-8 w-8 rounded-full "
               />
